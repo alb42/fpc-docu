@@ -2809,7 +2809,7 @@ use of shadow mask for that plane
 
 <!-- variable Visibility: default -->
 <element name="TChangeLayerShapeMsg.NewShape">
-<short>Same as passed to <link id="Intuition.ChangeLayerShape">ChangeLayerShape()</link></short>
+<short>Same as passed to <link id="layers.ChangeLayerShape">ChangeLayerShape()</link></short>
 <descr>
 </descr>
 <seealso>
@@ -4093,7 +4093,7 @@ set to describe which boundry was surpassed.
 
 <!-- variable Visibility: default -->
 <element name="TExtendedNode.xln_Type">
-<short><link id="intuition.NT_GRAPHICS"/></short>
+<short><b>NT_GRAPHICS</b></short>
 <descr>
 </descr>
 <seealso>
@@ -5365,7 +5365,7 @@ set to describe which boundry was surpassed.
 
 <!-- variable Visibility: default -->
 <element name="TView.Modes">
-<short>such as <link id="hardware.INTERLACE"/>, <link id="hardware.GENLOC"/></short>
+<short>such as <b>INTERLACE</b>, <b>GENLOC</b></short>
 </element>
 
 <!-- pointer type Visibility: default -->
@@ -16301,7 +16301,7 @@ All values except for SpritePriorities are set to 0's.
   If the View pointer is nil, no View is displayed.</p>
 <p>Even though a LoadView(nil) is performed, display DMA will still be
   active.  Sprites will continue to be displayed after a LoadView(nil)
-  unless an <link id="intuition.OFF_SPRITE"/> is subsequently performed.</p>
+  unless an <b>OFF_SPRITE</b> is subsequently performed.</p>
 </descr>
 <errors>
 </errors>

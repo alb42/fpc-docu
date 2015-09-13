@@ -6398,7 +6398,7 @@ Data is a LongWord, with the following values defined:</p>
     sets in your window's RastPort.  It is legal to change that
     subsequently with <link id="AGraphics.SetFont">SetFont()</link>.  IntuiText rendered into a window
     (either through <link id="PrintIText">PrintIText()</link> or as a <link id="TGadget"/>.GadgetText) defaults to
-    the window's RastPort font, but can be overridden using its <link id="AGraphics.TGadget"/>.TITextFont
+    the window's RastPort font, but can be overridden using its <link id="TGadget"/>.TITextFont
     field.  Text rendered with the graphics library call <link id="AGraphics.GfxText">GfxText()</link> uses the
     window's RastPort font.</p>
 </descr>
@@ -8459,7 +8459,7 @@ This actually describe the
 <descr>
 </descr>
 <seealso>
-<link id="IntuitionBase"/>
+<link id="TIntuitionBase"/>
 </seealso>
 </element>
 
@@ -8484,7 +8484,6 @@ When done call <link id="UnlockIBase">UnlockIBase(lock)</link> where lock is wha
 <p><b>The values in <i>IntuitionBase</i> are read-only.  Applications should never write values to <i>IntuitionBase</i>.</b></p>
 </descr>
 <seealso>
-<link id="IntuitionBase"/>
 </seealso>
 </element>
 
@@ -18067,7 +18066,7 @@ GadFmt follow arguments for TextFmt.</short>
 <p>
   For your information, this routine calls the Layers library function
   <link id="layers.EndUpdate">EndUpdate()</link>, unlocks your layers
-  (calls <link id="layers.UnlockLayerRom">UnlockLayerRom()</link>), clears
+  (calls <link id="AGraphics.UnlockLayerRom">UnlockLayerRom()</link>), clears
   the <link id="Layers.LAYERREFRESH">LAYERREFRESH</link> bit in your Layer Flags, and clears the
   <link id="WFLG_WINDOWREFRESH"/> bit in your window Flags.</p>
 </descr>
@@ -19128,10 +19127,10 @@ Manual for information on menu numbers.</short>
 
 <!-- function Visibility: default -->
 <element name="LockIBase">
-<short>Invoke semaphore arbitration of <link id="IntuitionBase"/>.</short>
+<short>Invoke semaphore arbitration of <link id="TIntuitionBase"/>.</short>
 <descr>
 <p>Grabs Intuition internal semaphore so that caller may examine
-  <link id="IntuitionBase"/> safely.  This function is not a magic "fix all my
+  <link id="TIntuitionBase"/> safely.  This function is not a magic "fix all my
   race conditions" panacea.</p>
 <p>
   The idea here is that you can get the locks Intuition needs before
@@ -21119,7 +21118,7 @@ This routine ignores the window's <link id="IDCMP_REQVERIFY"/> flag.
 <!-- argument Visibility: default -->
 <element name="ScreenPosition.Y2">
 <short>Note that these coordinates are in the same resolution
-    as the screen (such as <link id="AGraphics.HIRES">HIRES</link> or <link id="AGraphics.INTERLACE">INTERLACE</link>)</short>
+    as the screen.</short>
 </element>
 
 <!-- procedure Visibility: default -->

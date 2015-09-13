@@ -2462,7 +2462,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 <link id="AvailMem"/>
 <link id="CreatePool"/>
 </seealso>
@@ -2474,7 +2474,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 <link id="AvailMem"/>
 <link id="CreatePool"/>
 </seealso>
@@ -2486,7 +2486,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 <link id="AvailMem"/>
 <link id="CreatePool"/>
 </seealso>
@@ -2498,7 +2498,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 <link id="AvailMem"/>
 <link id="CreatePool"/>
 </seealso>
@@ -2510,7 +2510,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 <link id="AvailMem"/>
 <link id="CreatePool"/>
 </seealso>
@@ -2522,7 +2522,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 <link id="AvailMem"/>
 <link id="CreatePool"/>
 </seealso>
@@ -2534,7 +2534,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 </seealso>
 </element>
 
@@ -2544,7 +2544,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 </seealso>
 </element>
 
@@ -2584,7 +2584,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 </seealso>
 </element>
 
@@ -2604,7 +2604,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 </seealso>
 </element>
 
@@ -2614,7 +2614,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 </seealso>
 </element>
 
@@ -2624,7 +2624,7 @@ Note: SizeOf(TMemList) includes the size of the first MemEntry!
 <descr>
 </descr>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 </seealso>
 </element>
 
@@ -5483,7 +5483,7 @@ This function also calculates the checksum of the library.
 <errors>
 </errors>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 </seealso>
 </element>
 
@@ -5758,7 +5758,7 @@ Result is <var>nil</var> if failed. If the free list is corrupt, the system will
 
 </errors>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 <link id="Exec.ExecFreeMem"/>
 </seealso>
 </element>
@@ -5862,7 +5862,7 @@ If the free list is corrupt, the system will panic with alert
 </element>
 
 <!-- function Visibility: default -->
-<element name="AllocMem">
+<element name="ExecAllocMem">
 <short>Allocate memory given certain requirements
 </short>
 <descr><p>
@@ -5893,7 +5893,7 @@ If the free list is corrupt, the system will panic with alert
 </element>
 
 <!-- function result Visibility: default -->
-<element name="AllocMem.Result">
+<element name="ExecAllocMem.Result">
 <short>A pointer to the newly allocated memory block.
     If there are no free memory regions large enough to satisfy
     the request, <var>nil</var> will be returned.  The pointer must be
@@ -5902,7 +5902,7 @@ If the free list is corrupt, the system will panic with alert
 </element>
 
 <!-- argument Visibility: default -->
-<element name="AllocMem.byteSize">
+<element name="ExecAllocMem.byteSize">
 <short>The size of the desired block in bytes.  (The operating
     system will automatically round this number to a multiple of
     the system memory chunk size)
@@ -5910,7 +5910,7 @@ If the free list is corrupt, the system will panic with alert
 </element>
 
 <!-- argument Visibility: default -->
-<element name="AllocMem.requirements">
+<element name="ExecAllocMem.requirements">
 <short>If no flags are set, the system will return the best
     available memory block. (MEMF_*)</short>
 </element>
@@ -6043,7 +6043,7 @@ A call to <link id="DeletePool"/> will free all memory blocks allocated in the p
 </errors>
 <seealso>
 <link id="FreeVec"/>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 </seealso>
 </element>
 
@@ -6910,12 +6910,12 @@ The programmer must execute exactly one call to <var>Enable()</var> for every ca
 <element name="ExecFreeMem">
 <short>Free a memory block with given size</short>
 <descr>
-  Free a memory block allocated using <link id="AllocMem">AllocMem()</link>, program should not access this memory area anymore. If a memory block is freed twice an Guru will appear <link id="AN_FreeTwice"/>. if a wrong pointer is passed a <link id="AN_MemCorrupt"/> is fired. The original name <var>FreeMem</var> is colliding with the RTL Freemem.
+  Free a memory block allocated using <link id="Exec.ExecAllocMem">ExecAllocMem()</link>, program should not access this memory area anymore. If a memory block is freed twice an Guru will appear <link id="AN_FreeTwice"/>. if a wrong pointer is passed a <link id="AN_MemCorrupt"/> is fired. The original name <var>FreeMem</var> is colliding with the RTL Freemem.
 </descr>
 <errors>
 </errors>
 <seealso>
-<link id="AllocMem"/>
+<link id="Exec.ExecAllocMem"/>
 </seealso>
 </element>
 
