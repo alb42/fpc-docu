@@ -16401,7 +16401,7 @@ end;
 </errors>
 <seealso>
 <link id="FreeRemember"/>
-<link id="exec.AllocMem">AllocMem</link>
+<link id="exec.ExecAllocMem">AllocMem</link>
 </seealso>
 </element>
 
@@ -16426,7 +16426,7 @@ end;
 
 <!-- argument Visibility: default -->
 <element name="AllocRemember.Flags">
-<short>Attributes (see <link id="Exec.AllocMem">AllocMem()</link>)
+<short>Attributes (see <link id="Exec.ExecAllocMem">AllocMem()</link>)
 </short>
 </element>
 
