@@ -2,8 +2,7 @@
 export CURDIR=$(pwd)
 export AROSUNITSPATH=$CURDIR/arosunits/src
 
-export AROSUNITS="--css-file=$CURDIR/xml/fpdoc.css \
-  --input=$AROSUNITSPATH/hardware.pas \
+export AROSUNITS="--input=$AROSUNITSPATH/hardware.pas \
   --input=$AROSUNITSPATH/exec.pas     --descr=$CURDIR/xml/exec.xml \
   --input=$AROSUNITSPATH/utility.pas  --descr=$CURDIR/xml/utility.xml  \
   --input=$AROSUNITSPATH/amigados.pas --descr=$CURDIR/xml/amigados.xml \
