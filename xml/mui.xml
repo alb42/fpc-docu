@@ -2898,35 +2898,36 @@
 <!-- constant Visibility: default -->
 <element name="MUIC_Notify">
 <short>Notify class is superclass of all other MUI classes.
-        It's main purpose is to handle MUI's notification
-        mechanism, but it also contains some other methods
-        and attributes useful for every object.
 </short>
 <descr>
+  <p>Notify class is superclass of all other MUI classes.
+        It's main purpose is to handle MUI's notification
+        mechanism, but it also contains some other methods
+        and attributes useful for every object.</p>
   <table>
     <caption>Inheritance</caption>
     <tr><td><b>rootclass</b></td><td>--&gt;</td><td><b>Notify</b></td></tr>
   </table>
 
   <table>
-  <caption>Fields</caption>
-  <th><td>Field</td><td>Access</td><td>Short description</td></th>
-  <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td>Obtain a pointer to the application object
+  <caption><b>Fields</b></caption>
+  <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+  <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object
         that some gadget belongs</td></tr>
-  <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
-  <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
-  <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
-  <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>Prevent notification from being triggered on attribute set</td></tr>
-  <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>Identification for object on save/load</td></tr>
-  <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td>Get a pointer to the parent object of the current object</td></tr>
-  <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>Get the revision number of an objects class</td></tr>
-  <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>A general purpose value to fill in any kind of information</td></tr>
-  <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>Get the version number of an objects class</td></tr>
+  <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+  <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+  <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+  <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+  <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+  <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+  <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+  <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+  <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
   </table>
 
   <table>
-  <caption>Methods</caption>
-  <th><td>Method</td><td>Short description</td></th>
+  <caption><b>Methods</b></caption>
+  <th><td>_______________ Method _______________</td><td>Short description</td></th>
   <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
   <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
   <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
@@ -4406,8 +4407,86 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Family">
-<short></short>
+<short>Family class is the base class for objects that are able to handle a list of children.</short>
 <descr>
+  <p>
+  Family class is the base class for objects that are able
+  to handle a list of children. This is e.g. the case for
+  MUIs Menustrip, Menu and Menuitem objects.
+  </p><p>
+  Family class defines methods and attributes to
+  add and remove children, sort children, and transfer
+  children to other Family objects.
+  </p><p>
+  Group class and application class should also be a
+  subclass of Family class, but due to BOOPSI system
+  limitations, this is currently impossible. If the
+  future will allow more logical class trees, things
+  might change, but everything will be done in a
+  compatible manner.
+  </p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><b>Family</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Family_Child"/></td><td>I__</td><td><link id="PObject_">PObject_</link></td><td>Add a child to family child list on creation</td></tr>
+    <tr><td><link id="MUIA_Family_List"/></td><td>I__</td><td><link id="Exec.PMinList">PMinList</link></td><td>Returns a pointer to a struct MinList which contains the children of a family object.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption><b>Methods</b></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_Family_AddHead"/></td><td>Add an object as first object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_AddTail"/></td><td>Add an object as last object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_Insert"/></td><td>Add an object after another object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_Remove"/></td><td>Remove an object from a family.</td></tr>
+    <tr><td><link id="MUIM_Family_Sort"/></td><td>Sort the children of a family.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -4822,6 +4901,113 @@
 <element name="MUIC_Application">
 <short></short>
 <descr>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><b>Application</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Application_Active"/></td><td>ISG</td><td>BOOL (0/1)</td><td>This attribute reflects the state that the user adjusted with commodities Exchange.</td></tr>
+    <tr><td><link id="MUIA_Application_Author"/></td><td>I_G</td><td>PChar</td><td>Name of the applications author.</td></tr>
+    <tr><td><link id="MUIA_Application_Base"/></td><td>I_G</td><td>PChar</td><td>The basename for an application.</td></tr>
+    <tr><td><link id="MUIA_Application_Broker"/></td><td>__G</td><td>PBroker</td><td>Obtain a pointer to the applications Broker structure.</td></tr>
+    <tr><td><link id="MUIA_Application_BrokerHook"/></td><td>ISG</td><td><link id="utility.PHook">PHook</link></td><td>The function will be called whenever a commodities message arrives.</td></tr>
+    <tr><td><link id="MUIA_Application_BrokerPort"/></td><td>__G</td><td><link id="Exec.PMsgPort">PMsgPort</link></td><td>Get a pointer to the applications commodities message port.</td></tr>
+    <tr><td><link id="MUIA_Application_BrokerPri"/></td><td>I_G</td><td>LongInt</td><td>Adjust the priority of an applications broker.</td></tr>
+    <tr><td><link id="MUIA_Application_Commands"/></td><td>ISG</td><td><link id="PMUI_Command"/></td><td>Include its own set of ARexx commands.</td></tr>
+    <tr><td><link id="MUIA_Application_Copyright"/></td><td>I_G</td><td>PChar</td><td>A copyright string, containing the year and the company.</td></tr>
+    <tr><td><link id="MUIA_Application_Description"/></td><td>I_G</td><td>PChar</td><td>Short description</td></tr>
+    <tr><td><link id="MUIA_Application_DiskObject"/></td><td>ISG</td><td>PChar</td><td>Defines AppIcon when your application gets iconified.</td></tr>
+    <tr><td><link id="MUIA_Application_DoubleStart"/></td><td>__G</td><td>BOOL (0/1)</td><td>Set if application get started twice. (Single Task App)</td></tr>
+    <tr><td><link id="MUIA_Application_DropObject"/></td><td>IS_</td><td><link id="PObject_"/></td><td>Object dropped on your AppIcon</td></tr>
+    <tr><td><link id="MUIA_Application_ForceQuit"/></td><td>__G</td><td>BOOL (0/1)</td><td>Quit program without requesters.</td></tr>
+    <tr><td><link id="MUIA_Application_HelpFile"/></td><td>ISG</td><td>PChar</td><td>Define AmigaGuide file as Help file.</td></tr>
+    <tr><td><link id="MUIA_Application_Iconified"/></td><td>_SG</td><td>BOOL (0/1)</td><td>Iconify the application.</td></tr>
+    <!--tr><td><link id="MUIA_Application_Menu"/></td><td>I_G</td><td><link id="gadtools.PNewMenu">PNewMenu</link></td><td>Obsolete, use <link id="MUIA_Application_Menustrip"/> instead.</td></tr-->
+    <tr><td><link id="MUIA_Application_MenuAction"/></td><td>__G</td><td>LongWord</td><td>UserData of selected menu item</td></tr>
+    <tr><td><link id="MUIA_Application_MenuHelp"/></td><td>__G</td><td>LongWord</td><td>UserData of menu item selected and Help key pressed.</td></tr>
+    <tr><td><link id="MUIA_Application_Menustrip"/></td><td>I__</td><td><link id="PObject_"/></td><td>Specify a menu strip object for the application.</td></tr>
+    <tr><td><link id="MUIA_Application_RexxHook"/></td><td>ISG</td><td><link id="utility.PHook">PHook</link></td><td>Hook for arriving Rexx messages.</td></tr>
+    <tr><td><link id="MUIA_Application_RexxMsg"/></td><td>__G</td><td>PRxMsg</td><td>Rexx message for arriving Rexx messages.</td></tr>
+    <tr><td><link id="MUIA_Application_RexxString"/></td><td>_S_</td><td>PChar</td><td>ARexx allows returning a string as result of a function call.</td></tr>
+    <tr><td><link id="MUIA_Application_SingleTask"/></td><td>I__</td><td>BOOL (0/1)</td><td>Define application as single task program.</td></tr>
+    <tr><td><link id="MUIA_Application_Sleep"/></td><td>_S_</td><td>BOOL (0/1)</td><td>This attribute can be used to put a whole application to sleep.</td></tr>
+    <tr><td><link id="MUIA_Application_Title"/></td><td>I_G</td><td>PChar</td><td>Defines the title of an application.</td></tr>
+    <tr><td><link id="MUIA_Application_UseCommodities"/></td><td>I__</td><td>BOOL (0/1)</td><td>When set to False, the application will run without a commodities interface.</td></tr>
+    <tr><td><link id="MUIA_Application_UsedClasses"/></td><td>ISG</td><td>PChar</td><td>Tell the MUI system what external classes your application might use.</td></tr>
+    <tr><td><link id="MUIA_Application_UseRexx"/></td><td>I__</td><td>BOOL (0/1)</td><td>When set to FALSE, the application will run without an ARexx interface.</td></tr>
+    <tr><td><link id="MUIA_Application_Version"/></td><td>I_G</td><td>PChar</td><td>Define a version string for an application.</td></tr>
+    <tr><td><link id="MUIA_Application_Window"/></td><td>I__</td><td>PChar</td><td>A pointer to a MUI object of Window class.</td></tr>
+    <tr><td><link id="MUIA_Application_WindowList"/></td><td>__G</td><td><link id="Exec.PList">PList</link></td><td>List of children (i.e. windows) of an application.</td></tr>
+  </table>
+
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object
+          that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption><b>Methods</b></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_Application_AboutMUI"/></td><td>Show the MUI about window.</td></tr>
+    <tr><td><link id="MUIM_Application_AddInputHandler"/></td><td>Set Input Handler for custom classes.</td></tr>
+    <tr><td><link id="MUIM_Application_CheckRefresh"/></td><td>Check all currently open windows if they need refreshing and refreshes them if necessary.</td></tr>
+    <tr><td><link id="MUIM_Application_GetMenuCheck"/></td><td>Ask whether a checkmark menu item has its checkmark set or cleared.</td></tr>
+    <tr><td><link id="MUIM_Application_GetMenuState"/></td><td>Ask whether a menu item is enabled or disabled.</td></tr>
+    <tr><td><link id="MUIM_Application_Input"/></td><td>Process user input.</td></tr>
+    <tr><td><link id="MUIM_Application_InputBuffered"/></td><td>Buffer user input.</td></tr>
+    <tr><td><link id="MUIM_Application_Load"/></td><td>Load programs configuration.</td></tr>
+    <tr><td><link id="MUIM_Application_NewInput"/></td><td>This is an enhanced replacement for <link id="MUIM_Application_Input"/>.</td></tr>
+    <tr><td><link id="MUIM_Application_OpenConfigWindow"/></td><td>Open applications own MUI configuration.</td></tr>
+    <tr><td><link id="MUIM_Application_PushMethod"/></td><td>Push method from second task to main task.</td></tr>
+    <tr><td><link id="MUIM_Application_RemInputHandler"/></td><td>Remove Input Handler for custom classes.</td></tr>
+    <tr><td><link id="MUIM_Application_RemInputHandler"/></td><td>Tell MUI to return the given id with the next call to <link id="MUIM_Application_Input"/>.</td></tr>
+    <tr><td><link id="MUIM_Application_Save"/></td><td>Save programs configuration.</td></tr>
+    <tr><td><link id="MUIM_Application_SetConfigItem"/></td><td>Private Method for PSI.</td></tr>
+    <tr><td><link id="MUIM_Application_SetMenuCheck"/></td><td>Set or clear the checkmark of a menu item.</td></tr>
+    <tr><td><link id="MUIM_Application_SetMenuState"/></td><td>Enable or disable a menu item.</td></tr>
+    <tr><td><link id="MUIM_Application_ShowHelp"/></td><td>Show an AmigaGuide help file.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -6350,8 +6536,141 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Window">
-<short></short>
+<short>Objects of window class are used to generate windows and supply a place where MUI gadgets feel well.</short>
 <descr>
+  <p>
+  Objects of window class are used to generate windows and
+  supply a place where MUI gadgets feel well. It handles
+  the complicated task of window resizing fully automatic,
+  you don't need to worry about that.
+  </p><p>
+  Windows are children of an application, you cannot use
+  a window object without having a parent application
+  object. On the other side, the gadgets in a window
+  are children of the window, you cannot use MUI gadgets
+  without having a parent MUI window.
+  </p><p>
+  Creating a window object does not mean to open it
+  instantly. This is done later by setting the window's
+  <link id="MUIA_Window_Open"/> attribute. If your application has
+  several windows, the usual way is to create them all
+  at once at startup time and open/close it later
+  just by setting <link id="MUIA_Window_Open"/>.
+  </p><p>
+  There is no difference in talking to gadgets whether
+  their parent window is open or not. If you e.g. set
+  the contents of a string gadget in an open window,
+  the gadget will refresh immediately. If the window is
+  closed, the gadget just remembers its new setting
+  and displays it later.
+        </p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><b>Window</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Window_Activate"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set to True to active the Window.</td></tr>
+    <tr><td><link id="MUIA_Window_ActiveObject"/></td><td>_SG</td><td><link id="PObject_"/></td><td>Set or get the active object.</td></tr>
+    <tr><td><link id="MUIA_Window_AltHeight"/></td><td>I_G</td><td>LongInt</td><td>Specify the alternate (zoomed) height of a window.</td></tr>
+    <tr><td><link id="MUIA_Window_AltLeftEdge"/></td><td>I_G</td><td>LongInt</td><td>Specify the alternate (zoomed) left position of a window.</td></tr>
+    <tr><td><link id="MUIA_Window_AltTopEdge"/></td><td>I_G</td><td>LongInt</td><td>Specify the alternate (zoomed) top position of a window.</td></tr>
+    <tr><td><link id="MUIA_Window_AltWidth"/></td><td>I_G</td><td>LongInt</td><td>Specify the alternate (zoomed) width of a window.</td></tr>
+    <tr><td><link id="MUIA_Window_AppWindow"/></td><td>I__</td><td>BOOL (0/1)</td><td>Set Window as AppWindow.</td></tr>
+    <tr><td><link id="MUIA_Window_Backdrop"/></td><td>I__</td><td>BOOL (0/1)</td><td>Make the window a backdrop window.</td></tr>
+    <tr><td><link id="MUIA_Window_Borderless"/></td><td>I__</td><td>BOOL (0/1)</td><td>Make the window borderless.</td></tr>
+    <tr><td><link id="MUIA_Window_CloseGadget"/></td><td>I__</td><td>BOOL (0/1)</td><td>Set this to False and your window will not have a close gadget.</td></tr>
+    <tr><td><link id="MUIA_Window_CloseRequest"/></td><td>__G</td><td>BOOL (0/1)</td><td>Set to True if the user tries to close the window.</td></tr>
+    <tr><td><link id="MUIA_Window_DefaultObject"/></td><td>ISG</td><td><link id="PObject_"/></td><td>The default object in a window receives keyboard input.</td></tr>
+    <tr><td><link id="MUIA_Window_DepthGadget"/></td><td>I__</td><td>BOOL (0/1)</td><td>Enable or disable the depth gadget.</td></tr>
+    <tr><td><link id="MUIA_Window_DisableKeys"/></td><td>ISG</td><td>LongWord</td><td>Undocumented</td></tr>
+    <tr><td><link id="MUIA_Window_DragBar"/></td><td>I__</td><td>BOOL (0/1)</td><td>Tell MUI to give your window a dragbar.</td></tr>
+    <tr><td><link id="MUIA_Window_FancyDrawing"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Obsolete relaxed way of custom class drawing.</td></tr>
+    <tr><td><link id="MUIA_Window_Height"/></td><td>I_G</td><td>LongInt</td><td>Specify the height of a window.</td></tr>
+    <tr><td><link id="MUIA_Window_ID"/></td><td>ISG</td><td>LongWord</td><td>Define an ID for the window.</td></tr>
+    <tr><td><link id="MUIA_Window_InputEvent"/></td><td>__G</td><td><link id="inputevent.PInputEvent">PInputEvent</link> </td><td>Define an ID for the window.</td></tr>
+    <tr><td><link id="MUIA_Window_IsSubWindow"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Windows with this flag set to True dont get disposed when the application object is disposed.</td></tr>
+    <tr><td><link id="MUIA_Window_LeftEdge"/></td><td>I_G</td><td>LongInt</td><td>Specify the left edge of a window.</td></tr>
+    <!--tr><td><link id="MUIA_Window_Menu"/></td><td>I__</td><td><link id="gadtools.PNewMenu">PNewMenu</link></td><td>Obsolete, use <link id="MUIA_Window_Menustrip"/> instead.</td></tr-->
+    <tr><td><link id="MUIA_Window_MenuAction"/></td><td>ISG</td><td>LongWord</td><td>UserData field of selected Menu item.</td></tr>
+    <tr><td><link id="MUIA_Window_Menustrip"/></td><td>I_G</td><td><link id="PObject_"/></td><td>Specify a menu strip object for this window.</td></tr>
+    <tr><td><link id="MUIA_Window_MouseObject"/></td><td>__G</td><td><link id="PObject_"/></td><td>Identify mouse position.</td></tr>
+    <tr><td><link id="MUIA_Window_NeedsMouseObject"/></td><td>I__</td><td>BOOL (0/1)</td><td>Enable notification of changes of mouse position.</td></tr>
+    <tr><td><link id="MUIA_Window_NoMenus"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Temporarily disable the menu strip of a window.</td></tr>
+    <tr><td><link id="MUIA_Window_Open"/></td><td>_SG</td><td>BOOL (0/1)</td><td>Open or close the window.</td></tr>
+    <tr><td><link id="MUIA_Window_PublicScreen"/></td><td>ISG</td><td>PChar</td><td>Force the window to appear on the public screen who's name is specified by this attribute.</td></tr>
+    <tr><td><link id="MUIA_Window_RefWindow"/></td><td>IS_</td><td><link id="PObject_"/></td><td>Calculate position relative to this window.</td></tr>
+    <tr><td><link id="MUIA_Window_RootObject"/></td><td>ISG</td><td><link id="PObject_"/></td><td>This is a pointer to a MUI object and defines the contents of your window.</td></tr>
+    <tr><td><link id="MUIA_Window_Screen"/></td><td>ISG</td><td><link id="Intuition.PScreen">PScreen</link></td><td>You can get a pointer to the parent screen of a window by getting this attribute.</td></tr>
+    <tr><td><link id="MUIA_Window_ScreenTitle"/></td><td>ISG</td><td>PChar</td><td>This text will appear in the screens title bar when the window is active.</td></tr>
+    <tr><td><link id="MUIA_Window_SizeGadget"/></td><td>I__</td><td>BOOL (0/1)</td><td>Tell MUI if you want a sizing gadget for this window.</td></tr>
+    <tr><td><link id="MUIA_Window_SizeRight"/></td><td>I__</td><td>BOOL (0/1)</td><td>When set to True, the size gadget will reside in the right window border.</td></tr>
+    <tr><td><link id="MUIA_Window_Sleep"/></td><td>_SG</td><td>BOOL (0/1)</td><td>This attribute can be used to put a window to sleep.</td></tr>
+    <tr><td><link id="MUIA_Window_Title"/></td><td>ISG</td><td>PChar</td><td>Specify the title of a window.</td></tr>
+    <tr><td><link id="MUIA_Window_TopEdge"/></td><td>I_G</td><td>LongInt</td><td>Specify the top edge of a window.</td></tr>
+    <tr><td><link id="MUIA_Window_UseBottomBorderScroller"/></td><td>ISG</td><td>BOOL (0/1)</td><td>If set to True, the window will feature a scrollbar in its bottom border.</td></tr>
+    <tr><td><link id="MUIA_Window_UseLeftBorderScroller"/></td><td>ISG</td><td>BOOL (0/1)</td><td>If set to True, the window will feature a scrollbar in its left border.</td></tr>
+    <tr><td><link id="MUIA_Window_UseRightBorderScroller"/></td><td>ISG</td><td>BOOL (0/1)</td><td>If set to True, the window will feature a scrollbar in its right border.</td></tr>
+    <tr><td><link id="MUIA_Window_Width"/></td><td>I_G</td><td>LongInt</td><td>Specify the width of a window.</td></tr>
+    <tr><td><link id="MUIA_Window_Window"/></td><td>__G</td><td><link id="Intuition.PWindow">PWindow</link></td><td>Obtain a pointer to the intuition Window structure.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption><b>Methods</b></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_Window_AddEventHandler"/></td><td>Add an Event Handler for custom class.</td></tr>
+    <tr><td><link id="MUIM_Window_Cleanup"/></td><td>undocumented.</td></tr>
+    <tr><td><link id="MUIM_Window_RemEventHandler"/></td><td>Remove an Event Handler for custom class.</td></tr>
+    <tr><td><link id="MUIM_Window_ScreenToBack"/></td><td>Put the window's screen to back.</td></tr>
+    <tr><td><link id="MUIM_Window_ScreenToFront"/></td><td>Put the window's screen to front.</td></tr>
+    <tr><td><link id="MUIM_Window_Setup"/></td><td>undocumented.</td></tr>
+    <tr><td><link id="MUIM_Window_Snapshot"/></td><td>Remember Windows current position and size.</td></tr>
+    <tr><td><link id="MUIM_Window_ToBack"/></td><td>Put the window to back.</td></tr>
+    <tr><td><link id="MUIM_Window_ToFront"/></td><td>Put the window to front.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -12407,8 +12726,89 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Menustrip">
-<short></short>
+<short>Menustrip class is the base class for MUI's object oriented menus.</short>
 <descr>
+  <p>Menustrip class is the base class for MUI's object oriented
+    menus. Its children are objects of Menu class, each of
+    them describes exactly one menu.
+    </p><p>
+    A Menustrip object doesn't feature many options itself, but
+    as a subclass of Family class, it simply acts as father for
+    multiple Menu objects.
+    </p><p>
+    The Menustrip object is usually specified as a child of
+    either Application class or window class with the
+    attributes <link id="MUIA_Application_Menustrip"/> or
+    <link id="MUIA_Window_Menustrip"/>.
+    </p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Family"><b>Family</b></link></td>
+      <td>--&gt;</td><td><b>MenuStrip</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Menustrip_Enabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Enable or disable the complete menu strip.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Family">Family</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Family_Child"/></td><td>I__</td><td><link id="PObject_">PObject_</link></td><td>Add a child to family child list on creation</td></tr>
+    <tr><td><link id="MUIA_Family_List"/></td><td>I__</td><td><link id="Exec.PMinList">PMinList</link></td><td>Returns a pointer to a struct MinList which contains the children of a family object.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Family">Family</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_Family_AddHead"/></td><td>Add an object as first object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_AddTail"/></td><td>Add an object as last object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_Insert"/></td><td>Add an object after another object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_Remove"/></td><td>Remove an object from a family.</td></tr>
+    <tr><td><link id="MUIM_Family_Sort"/></td><td>Sort the children of a family.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -12434,8 +12834,81 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Menu">
-<short></short>
+<short>Objects of menu class describe exactly one pulldown menu.</short>
 <descr>
+  <p>Objects of menu class describe exactly one pulldown menu.
+They don't feature many options themselves, but as a subclass
+of Family class, they act as father for their several menu
+item objects.</p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Family"><b>Family</b></link></td>
+      <td>--&gt;</td><td><b>Menu</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Menu_Enabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Enable or disable the complete menu.</td></tr>
+    <tr><td><link id="MUIA_Menu_Title"/></td><td>ISG</td><td>PChar</td><td>Describe the title of the menu.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Family">Family</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Family_Child"/></td><td>I__</td><td><link id="PObject_">PObject_</link></td><td>Add a child to family child list on creation</td></tr>
+    <tr><td><link id="MUIA_Family_List"/></td><td>I__</td><td><link id="Exec.PMinList">PMinList</link></td><td>Returns a pointer to a struct MinList which contains the children of a family object.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Family">Family</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_Family_AddHead"/></td><td>Add an object as first object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_AddTail"/></td><td>Add an object as last object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_Insert"/></td><td>Add an object after another object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_Remove"/></td><td>Remove an object from a family.</td></tr>
+    <tr><td><link id="MUIM_Family_Sort"/></td><td>Sort the children of a family.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -12472,6 +12945,96 @@
 <element name="MUIC_Menuitem">
 <short></short>
 <descr>
+  <p>Menuitem class describes a single menu item. You can use
+     all of the gadtools menus features expect Image menus here.
+    </p><p>
+    Since Menuitem class is a subclass of Family class, you can
+    add other menu items as children of a menu item to indicate
+    sub menus. MUI does not limit the level of sub menus, but
+    the operating system currently allows a maximum nesting
+    level of one. Because of this, children of menu items
+    should not contain other menu items for now, the results
+    are unpredictable.
+    </p><p>
+    Note: For handling menu items, <link id="MUIA_UserData"/> and the methods
+    <link id="MUIM_SetUData"/>, <link id="MUIM_GetUData"/> and <link id="MUIM_FindUData"/> can become
+    quite useful. See the Menu demo program and the accompanying
+    documentation for details.</p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Family"><b>Family</b></link></td>
+      <td>--&gt;</td><td><b>MenuItem</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_MenuItem_Checked"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set/Get the checked state of a checkit menu item.</td></tr>
+    <tr><td><link id="MUIA_Menuitem_Checkit"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set to True and this item will become a checkmarkable item.</td></tr>
+    <tr><td><link id="MUIA_Menuitem_Enabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Enabled/Disable the menu item.</td></tr>
+    <tr><td><link id="MUIA_Menuitem_Exclude"/></td><td>ISG</td><td>LongInt</td><td>bitmask of menu item numbers that are to be deselected when this one is selected.</td></tr>
+    <tr><td><link id="MUIA_Menuitem_Shortcut"/></td><td>ISG</td><td>PChar</td><td>Define the shortcut for a menu item.</td></tr>
+    <tr><td><link id="MUIA_Menuitem_Title"/></td><td>ISG</td><td>PChar</td><td>Define the items title.</td></tr>
+    <tr><td><link id="MUIA_Menuitem_Toggle"/></td><td>ISG</td><td>PChar</td><td>Define the state of the toggle flag for this item.</td></tr>
+    <tr><td><link id="MUIA_Menuitem_Trigger"/></td><td>__G</td><td><link id="intuition.PMenuItem">PMenuItem</link></td><td>Trigger when menu item is selected.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Family">Family</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Family_Child"/></td><td>I__</td><td><link id="PObject_">PObject_</link></td><td>Add a child to family child list on creation</td></tr>
+    <tr><td><link id="MUIA_Family_List"/></td><td>I__</td><td><link id="Exec.PMinList">PMinList</link></td><td>Returns a pointer to a struct MinList which contains the children of a family object.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Family">Family</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_Family_AddHead"/></td><td>Add an object as first object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_AddTail"/></td><td>Add an object as last object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_Insert"/></td><td>Add an object after another object to the family.</td></tr>
+    <tr><td><link id="MUIM_Family_Remove"/></td><td>Remove an object from a family.</td></tr>
+    <tr><td><link id="MUIM_Family_Sort"/></td><td>Sort the children of a family.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>

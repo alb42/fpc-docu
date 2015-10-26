@@ -18,6 +18,7 @@ export AROSUNITS="--input=$AROSUNITSPATH/hardware.pas \
   --input=$AROSUNITSPATH/diskfont.pas    --descr=$CURDIR/xml/diskfont.xml \
   --input=$AROSUNITSPATH/gadtools.pas \
   --input=$AROSUNITSPATH/iffparse.pas \
+  --input=$AROSUNITSPATH/inputevent.pas \
   --input=$AROSUNITSPATH/keymap.pas \
   --input=$AROSUNITSPATH/mui.pas         --descr=$CURDIR/xml/mui.xml \
   --input=$AROSUNITSPATH/clipboard.pas \
