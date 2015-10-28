@@ -28,9 +28,9 @@
     <tr><td></td><td>|</td><td>\-------------</td><td><link id="MUIC_BODYCHUNK">Bodychunk</link></td><td></td><td></td>   <td>(makes bitmap from ILBM body chunk)</td></tr>
     <tr><td></td><td>+------------</td><td><link id="MUIC_TEXT">Text</link></td><td></td><td></td><td></td>          <td>(text display)</td></tr>
     <tr><td></td><td>+------------</td><td><link id="MUIC_GADGET">Gadget</link></td><td></td><td></td><td></td>        <td>(base class for intuition gadgets)</td></tr>
-    <tr><td></td><td>|</td><td></td><td><link id="MUIC_STRING">String</link></td><td></td><td></td>                    <td>(string gadget)</td></tr>
-    <tr><td></td><td>|</td><td></td><td><link id="MUIC_BOOPSI">Boopsi</link></td><td></td><td></td>                    <td>(interface to BOOPSI gadgets)</td></tr>
-    <tr><td></td><td>|</td><td></td><td><link id="MUIC_PROP">Prop</link></td><td></td><td></td>                      <td>(proportional gadget)</td></tr>
+    <tr><td></td><td>|</td><td>+------------</td><td><link id="MUIC_STRING">String</link></td><td></td><td></td>                    <td>(string gadget)</td></tr>
+    <tr><td></td><td>|</td><td>+------------</td><td><link id="MUIC_BOOPSI">Boopsi</link></td><td></td><td></td>                    <td>(interface to BOOPSI gadgets)</td></tr>
+    <tr><td></td><td>|</td><td>\-------------</td><td><link id="MUIC_PROP">Prop</link></td><td></td><td></td>                      <td>(proportional gadget)</td></tr>
     <tr><td></td><td>+------------</td><td><link id="MUIC_GAUGE">Gauge</link></td><td></td><td></td><td></td>         <td>(fule gauge)</td></tr>
     <tr><td></td><td>+------------</td><td><link id="MUIC_SCALE">Scale</link></td><td></td><td></td><td></td>         <td>(percentage scale)</td></tr>
     <tr><td></td><td>+------------</td><td><link id="MUIC_COLORFIELD">Colorfield</link></td><td></td><td></td><td></td>    <td>(field with changeable color)</td></tr>
