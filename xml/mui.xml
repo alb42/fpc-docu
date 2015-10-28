@@ -8046,8 +8046,23 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Area">
-<short></short>
+<short>Area class is a super class for every other MUI class except windows and applications.</short>
 <descr>
+  <p>
+    Area class is a super class for every other MUI class
+    except windows and applications. It holds information
+    about an objects current position, size and weight
+    and manages frames, fonts and backgrounds.
+  </p><p>
+    Additionally, area class handles the user input. By
+    setting an objects <link id="MUIA_InputMode"/>, you can make it
+    behave like a button or like a toggle gadget. That's
+    why MUI doesn't offer an extra button class. A button
+    is simply a text object with a raised frame and a relverify
+    input mode. Since especially group class is a subclass
+    of area, you can create rather complex buttons consisting
+    of many other display elements.
+  </p>
   <table>
     <caption>Inheritance</caption>
     <tr>
@@ -11307,8 +11322,140 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Rectangle">
-<short></short>
+<short>Empty rectangle for space layout.</short>
 <descr>
+  <p>Rectangle class seems kind of useless since it
+        doesn't define any attributes or methods itself.
+        However, objects of this type are frequently
+        used in every application. They allow insertion
+        of space to control MUI's layout process.</p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><b>Rectangle</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Rectangle_BarTitle"/></td><td>I_G</td><td>PChar</td><td>Text displayed in group title style centered in the rectangle.</td></tr>
+    <tr><td><link id="MUIA_Rectangle_HBar"/></td><td>I_G</td><td>BOOL (0/1)</td><td>Draw a horizontal bar in the middle of the rectangle.</td></tr>
+    <tr><td><link id="MUIA_Rectangle_VBar"/></td><td>I_G</td><td>BOOL (0/1)</td><td>Draw a vertical bar in the middle of the rectangle.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -11352,8 +11499,146 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Text">
-<short></short>
+<short>Text class allows generating objects that contain some kind of text.</short>
 <descr>
+  <p>You can control the outfit of
+    your text with some special control characters,
+    including italics, bold, underline and color
+    codes. Format codes align text either left,
+    centered or right, linefeeds allow multiline
+    text fields.</p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><b>Text</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Text_Contents"/></td><td>ISG</td><td>PChar</td><td>String to be displayed in a text object.</td></tr>
+    <!--tr><td><link id="MUIA_Text_ControlChar"/></td><td>ISG</td><td>Char</td><td>Undocumented.</td></tr>
+    <tr><td><link id="MUIA_Text_Copy"/></td><td>I__</td><td>BOOL (0/1)</td><td>Undocumented.</td></tr-->
+    <tr><td><link id="MUIA_Text_HiChar"/></td><td>I__</td><td>Char</td><td>This character in the displayed string, it will be underlined.</td></tr>
+    <tr><td><link id="MUIA_Text_PreParse"/></td><td>ISG</td><td>PChar</td><td>String containing format definitions to be parsed before the text is printed.</td></tr>
+    <tr><td><link id="MUIA_Text_SetMax"/></td><td>I__</td><td>BOOL (0/1)</td><td>Use max limit width of element by string.</td></tr>
+    <tr><td><link id="MUIA_Text_SetMin"/></td><td>I__</td><td>BOOL (0/1)</td><td>Use min limit width of element by string.</td></tr>
+    <tr><td><link id="MUIA_Text_SetVMax"/></td><td>I__</td><td>BOOL (0/1)</td><td>Fix object height.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -12000,8 +12285,151 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIC_String">
-<short></short>
+<short>String class generates standard string gadgets with all editing facilities (clear, undo, etc.) enabled.</short>
 <descr>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Gadget"><b>Gadget</b></link></td>
+      <td>--&gt;</td><td><b>String</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_String_Accept"/></td><td>ISG</td><td>PChar</td><td>A string containing characters allowed as input for the string gadget.</td></tr>
+    <tr><td><link id="MUIA_String_Acknowledge"/></td><td>__G</td><td>PChar</td><td>Contents of gadget if return is hit.</td></tr>
+    <tr><td><link id="MUIA_String_AdvanceOnCR"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Carriage returns in string gadgets behave like the TAB key.</td></tr>
+    <tr><td><link id="MUIA_String_AttachedList"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Control lists cursor from within the string gadget.</td></tr>
+    <tr><td><link id="MUIA_String_BufferPos"/></td><td>_SG</td><td>LongInt</td><td>Get and set the position of the cursor.</td></tr>
+    <tr><td><link id="MUIA_String_Contents"/></td><td>ISG</td><td>PChar</td><td>Get and set a string gadgets contents.</td></tr>
+    <tr><td><link id="MUIA_String_DisplayPos"/></td><td>_SG</td><td>LongInt</td><td>Get and set the number of the first character of the string to be displayed.</td></tr>
+    <tr><td><link id="MUIA_String_EditHook"/></td><td>ISG</td><td><link id="utility.PHook">PHook</link></td><td>Called on every edit of the gadget.</td></tr>
+    <tr><td><link id="MUIA_String_Format"/></td><td>I_G</td><td>LongInt</td><td>Used to adjust the alignment of the input string.</td></tr>
+    <tr><td><link id="MUIA_String_Integer"/></td><td>ISG</td><td>LongWord</td><td>Useful for turning a string gadget into an integer gadget.</td></tr>
+    <tr><td><link id="MUIA_String_LonelyEditHook"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Skip MUI's private edit hook completely.</td></tr>
+    <tr><td><link id="MUIA_String_MaxLen"/></td><td>I_G</td><td>LongInt</td><td>Setup the maximum length for the string gadget.</td></tr>
+    <tr><td><link id="MUIA_String_Reject"/></td><td>ISG</td><td>PChar</td><td>A string containing characters that should not be accepted as input for the string gadget.</td></tr>
+    <tr><td><link id="MUIA_String_Secret"/></td><td>I_G</td><td>BOOL (0/1)</td><td>This attribute causes the string gadget to display only dots instead of the real contents.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Gadget">Gadget</link></caption>
+    <tr><td><link id="MUIA_Gadget_Gadget"/></td><td>__G</td><td><link id="intuition.PGadget">PGadget</link></td><td>Subclasses may obtain a pointer to the intuition gadget here.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -12396,8 +12824,176 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Boopsi">
-<short></short>
+<short>MUI's boopsi class provides an interface to standard, system style boopsi gadgets.</short>
 <descr>
+  <p>Since boopsis gadgetclass
+  misses some important features needed for an automatic
+  layout system like MUI, there are several problems with
+  such an interface. MUI tries to solve these problems
+  with some additional attributes.
+</p><p>
+  Coming with release 3.x of the amiga operating system are
+  some very nice boopsi gadgets such as "colorwheel.gadget"
+  or "gradientslider.gadget". With MUI's boopsi class, you
+  can use these gadgets just as if they were MUI objects.
+</p><p>
+  You can talk to a MUIized boopsi object as if it was the
+  boopsi object itself. MUI will pass through all attributes
+  and try to be completely transparent. Additionally, if
+  a boopsi object generates notification events via
+  IDCMP_UPDATE, MUI turns them into MUI notification events.
+  Thus, you can e.g. react on the change of WHEEL_Saturation
+  in a MUI colorwheel boopsi gadget as on any other MUI
+  attribute.
+</p><p>
+  An example program "BoopsiDoor.c" is provided to show
+  how this magic works.
+</p><p>
+<b>Note:</b> OS 3.0/3.1 colorwheel.gadget can accidently render itself
+   one pixel too big, overwriting other parts of the window.
+   As a workaround, MUI will subtract one from the width/height
+   before passing it on to a colorwheel boopsi object.</p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Gadget"><b>Gadget</b></link></td>
+      <td>--&gt;</td><td><b>Boopsi</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Boopsi_Class"/></td><td>ISG</td><td><link id="intuition.PIClass">PIClass</link></td><td>Pointer to the (private) class you want to create a boopsi object from.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_ClassID"/></td><td>ISG</td><td>PChar</td><td>Name of the Boopsi class you want to create an object of.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_MaxHeight"/></td><td>ISG</td><td>LongWord</td><td>Maximal height for the boopsi gadget.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_MaxWidth"/></td><td>ISG</td><td>LongWord</td><td>Maximal width for the boopsi gadget.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_MinHeight"/></td><td>ISG</td><td>LongWord</td><td>Minimum Height for the boopsi gadget.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_MinWidth"/></td><td>ISG</td><td>LongWord</td><td>Minimum Width for the boopsi gadget.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_Object"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>MUI returns when generating a BoopsiObject is a standard MUI object.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_Remember"/></td><td>I__</td><td>LongWord</td><td>Attributes must be remembered during dispose/regeneration.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_Smart"/></td><td>I__</td><td>BOOL (0/1)</td><td>Smart BOOPSI gadgets that allow resizing.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_TagDrawInfo"/></td><td>ISG</td><td>LongWord</td><td>Tell MUI where to fill in a needed DrawInfo structure.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_TagScreen"/></td><td>ISG</td><td>LongWord</td><td>Tell MUI where to fill in a needed Screen structure.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_TagWindow"/></td><td>ISG</td><td>LongWord</td><td>Tell MUI where to fill in a needed Window structure.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Gadget">Gadget</link></caption>
+    <tr><td><link id="MUIA_Gadget_Gadget"/></td><td>__G</td><td><link id="intuition.PGadget">PGadget</link></td><td>Subclasses may obtain a pointer to the intuition gadget here.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -12522,8 +13118,167 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Prop">
-<short></short>
+<short>Prop class generates the well known proportional gadgets.</short>
 <descr>
+  <p>It offers the same attributes as a usual boopsi gadget
+of propgclass. However, MUI's prop gadgets allow using
+any imagery for the knob and for the background.</p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Gadget"><b>Gadget</b></link></td>
+      <td>--&gt;</td><td><b>Prop</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Prop_Entries"/></td><td>ISG</td><td>LongInt</td><td>Set or get the total number of entries.</td></tr>
+    <tr><td><link id="MUIA_Prop_First"/></td><td>ISG</td><td>LongInt</td><td>Set or get the number of the first entry.</td></tr>
+    <tr><td><link id="MUIA_Prop_Horiz"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Determine if you want a horizontal or a vertical prop gadget.</td></tr>
+    <tr><td><link id="MUIA_Prop_Slider"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Indicate that this prop gadget is used in a slider.</td></tr>
+    <tr><td><link id="MUIA_Prop_UseWinBorder"/></td><td>I__</td><td>LongInt</td><td>Link to one of the window border.</td></tr>
+    <tr><td><link id="MUIA_Prop_Visible"/></td><td>ISG</td><td>LongInt</td><td>Set or get the number of visible entries.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Prop">Prop</link></caption>
+    <tr><td><link id="MUIA_Boopsi_Class"/></td><td>ISG</td><td><link id="intuition.PIClass">PIClass</link></td><td>Pointer to the (private) class you want to create a boopsi object from.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_ClassID"/></td><td>ISG</td><td>PChar</td><td>Name of the Boopsi class you want to create an object of.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_MaxHeight"/></td><td>ISG</td><td>LongWord</td><td>Maximal height for the boopsi gadget.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_MaxWidth"/></td><td>ISG</td><td>LongWord</td><td>Maximal width for the boopsi gadget.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_MinHeight"/></td><td>ISG</td><td>LongWord</td><td>Minimum Height for the boopsi gadget.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_MinWidth"/></td><td>ISG</td><td>LongWord</td><td>Minimum Width for the boopsi gadget.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_Object"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>MUI returns when generating a BoopsiObject is a standard MUI object.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_Remember"/></td><td>I__</td><td>LongWord</td><td>Attributes must be remembered during dispose/regeneration.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_Smart"/></td><td>I__</td><td>BOOL (0/1)</td><td>Smart BOOPSI gadgets that allow resizing.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_TagDrawInfo"/></td><td>ISG</td><td>LongWord</td><td>Tell MUI where to fill in a needed DrawInfo structure.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_TagScreen"/></td><td>ISG</td><td>LongWord</td><td>Tell MUI where to fill in a needed Screen structure.</td></tr>
+    <tr><td><link id="MUIA_Boopsi_TagWindow"/></td><td>ISG</td><td>LongWord</td><td>Tell MUI where to fill in a needed Window structure.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Gadget">Gadget</link></caption>
+    <tr><td><link id="MUIA_Gadget_Gadget"/></td><td>__G</td><td><link id="intuition.PGadget">PGadget</link></td><td>Subclasses may obtain a pointer to the intuition gadget here.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+    <caption><b>Methods</b></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_Prop_Decrease"/></td><td>This method decreases the value of a proportional gadget by the specified amount.</td></tr>
+    <tr><td><link id="MUIM_Prop_Increase"/></td><td>This method increases the value of a proportional gadget by the specified amount.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -14035,8 +14790,150 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Bitmap">
-<short></short>
+<short>Include a self-made image data in MUI applications.</short>
 <descr>
+  <p>The Bitmap class allows including self-made image data in MUI
+    applications. Usually, image class was intended to be used for
+    this purpose but unfortunately, its design was not very useful.
+</p><p>
+    In its most simple usage, Bitmap class just display a given
+    BitMap. However, you can also tell it to do automatic color
+    remapping to match the current display context and you can
+    define a transparent color to make the BitMap appear on any
+    background.</p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><b>Bitmap</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Bitmap_Bitmap"/></td><td>ISG</td><td><link id="agraphics.PBitmap">PBitmap</link></td><td>This attribute specifies a pointer to a struct BitMap.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_Height"/></td><td>ISG</td><td>LongInt</td><td>Define the pixel height of the BitMap.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_MappingTable"/></td><td>ISG</td><td>PByte</td><td>Address of an array of Bytes, one for each color of the source BitMap.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_Precision"/></td><td>ISG</td><td>LongInt</td><td>Specify the precision value for remapping images.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_RemappedBitmap"/></td><td>__G</td><td><link id="agraphics.PBitmap">PBitmap</link></td><td>Between <link id="MUIM_Setup"/> and <link id="MUIM_Cleanup"/>, this attribute will hold a pointer to the remapped bitmap.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_SourceColors"/></td><td>ISG</td><td>PLongWord</td><td>This attribute defines the color palette of the source BitMap.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_Transparent"/></td><td>ISG</td><td>LongInt</td><td>Use defined color as transparent color.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_UseFriend"/></td><td>I__</td><td>BOOL (0/1)</td><td>Try to allocate the remapped bitmap in a way that allows fastest displaying.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_Width"/></td><td>ISG</td><td>LongInt</td><td>Define the pixel width of the BitMap.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -14145,6 +15042,159 @@ item objects.</p>
 <element name="MUIC_Bodychunk">
 <short></short>
 <descr>
+  <p>Big and colorful images (e.g. About-Logos) usually take lots
+    of space when stored in a traditional BitMap structure. To
+    save memory, you can decide to have the picture compressed
+    in your code and use the Bodychunk class instead of the
+    Bitmap class for displaying. MUI will then automatically
+    decompress your image when its about to appear in a
+    window.
+</p><p>
+    Since Bodychunk class is a subclass of Bitmap class, you can
+    of course use all the Bitmaps remapping and transparency
+    features.</p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Bitmap"><b>Bitmap</b></link></td>
+      <td>--&gt;</td><td><b>Bodychunk</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Bodychunk_Body"/></td><td>ISG</td><td>PByte</td><td>Specify a pointer to the BODY data of your picture.</td></tr>
+    <tr><td><link id="MUIA_Bodychunk_Compression"/></td><td>ISG</td><td>Byte</td><td>Specify compression of the Body.</td></tr>
+    <tr><td><link id="MUIA_Bodychunk_Depth"/></td><td>ISG</td><td>LongInt</td><td>Specify the depth of your picture.</td></tr>
+    <tr><td><link id="MUIA_Bodychunk_Masking"/></td><td>ISG</td><td>Byte</td><td>Indicate if your BODY data contains a masking plane.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Bitmap">Bitmap</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Bitmap_Bitmap"/></td><td>ISG</td><td><link id="agraphics.PBitmap">PBitmap</link></td><td>This attribute specifies a pointer to a struct BitMap.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_Height"/></td><td>ISG</td><td>LongInt</td><td>Define the pixel height of the BitMap.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_MappingTable"/></td><td>ISG</td><td>PByte</td><td>Address of an array of Bytes, one for each color of the source BitMap.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_Precision"/></td><td>ISG</td><td>LongInt</td><td>Specify the precision value for remapping images.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_RemappedBitmap"/></td><td>__G</td><td><link id="agraphics.PBitmap">PBitmap</link></td><td>Between <link id="MUIM_Setup"/> and <link id="MUIM_Cleanup"/>, this attribute will hold a pointer to the remapped bitmap.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_SourceColors"/></td><td>ISG</td><td>PLongWord</td><td>This attribute defines the color palette of the source BitMap.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_Transparent"/></td><td>ISG</td><td>LongInt</td><td>Use defined color as transparent color.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_UseFriend"/></td><td>I__</td><td>BOOL (0/1)</td><td>Try to allocate the remapped bitmap in a way that allows fastest displaying.</td></tr>
+    <tr><td><link id="MUIA_Bitmap_Width"/></td><td>ISG</td><td>LongInt</td><td>Define the pixel width of the BitMap.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -16384,8 +17434,137 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Gauge">
-<short></short>
+<short>A gauge object is a nice looking display element useful for some kind of progress display.</short>
 <descr>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><b>Gauge</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Gauge_Current"/></td><td>ISG</td><td>LongInt</td><td>Set the current level of the gauge.</td></tr>
+    <tr><td><link id="MUIA_Gauge_Divide"/></td><td>ISG</td><td>LongWord</td><td>Every value set with <link id="MUIA_Gauge_Current"/> will be divided by this before further processing.</td></tr>
+    <tr><td><link id="MUIA_Gauge_Horiz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Determine if you want a horizontal or vertical gauge.</td></tr>
+    <tr><td><link id="MUIA_Gauge_InfoText"/></td><td>ISG</td><td>STRPTR</td><td>Text given here is displayed within a gauge object.</td></tr>
+    <tr><td><link id="MUIA_Gauge_Max"/></td><td>ISG</td><td>LongInt</td><td>Set the maximum value for the gauge.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -16456,8 +17635,140 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Image">
-<short></short>
+<short>Image class is used to display one of MUI's standard images or some selfmade image data.</short>
 <descr>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><b>Image</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Image_FontMatch"/></td><td>I__</td><td>BOOL (0/1)</td><td>Width and height of the given image will be scaled to match the current font.</td></tr>
+    <tr><td><link id="MUIA_Image_FontMatchHeight"/></td><td>I__</td><td>BOOL (0/1)</td><td>Height of the given image will be scaled to match the current font.</td></tr>
+    <tr><td><link id="MUIA_Image_FontMatchWidth"/></td><td>I__</td><td>BOOL (0/1)</td><td>Width of the given image will be scaled to match the current font.</td></tr>
+    <tr><td><link id="MUIA_Image_FreeHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Tell the image if its allowed to get scaled horizontally.</td></tr>
+    <tr><td><link id="MUIA_Image_FreeVert"/></td><td>I__</td><td>BOOL (0/1)</td><td>Tell the image if its allowed to get scaled vertically.</td></tr>
+    <tr><td><link id="MUIA_Image_OldImage"/></td><td>I__</td><td><link id="Intuition.PImage">PImage</link></td><td>Allows you to use any conventional image structure within a MUI window.</td></tr>
+    <tr><td><link id="MUIA_Image_Spec"/></td><td>I__</td><td>PChar</td><td>Specify the type of your image.</td></tr>
+    <tr><td><link id="MUIA_Image_State"/></td><td>IS_</td><td>LongInt</td><td>Select state of multi state images.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -18895,8 +20206,145 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Scale">
-<short></short>
+<short>A Scale object generates a percentage scale running from 0% to 100%.</short>
 <descr>
+  <p>A Scale object generates a percentage scale
+  running from 0% to 100%. A good place for
+  such an object is e.g. below a fuel gauge.
+</p><p>
+  Depending on how much space is available,
+  the scale will be more or less detailed.
+</p><p>
+  Due to MUI's automatic layout system, you
+  don't need to worry about it's size. When
+  placed in a vertical group just below the
+  object you want to scale, everything is
+  fine.</p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><b>Scale</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Scale_Horiz"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Indicate whether you want a horizontal or a vertical scale.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -18960,6 +20408,136 @@ item objects.</p>
 <element name="MUIC_Balance">
 <short></short>
 <descr>
+  <p>The balance class is very simple and has no attributes.
+        Simply insert objects of this class somewhere in your
+        group (only horizontal or vertical groups, nothing
+        2-dimensional) allows your users to dynamically change
+        the weight of your children.</p>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><b>Balance</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Balance_Quiet"/></td><td>I__</td><td>PChar</td><td>Undocumented.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
@@ -20398,8 +21976,133 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Gadget">
-<short></short>
+<short>This is the base class for intuition gadgets in MUI windows.</short>
 <descr>
+  <table>
+    <caption>Inheritance</caption>
+    <tr>
+      <td><b>rootclass</b></td>
+      <td>--&gt;</td><td><link id="MUIC_Notify"><b>Notify</b></link></td>
+      <td>--&gt;</td><td><link id="MUIC_Area"><b>Area</b></link></td>
+      <td>--&gt;</td><td><b>Gadget</b></td>
+    </tr>
+  </table>
+  <p/>
+  <table>
+    <caption><b>Fields</b></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Gadget_Gadget"/></td><td>__G</td><td><link id="intuition.PGadget">PGadget</link></td><td>Subclasses may obtain a pointer to the intuition gadget here.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_Background"/></td><td>IS_</td><td>LongInt</td><td>Adjust the background for an object.</td></tr>
+    <tr><td><link id="MUIA_BottomEdge"/></td><td>__G</td><td>LongInt</td><td>Current position and dimension of an object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenu"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Specifies a context sensitive popup menu for the current object.</td></tr>
+    <tr><td><link id="MUIA_ContextMenuTrigger"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_ControlChar"/></td><td>ISG</td><td><link id="PObject_">PObject_</link></td><td>Allows reacting on context menus with notificaton.</td></tr>
+    <tr><td><link id="MUIA_CycleChain"/></td><td>ISG</td><td>LongInt</td><td>Define cycle chain position.</td></tr>
+    <tr><td><link id="MUIA_Disabled"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Disable or enable a gadget.</td></tr>
+    <tr><td><link id="MUIA_Draggable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set this if you want the complete object to be dragable for Drag'n'Drop operations.</td></tr>
+    <tr><td><link id="MUIA_Dropable"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Set as active Drag'n'Drop target.</td></tr>
+    <tr><td><link id="MUIA_FillArea"/></td><td>IS_</td><td>BOOL (0/1)</td><td>Define if a custom class should clear the background.</td></tr>
+    <tr><td><link id="MUIA_FixHeight"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel height.</td></tr>
+    <tr><td><link id="MUIA_FixHeightTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel height given by a text height.</td></tr>
+    <tr><td><link id="MUIA_FixWidth"/></td><td>I__</td><td>LongInt</td><td>Give your object a fixed pixel width.</td></tr>
+    <tr><td><link id="MUIA_FixWidthTxt"/></td><td>I__</td><td>PChar</td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Font"/></td><td>I_G</td><td><link id="agraphics.PTextFont">PTextFont</link></td><td>Give your object a fixed pixel width given by a text height.</td></tr>
+    <tr><td><link id="MUIA_Frame"/></td><td>I__</td><td>LongInt</td><td>Define a frame for the current object.</td></tr>
+    <tr><td><link id="MUIA_FramePhantomHoriz"/></td><td>I__</td><td>BOOL (0/1)</td><td>Do not draw horizontal frame border</td></tr>
+    <tr><td><link id="MUIA_FrameTitle"/></td><td>I__</td><td>PChar</td><td>Text displayed centered in the top line of a frame.</td></tr>
+    <tr><td><link id="MUIA_Height"/></td><td>__G</td><td>PChar</td><td>Read current height of object.</td></tr>
+    <tr><td><link id="MUIA_HorizDisappear"/></td><td>ISG</td><td>LongInt</td><td>Priority for disappearing if parent is too small in height.</td></tr>
+    <tr><td><link id="MUIA_HorizWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the horizontal weight of an object.</td></tr>
+    <tr><td><link id="MUIA_InnerBottom"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerLeft"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerRight"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InnerTop"/></td><td>I_G</td><td>LongInt</td><td>Adjust the space between an object and its frame.</td></tr>
+    <tr><td><link id="MUIA_InputMode"/></td><td>I__</td><td>LongInt</td><td>Adjust the input mode for an object.</td></tr>
+    <tr><td><link id="MUIA_LeftEdge"/></td><td>__G</td><td>LongInt</td><td>Read current left edge of object.</td></tr>
+    <tr><td><link id="MUIA_MaxHeight"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_MaxWidth"/></td><td>I__</td><td>LongInt</td><td>Specify a maximum height for an object (in pixels).</td></tr>
+    <tr><td><link id="MUIA_Pressed"/></td><td>__G</td><td>BOOL (0/1)</td><td>Get if a Button is pressed or not.</td></tr>
+    <tr><td><link id="MUIA_RightEdge"/></td><td>__G</td><td>BOOL (0/1)</td><td>Read current right edge of object.</td></tr>
+    <tr><td><link id="MUIA_Selected"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Selected state of object.</td></tr>
+    <tr><td><link id="MUIA_ShortHelp"/></td><td>ISG</td><td>PChar</td><td>Specify a string that is to be used as bubble help for this object.</td></tr>
+    <tr><td><link id="MUIA_ShowMe"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Define if the object is visible or not.</td></tr>
+    <tr><td><link id="MUIA_ShowSelState"/></td><td>I__</td><td>BOOL (0/1)</td><td>Reverse object frame if selected.</td></tr>
+    <tr><td><link id="MUIA_Timer"/></td><td>__G</td><td>LongInt</td><td>Define a Button repeatly firing.</td></tr>
+    <tr><td><link id="MUIA_TopEdge"/></td><td>__G</td><td>LongInt</td><td>Read current top edge of object.</td></tr>
+    <tr><td><link id="MUIA_VertDisappear"/></td><td>__G</td><td>LongInt</td><td>Priority for disappearing if parent is too small in width.</td></tr>
+    <tr><td><link id="MUIA_VertWeight"/></td><td>ISG</td><td>SmallInt</td><td>Adjust the vertical weight of an object.</td></tr>
+    <tr><td><link id="MUIA_Weight"/></td><td>I__</td><td>SmallInt</td><td>Adjust the vertical and horizontal weight of an object in one call.</td></tr>
+    <tr><td><link id="MUIA_Width"/></td><td>__G</td><td>LongInt</td><td>Read current width of object.</td></tr>
+    <tr><td><link id="MUIA_Window"/></td><td>__G</td><td><link id="intuition.PWindow">PWindow</link></td><td>Get intuition window struct of the parent window.</td></tr>
+    <tr><td><link id="MUIA_WindowObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get window object of the parent window.</td></tr>
+  </table>
+  <table>
+    <caption>Fields inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
+    <tr><td><link id="MUIA_ApplicationObject"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Obtain a pointer to the application object that some gadget belongs</td></tr>
+    <tr><td><link id="MUIA_AppMessage"/></td><td>__G</td><td><link id="workbench.PAppMessage">PAppMessage</link></td><td>Listen to this field to get AppMessages (Icon dropped on the App window)</td></tr>
+    <tr><td><link id="MUIA_HelpLine"/></td><td>ISG</td><td>LongInt</td><td>Define a line in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_HelpNode"/></td><td>ISG</td><td>PChar</td><td>Define a node in a help file specified with <link id="MUIA_Application_HelpFile"/></td></tr>
+    <tr><td><link id="MUIA_NoNotify"/></td><td>_S_</td><td>BOOL (0/1)</td><td>Prevent notification from being triggered on attribute set</td></tr>
+    <tr><td><link id="MUIA_ObjectID"/></td><td>ISG</td><td>LongWord</td><td>Identification for object on save/load</td></tr>
+    <tr><td><link id="MUIA_Parent"/></td><td>__G</td><td><link id="PObject_">PObject_</link></td><td>Get a pointer to the parent object of the current object</td></tr>
+    <tr><td><link id="MUIA_Revision"/></td><td>__G</td><td>LongInt</td><td>Get the revision number of an objects class</td></tr>
+    <tr><td><link id="MUIA_UserData"/></td><td>ISG</td><td>LongWord</td><td>A general purpose value to fill in any kind of information</td></tr>
+    <tr><td><link id="MUIA_Version"/></td><td>__G</td><td>LongInt</td><td>Get the version number of an objects class</td></tr>
+  </table><p/>
+
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Area">Area</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_AskMinMax"/></td><td>Ask minimum and maximum of the object. For custom classes only.</td></tr>
+    <!--tr><td><link id="MUIM_CheckShortHelp"/></td><td>undocumented</td></tr-->
+    <tr><td><link id="MUIM_Cleanup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuBuild"/></td><td>Allows dynamic creation of context menus.</td></tr>
+    <tr><td><link id="MUIM_ContextMenuChoice"/></td><td>Allows reacting on context menus in subclasses.</td></tr>
+    <tr><td><link id="MUIM_CreateBubble"/></td><td>Create a bubble message.</td></tr>
+    <tr><td><link id="MUIM_CreateShortHelp"/></td><td>Allows dynamic creation of help bubble texts.</td></tr>
+    <tr><td><link id="MUIM_DeleteBubble"/></td><td>Remove a bubble message.</td></tr>
+    <tr><td><link id="MUIM_DeleteShortHelp"/></td><td>Remove help bubble texts memory.</td></tr>
+    <tr><td><link id="MUIM_DragBegin"/></td><td>Inform an object that it has become the active destination of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragDrop"/></td><td>Indicate that the user dropped something on the current object.</td></tr>
+    <tr><td><link id="MUIM_DragFinish"/></td><td>Indicate that an object is no longer the active destination object of a drag'n'drop action.</td></tr>
+    <tr><td><link id="MUIM_DragQuery"/></td><td>Determine if drag'n'drop is allowed.</td></tr>
+    <tr><td><link id="MUIM_DragReport"/></td><td>Object is still dragged around.</td></tr>
+    <tr><td><link id="MUIM_Draw"/></td><td>Ask the object to draw itself. For use in Custom classes only</td></tr>
+    <tr><td><link id="MUIM_DrawBackground"/></td><td>Draw the background of the object.</td></tr>
+    <tr><td><link id="MUIM_HandleEvent"/></td><td>This method is invoked whenever one of an event handlers trigger signals arrives.</td></tr>
+    <tr><td><link id="MUIM_HandleInput"/></td><td>Handle input messages. For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Hide"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Setup"/></td><td>For custom classes only.</td></tr>
+    <tr><td><link id="MUIM_Show"/></td><td>For custom classes only.</td></tr>
+  </table>
+  <table>
+  <caption>Methods inherited from <link id="MUIC_Notify">Notify</link></caption>
+    <th><td>_______________ Method _______________</td><td>Short description</td></th>
+    <tr><td><link id="MUIM_CallHook"/></td><td>Call a standard amiga callback hook</td></tr>
+    <tr><td><link id="MUIM_Export"/></td><td>Called on export object to dataspace</td></tr>
+    <tr><td><link id="MUIM_FindUData"/></td><td>Find a userdata in objects and childrens list and return the object</td></tr>
+    <tr><td><link id="MUIM_GetConfigItem"/></td><td></td></tr>
+    <tr><td><link id="MUIM_GetUData"/></td><td>Find a userdata in objects and childrens list and return an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_Import"/></td><td>Called on import object from dataspace</td></tr>
+    <tr><td><link id="MUIM_KillNotify"/></td><td>Kills previously given notifications on specific attributes</td></tr>
+    <tr><td><link id="MUIM_KillNotifyObj"/></td><td></td></tr>
+    <tr><td><link id="MUIM_MultiSet"/></td><td>Set an attribute for multiple objects.</td></tr>
+    <tr><td><link id="MUIM_NoNotifySet"/></td><td>Acts like <link id="MUIM_Notify"/> but doesn't trigger any notification</td></tr>
+    <tr><td><link id="MUIM_Notify"/></td><td>Add a notification event handler to an object</td></tr>
+    <tr><td><link id="MUIM_Set"/></td><td>Set an attribute to a value</td></tr>
+    <tr><td><link id="MUIM_SetAsString"/></td><td>Set a (text kind) attribute to a string.</td></tr>
+    <tr><td><link id="MUIM_SetUData"/></td><td>Find a userdata in objects and childrens list and set an attribute of the object</td></tr>
+    <tr><td><link id="MUIM_SetUDataOnce"/></td><td>This method performs like <link id="MUIM_SetUData"/>, but stop at first found object.</td></tr>
+    <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
+    <tr><td><link id="MUIM_ConnectParent"/></td><td>(AROS only)</td></tr>
+    <tr><td><link id="MUIM_DisconnectParent"/></td><td>(AROS only)</td></tr>
+  </table>
 </descr>
 <seealso>
 </seealso>
