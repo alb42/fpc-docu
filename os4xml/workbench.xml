@@ -1,0 +1,3383 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fpdoc-descriptions>
+<package name="os4units">
+
+<!--
+  ====================================================================
+    workbench
+  ====================================================================
+-->
+
+<module name="workbench">
+<short>Basic Workbench/AppIcons functions (workbench.library)</short>
+<descr>Function related AppIcons, AppWindows, AppMenuitems and other Workbench display structures
+are located in this unit.
+</descr>
+
+<!-- pointer type Visibility: default -->
+<element name="POldDrawerData">
+<short>Pointer to OldDrawer structure</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TOldDrawerData">
+<short>Old Structure to describe the view of the content of a drawer (pre AmigaOS V36)</short>
+<descr>
+</descr>
+<seealso>
+<link id="OLDDRAWERDATAFILESIZE"/>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TOldDrawerData.dd_NewWindow">
+<short>Args to open window</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TOldDrawerData.dd_CurrentX">
+<short>Current x coordinate of origin</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TOldDrawerData.dd_CurrentY">
+<short>Current y coordinate of origin</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="OLDDRAWERDATAFILESIZE">
+<short>The amount of OldDrawerData actually written to disk</short>
+<descr>
+</descr>
+<seealso>
+<link id="TOldDrawerData"/>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PDrawerData">
+<short>Pointer to Drawer structure</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TDrawerData">
+<short>New Structure to describe the view of the content of a drawer</short>
+<descr>
+</descr>
+<seealso>
+<link id="DRAWERDATAFILESIZE"/>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDrawerData.dd_NewWindow">
+<short>Args to open window</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDrawerData.dd_CurrentX">
+<short>Current x coordinate of origin</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDrawerData.dd_CurrentY">
+<short>Current y coordinate of origin</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDrawerData.dd_Flags">
+<short>Flags for drawer (DDFLAGS_*)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDrawerData.dd_ViewModes">
+<short>View mode for drawer (DDVM_*)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DRAWERDATAFILESIZE">
+<short>the amount of DrawerData actually written to disk</short>
+<descr>
+</descr>
+<seealso>
+<link id="TDrawerData"/>
+<link id="TDiskObject"/>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DDVM_BYDEFAULT">
+<short>View mode for <link id="TDrawerData"/>.dd_ViewModes Default (inherit parent's view mode)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DDVM_BYICON">
+<short>View mode for <link id="TDrawerData"/>.dd_ViewModes View as icons</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DDVM_BYNAME">
+<short>View mode for <link id="TDrawerData"/>.dd_ViewModes View as text, sorted by name</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DDVM_BYDATE">
+<short>View mode for <link id="TDrawerData"/>.dd_ViewModes View as text, sorted by date</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DDVM_BYSIZE">
+<short>View mode for <link id="TDrawerData"/>.dd_ViewModes View as text, sorted by size</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DDVM_BYTYPE">
+<short>View mode for <link id="TDrawerData"/>.dd_ViewModes View as text, sorted by type</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DDFLAGS_SHOWDEFAULT">
+<short>Flags for <link id="TDrawerData"/>.dd_Flags Default (show only icons)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DDFLAGS_SHOWICONS">
+<short>Flags for <link id="TDrawerData"/>.dd_Flags Show only icons</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DDFLAGS_SHOWALL">
+<short>Flags for <link id="TDrawerData"/>.dd_Flags Show all files</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PDiskObject">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TDiskObject">
+<short>Representation of an *.info file</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskObject.do_Magic">
+<short>A magic number at the start of the file</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskObject.do_Version">
+<short>A version number, so we can change it</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskObject.do_Gadget">
+<short>A copy of in core gadget</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskObject.do_Type">
+<short>Type for icons (WB*)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskObject.do_DefaultTool">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskObject.do_ToolTypes">
+<short>List of ToolTypes</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskObject.do_CurrentX">
+<short>Current X Position of Icon</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskObject.do_CurrentY">
+<short>Current Y Position of Icon</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskObject.do_DrawerData">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskObject.do_ToolWindow">
+<short>Only applies to tools</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskObject.do_StackSize">
+<short>Only applies to tools</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDISK">
+<short>Type of Icon: Disk</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDRAWER">
+<short>Type of Icon: Drawer/Folder</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBTOOL">
+<short>Type of Icon: Tool (Excutable)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBPROJECT">
+<short>Type of Icon: Project (Data file)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBGARBAGE">
+<short>Type of Icon: Trashcan</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDEVICE">
+<short>Type of Icon: Device</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBKICK">
+<short>Type of Icon: KickStart disk</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICON">
+<short>Type of Icon: AppIcon</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WB_DISKVERSION">
+<short>Our current version number</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WB_DISKREVISION">
+<short>Our current revision number</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WB_DISKREVISIONMASK">
+<short>We only use the lower 8 bits of Gadget.UserData for the revision #</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WB_DISKMAGIC">
+<short>A magic number, not easily impersonated</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PFreeList">
+<short>Memory management in the icon.library</short>
+<descr>
+</descr>
+<seealso>
+<link id="Icon.AddFreeList"/>
+<link id="Icon.FreeFreeList"/>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TFreeList">
+<short>Memory management in the icon.library</short>
+<descr>
+</descr>
+<seealso>
+<link id="Icon.AddFreeList"/>
+<link id="Icon.FreeFreeList"/>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFreeList.fl_NumFree">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFreeList.fl_MemList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="GFLG_GADGBACKFILL">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NO_ICON_POSITION">
+<short>Icon without a fixed position has this Value</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PWBArg">
+<short>Pointer to an Workbench argument</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TWBArg">
+<short>Workbech argument list entry</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TWBArg.wa_Lock">
+<short>A lock descriptor</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TWBArg.wa_Name">
+<short>A string relative to that lock</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- array type Visibility: default -->
+<element name="WBArgList">
+<short>Helper for <link id="TWBStartUP"/></short>
+<descr>Only [1..smNumArgs] are valid entries
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PWBArgList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PWBStartup">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TWBStartup">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TWBStartup.sm_Message">
+<short>A standard message structure</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tWBStartup.sm_Process">
+<short>The process descriptor for you</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tWBStartup.sm_Segment">
+<short>a descriptor for your code</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tWBStartup.sm_NumArgs">
+<short>the number of elements in ArgList</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tWBStartup.sm_ToolWindow">
+<short>Description of window</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tWBStartup.sm_ArgList">
+<short>The arguments themselves</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MTYPE_PSTD">
+<short>A "standard Potion" message</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MTYPE_TOOLEXIT">
+<short>Exit message from our tools</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MTYPE_DISKCHANGE">
+<short>Dos telling us of a disk change</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MTYPE_TIMER">
+<short>We got a timer tick</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MTYPE_CLOSEDOWN">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MTYPE_IOPROC">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MTYPE_APPWINDOW">
+<short>msg from an app window</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MTYPE_APPICON">
+<short>msg from an app icon</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MTYPE_APPMENUITEM">
+<short>msg from an app menuitem</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MTYPE_COPYEXIT">
+<short>exit msg from copy process</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MTYPE_ICONPUT">
+<short>msg from PutDiskObject in icon.library</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PAppMessage">
+<short>Pointer to an Message from a AppWindow, AppIcon or AppMenuItem</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TAppMessage">
+<short>Message from a AppWindow, AppIcon or AppMenuItem</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_Message">
+<short>Standard message structure</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_Type">
+<short>Message type (AMTYPE_*)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_UserData">
+<short>Application specific</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_ID">
+<short>Application definable ID</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_NumArgs">
+<short>Number of elements in arglist</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_ArgList">
+<short>The arguements themselves</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_Version">
+<short>Will be <link id="AM_VERSION"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_Class">
+<short>Message class (AMCLASSICON_*)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_MouseX">
+<short>Mouse x position of event</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_MouseY">
+<short>Mouse y position of event</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_Seconds">
+<short>Current system clock time</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_Micros">
+<short>Current system clock time</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppMessage.am_Reserved">
+<short>Avoid recompilation</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AM_VERSION">
+<short>If you find <link id="TAppMessage"/>.am_Version >= AM_VERSION, you know this structure has
+    at least the fields defined in this version of the include file</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMTYPE_APPWINDOW">
+<short>Type for <link id="TAppMessage"/>.am_Type, App window message</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMTYPE_APPICON">
+<short>Type for <link id="TAppMessage"/>.am_Type, App icon message</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMTYPE_APPMENUITEM">
+<short>Type for <link id="TAppMessage"/>.am_Type, App menu item message</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_Open">
+<short>Class for <link id="TAppMessage"/>.am_Class. The "Open" menu item was invoked, the icon got double-clicked or an icon got dropped on it.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_Copy">
+<short>Class for <link id="TAppMessage"/>.am_Class. The "Copy" menu item was invoked</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_Rename">
+<short>Class for <link id="TAppMessage"/>.am_Class. The "Rename" menu item was invoked</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_Information">
+<short>Class for <link id="TAppMessage"/>.am_Class. The "Information" menu item was invoked</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_Snapshot">
+<short>Class for <link id="TAppMessage"/>.am_Class. The "Snapshot" menu item was invoked</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_UnSnapshot">
+<short>Class for <link id="TAppMessage"/>.am_Class. The "UnSnapshot" menu item was invoked</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_LeaveOut">
+<short>Class for <link id="TAppMessage"/>.am_Class. The "Leave Out" menu item was invoked</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_PutAway">
+<short>Class for <link id="TAppMessage"/>.am_Class. The "Put Away" menu item was invoked </short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_Delete">
+<short>Class for <link id="TAppMessage"/>.am_Class. The "Delete" menu item was invoked</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_FormatDisk">
+<short>Class for <link id="TAppMessage"/>.am_Class. The "Format Disk" menu item was invoked</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_EmptyTrash">
+<short>Class for <link id="TAppMessage"/>.am_Class. The "Empty Trash" menu item was invoked</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_Selected">
+<short>Class for <link id="TAppMessage"/>.am_Class. The icon is now selected</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AMCLASSICON_Unselected">
+<short>Class for <link id="TAppMessage"/>.am_Class. The icon is now unselected</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PAppIconRenderMsg">
+<short>The message your AppIcon rendering hook gets invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TAppIconRenderMsg">
+<short>The message your AppIcon rendering hook gets invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppIconRenderMsg.arm_RastPort">
+<short>RastPort to render into</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppIconRenderMsg.arm_Icon">
+<short>The icon to be rendered</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppIconRenderMsg.arm_Label">
+<short>The icon label txt</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppIconRenderMsg.arm_Tags">
+<short>urther tags to be passed on to <link id="Icon.DrawIconStateA">DrawIconStateA()</link>.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppIconRenderMsg.arm_Left">
+<short>Rendering origin, not taking the</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppIconRenderMsg.arm_Top">
+<short>button border into account.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppIconRenderMsg.arm_Width">
+<short>Limit your rendering to</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppIconRenderMsg.arm_Height">
+<short>this area.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppIconRenderMsg.arm_State">
+<short>State of Icon (IDS_*)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PAppWindowDropZoneMsg">
+<short>The message your drop zone hook gets invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TAppWindowDropZoneMsg">
+<short>The message your drop zone hook gets invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppWindowDropZoneMsg.adzm_RastPort">
+<short>RastPort to render into.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppWindowDropZoneMsg.adzm_DropZoneBox">
+<short>Limit your rendering to this area.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppWindowDropZoneMsg.adzm_ID">
+<short>This is the ID straight from <link id="AddAppWindowDropZoneA">AddAppWindowDropZoneA()</link>.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppWindowDropZoneMsg.adzm_UserData">
+<short>This is the UserData straight from <link id="AddAppWindowDropZoneA">AddAppWindowDropZoneA()</link>.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppWindowDropZoneMsg.adzm_Action">
+<short>Action was done. <link id="ADZMACTION_Enter"/>, <link id="ADZMACTION_Leave"/> </short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADZMACTION_Enter">
+<short>Action for <link id="TAppWindowDropZoneMsg">adzm_Action</link>, Something entered the AppItem</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADZMACTION_Leave">
+<short>Action for <link id="TAppWindowDropZoneMsg">adzm_Action</link>, Something left the AppItem</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PIconSelectMsg">
+<short>The message your icon selection change hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tIconSelectMsg">
+<short>The message your icon selection change hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_Length">
+<short>Size of this data structure (in bytes).</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_Drawer">
+<short>Lock on the drawer this object resides in, nil for Workbench backdrop (devices).</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_Name">
+<short>Name of the object in question.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_Type">
+<short>One of <link id="Workbench.WBDISK">WBDISK</link>,
+      <link id="Workbench.WBDRAWER">WBDRAWER</link>, <link id="Workbench.WBTOOL">WBTOOL</link>,
+      <link id="Workbench.WBPROJECT">WBPROJECT</link>, <link id="Workbench.WBGARBAGE">WBGARBAGE</link>,
+      <link id="Workbench.WBDEVICE">WBDEVICE</link> or <link id="Workbench.WBKICK">WBKICK</link>.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_Selected">
+<short>True if currently selected, False otherwise.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_Tags">
+<short>Pointer to the list of tag items passed to <link id="ChangeWorkbenchSelectionA">ChangeWorkbenchSelectionA()</link>.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_DrawerWindow">
+<short>Pointer to the window attached to this icon, if the icon is a drawer-like object.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_ParentWindow">
+<short>Pointer to the window the icon resides in.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_Left">
+<short>Position and size of the icon; note that the</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_Top">
+<short>icon may not entirely reside within the visible</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_Width">
+<short>bounds of the parent window.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tIconSelectMsg.ism_Height">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ISMACTION_Unselect">
+<short>This value your hook code can return when the icon should be unselected.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ISMACTION_Select">
+<short>This value your hook code can return when the should be selected.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ISMACTION_Ignore">
+<short>This value your hook code can return when the icon state should not be changed.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ISMACTION_Stop">
+<short>This value your hook code can return when the icon state should not be changed and invoke the hook again.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PCopyBeginMsg">
+<short>A message your copy hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TCopyBeginMsg">
+<short>A message your copy hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyBeginMsg.cbm_Length">
+<short>Size of this data structure in bytes.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyBeginMsg.cbm_Action">
+<short>Will be set to <link id="CPACTION_Begin"/>.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyBeginMsg.cbm_SourceDrawer">
+<short>A lock on the source drawer.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyBeginMsg.cbm_DestinationDrawer">
+<short>A lock on the destination drawer.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PCopyDataMsg">
+<short>A message your copy hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TCopyDataMsg">
+<short>A message your copy hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyDataMsg.cdm_Length">
+<short>Size of this data structure in bytes.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyDataMsg.cdm_Action">
+<short>Will be set to <link id="CPACTION_Copy"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyDataMsg.cdm_SourceLock">
+<short>A lock on the parent directory of the source file/drawer.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyDataMsg.cdm_SourceName">
+<short>The name of the source file or drawer.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyDataMsg.cdm_DestinationLock">
+<short>A lock on the parent directory of the destination file/drawer.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyDataMsg.cdm_DestinationName">
+<short>The name of the destination file/drawer. This may or may not match the name of
+  the source file/drawer in case the data is to be copied under a different
+  name. For example, this is the case with the Workbench "Copy" command which
+  creates duplicates of file/drawers by prefixing the duplicate's name with "Copy_XXX_of".</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyDataMsg.cdm_DestinationX">
+<short>When the icon corresponding to the</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyDataMsg.cdm_DestinationY">
+<short>destination is written to disk, this is the position (put into its
+  <link id="TDiskObject">PDiskObject</link>^.do_CurrentX/<link id="TDiskObject">PDiskObject</link>^.do_CurrentY fields) it should be placed at.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PCopyEndMsg">
+<short>A message your copy hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TCopyEndMsg">
+<short>A message your copy hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyEndMsg.cem_Length">
+<short>Size of this data structure in bytes.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCopyEndMsg.cem_Action">
+<short>Will be set to either <link id="DLACTION_BeginDiscard"/> or <link id="DLACTION_BeginEmptyTrash"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="CPACTION_Begin">
+<short>Defines MessageType (<link id="TCopyBeginMsg">cbm_Action</link>) as <link id="PCopyBeginMsg"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="CPACTION_Copy">
+<short>Defines MessageType (<link id="TCopyDataMsg">cdm_Action</link>) as <link id="PCopyDataMsg"/></short>
+<descr>This message arrives for each file or drawer to be copied.
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="CPACTION_End">
+<short>Defines MessageType (<link id="TCopyEndMsg">cem_Action</link>) as <link id="PCopyEndMsg"/></short>
+<descr>This message arrives when all files/drawers have been copied.
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PDeleteBeginMsg">
+<short>A Message your delete hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TDeleteBeginMsg">
+<short>A Message your delete hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDeleteBeginMsg.dbm_Length">
+<short>Size of this data structure in bytes.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDeleteBeginMsg.dbm_Action">
+<short>Will be set to either <link id="DLACTION_BeginDiscard"/> or <link id="DLACTION_BeginEmptyTrash"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PDeleteDataMsg">
+<short>A Message your delete hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TDeleteDataMsg">
+<short>A Message your delete hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDeleteDataMsg.ddm_Length">
+<short>Size of this data structure in bytes.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDeleteDataMsg.ddm_Action">
+<short>Will be set to either <link id="DLACTION_DeleteContents"/> or <link id="DLACTION_DeleteObject"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDeleteDataMsg.ddm_Lock">
+<short>A Lock on the parent directory of the object whose contents or which itself should be deleted.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDeleteDataMsg.ddm_Name">
+<short>The name of the object whose contents or which itself should be deleted.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PDeleteEndMsg">
+<short>A Message your delete hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TDeleteEndMsg">
+<short>A Message your delete hook is invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDeleteEndMsg.dem_Length">
+<short>Size of this data structure in bytes.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDeleteEndMsg.dem_Action">
+<short>Will be set to <link id="DLACTION_End"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DLACTION_BeginDiscard">
+<short>Defined Messagetype <link id="TDeleteBeginMsg">.dbm_Action</link> as <link id="PDeleteBeginMsg"/> </short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DLACTION_BeginEmptyTrash">
+<short>Defined Messagetype <link id="TDeleteBeginMsg">.dbm_Action</link> as <link id="PDeleteBeginMsg"/></short>
+<descr>This indicates that the following delete operations are intended to empty the trashcan.
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DLACTION_DeleteContents">
+<short>Defined Messagetype <link id="TDeleteDataMsg">.ddm_Action</link> as <link id="PDeleteDataMsg"/></short>
+<descr>This indicates that the object described by lock and name refers
+ to a drawer; you should empty its contents but <b>do not</b> delete the drawer itself!
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DLACTION_DeleteObject">
+<short>Defined Messagetype <link id="TDeleteDataMsg">.ddm_Action</link> as <link id="PDeleteDataMsg"/></short>
+<descr>This indicates that the object described by lock and name should
+be deleted; this could be a file or an empty drawer.
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DLACTION_End">
+<short>Defined Messagetype <link id="TDeleteEndMsg">.dem_Action</link> as <link id="PDeleteEndMsg"/></short>
+<descr>This indicates that the deletion process is finished.
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PSetupCleanupHookMsg">
+<short>The message your setup/cleanup hook gets invoked with.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TSetupCleanupHookMsg">
+<short>The message your setup/cleanup hook gets invoked with.</short>
+<descr>
+</descr>
+<seealso>
+<link id="SCHMSTATE_TryCleanup"/>
+<link id="SCHMSTATE_Cleanup"/>
+<link id="SCHMSTATE_Setup"/>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TSetupCleanupHookMsg.schm_Length">
+<short>LEngth of Message</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TSetupCleanupHookMsg.schm_State">
+<short>State of Workbench shutdown (SCHMSTATE_*)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SCHMSTATE_TryCleanup">
+<short>State for <link id="TSetupCleanupHookMsg">.schm_State</link>. Workbench will attempt to shut down now.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SCHMSTATE_Cleanup">
+<short>State for <link id="TSetupCleanupHookMsg">.schm_State</link>. Workbench will really shut down now.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SCHMSTATE_Setup">
+<short>State for <link id="TSetupCleanupHookMsg">.schm_State</link>. Workbench is operational again or could not be shut down.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PTextInputMsg">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TTextInputMsg">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTextInputMsg.tim_Length">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTextInputMsg.tim_Action">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTextInputMsg.tim_Prompt">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TIACTION_Rename">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TIACTION_RelabelVolume">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TIACTION_NewDrawer">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TIACTION_Execute">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PAppWindow">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TAppWindow">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppWindow.aw_PRIVATE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PAppWindowDropZone">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TAppWindowDropZone">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAppWindowDropZone.awdz_PRIVATE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PAppIcon">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tAppIcon">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tAppIcon.ai_PRIVATE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="pAppMenuItem">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tAppMenuItem">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tAppMenuItem.ami_PRIVATE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Dummy">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_SupportsOpen">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_SupportsCopy">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_SupportsRename">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_SupportsInformation">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_SupportsSnapshot">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_SupportsUnSnapshot">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_SupportsLeaveOut">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_SupportsPutAway">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_SupportsDelete">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_SupportsFormatDisk">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_SupportsEmptyTrash">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_PropagatePosition">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_RenderHook">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPICONA_NotifySelectState">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPMENUA_CommandKeyString">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPMENUA_GetKey">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPMENUA_UseKey">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBAPPMENUA_GetTitleKey">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBOPENA_ArgLock">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBOPENA_ArgName">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBOPENA_Show">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBOPENA_ViewBy">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_IsOpen">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_DuplicateSearchPath">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_FreeSearchPath">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_GetDefaultStackSize">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_SetDefaultStackSize">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_RedrawAppIcon">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_GetProgramList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_FreeProgramList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_GetSelectedIconList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_FreeSelectedIconList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_GetOpenDrawerList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_FreeOpenDrawerList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_GetHiddenDeviceList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_FreeHiddenDeviceList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_AddHiddenDeviceName">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_RemoveHiddenDeviceName">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_GetTypeRestartTime">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_SetTypeRestartTime">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_GetCopyHook">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_SetCopyHook">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_GetDeleteHook">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_SetDeleteHook">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_GetTextInputHook">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_SetTextInputHook">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_AddSetupCleanupHook">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBCTRLA_RemSetupCleanupHook">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDZA_Left">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDZA_RelRight">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDZA_Top">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDZA_RelBottom">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDZA_Width">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDZA_RelWidth">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDZA_Height">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDZA_RelHeight">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDZA_Box">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBDZA_Hook">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved1">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved2">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved3">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved4">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved5">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved6">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved7">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved8">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved9">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved10">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved11">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved12">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved13">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved14">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved15">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved16">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved17">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved18">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved19">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_LAST_TAG">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="UPDATEWB_ObjectRemoved">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="UPDATEWB_ObjectAdded">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WORKBENCHNAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="WorkbenchBase">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddAppIconA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddAppIconA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIconA.ID">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIconA.UserData">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIconA.Text_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIconA.MsgPort">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIconA.Lock">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIconA.Diskobj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIconA.Taglist">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddAppMenuItemA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddAppMenuItemA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppMenuItemA.ID">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppMenuItemA.UserData">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppMenuItemA.Text_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppMenuItemA.MsgPort">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppMenuItemA.TagList">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddAppWindowA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddAppWindowA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindowA.ID">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindowA.UserData">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindowA.Window">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindowA.MsgPort">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindowA.TagList">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="RemoveAppIcon">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="RemoveAppIcon.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RemoveAppIcon.AppIcon">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="RemoveAppMenuItem">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="RemoveAppMenuItem.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RemoveAppMenuItem.AppMenuItem">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="RemoveAppWindow">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="RemoveAppWindow.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RemoveAppWindow.AppWindow">
+<short></short>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="WBInfo.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="WBInfo.Lock">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="WBInfo.Name">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="WBInfo.Screen">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddAppWindowDropZoneA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddAppWindowDropZoneA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindowDropZoneA.Aw">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindowDropZoneA.ID">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindowDropZoneA.UserData">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindowDropZoneA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ChangeWorkbenchSelectionA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ChangeWorkbenchSelectionA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ChangeWorkbenchSelectionA.Name">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ChangeWorkbenchSelectionA.Hook">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ChangeWorkbenchSelectionA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="CloseWorkbenchObjectA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="CloseWorkbenchObjectA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CloseWorkbenchObjectA.Name">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CloseWorkbenchObjectA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MakeWorkbenchObjectVisibleA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MakeWorkbenchObjectVisibleA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MakeWorkbenchObjectVisibleA.Name">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MakeWorkbenchObjectVisibleA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="OpenWorkbenchObjectA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="OpenWorkbenchObjectA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="OpenWorkbenchObjectA.Name">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="OpenWorkbenchObjectA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="RemoveAppWindowDropZone">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="RemoveAppWindowDropZone.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RemoveAppWindowDropZone.Aw">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RemoveAppWindowDropZone.DropZone">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="WorkbenchControlA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="WorkbenchControlA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="WorkbenchControlA.Name">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="WorkbenchControlA.Tags">
+<short></short>
+</element>
+
+
+<!-- uses unit Visibility: default -->
+<element name="exec">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="amigados">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="utility">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="intuition">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="agraphics">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="GADGBACKFILL">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PAppMenu">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tAppMenu">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tAppMenu.am_PRIVATE">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved20">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WBA_Reserved21">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddAppIcon">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddAppIcon.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIcon.id">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIcon.userdata">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIcon.text_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIcon.msgport">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIcon.lock">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIcon.diskobj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppIcon.taglist">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddAppMenuItem">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddAppMenuItem.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppMenuItem.id">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppMenuItem.userdata">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppMenuItem.text_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppMenuItem.msgport">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppMenuItem.argv">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddAppWindow">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddAppWindow.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindow.id">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindow.userdata">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindow.window">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindow.msgport">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddAppWindow.argv">
+<short></short>
+</element>
+
+
+</module> <!-- workbench -->
+
+</package>
+</fpdoc-descriptions>
