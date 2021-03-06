@@ -3,10 +3,10 @@ HTMLPARAMS=--format=html --output=aroshtml/ --charset=UTF-8 --index-colcount=4 -
 CHMPARAMS=--format=chm --output=arosunits.chm --charset=UTF-8 --auto-toc --auto-index --make-searchable --footer-date=yyyy-mm-dd
 
 arosunits.tgz: arosunits
-		fpdoc --package=aros --ostarget=aros --content --descr-dir=xml --input-dir=arosunits/src $(HTMLPARAMS)
+		fpdoc --package=aros --ostarget=aros --content --descr-dir=arosxml --input-dir=arosunits/src $(HTMLPARAMS)
 		tar -czf arosunits.tgz aroshtml/*
 arosunits.chm: arosunits
-		fpdoc --package=aros --ostarget=aros --content --descr-dir=xml --input-dir=arosunits/src $(CHMPARAMS)
+		fpdoc --package=aros --ostarget=aros --content --descr-dir=arosxml --input-dir=arosunits/src $(CHMPARAMS)
 
 arosunits:
 		svn checkout http://svn.freepascal.org/svn/fpc/trunk/packages/arosunits arosunits
