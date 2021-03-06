@@ -11,10 +11,10 @@ arosunits.chm: arosunits
 		fpdoc --package=aros --ostarget=aros --content --descr-dir=arosxml --input-dir=arosunits/src --output=arosunits.chm $(CHMPARAMS)
 
 amunits.tgz: amunits
-		fpdoc --package=amunit --ostarget=amiga --content --descr-dir=amxml --input-dir=amunits/src/coreunits/ --input-dir=amunits/src/otherlibs/ --output=amhtml/ $(HTMLPARAMS)
+		fpdoc --package=amunits --ostarget=amiga --content --descr-dir=./amxml/ --input-dir=amunits/src/coreunits/ --input-dir=amunits/src/otherlibs/ --output=amhtml/ $(HTMLPARAMS)
 		tar -czf amunits.tgz amhtml/*
 amunits.chm: amunits
-		fpdoc --package=amunits --ostarget=amiga --content --descr-dir=amxml --input-dir=amunits/src/coreunits/ --input-dir=amunits/src/otherlibs/ --output=amunits.chm $(CHMPARAMS)
+		fpdoc --package=amunits --ostarget=amiga --content --descr-dir=./amxml/ --input-dir=amunits/src/coreunits/ --input-dir=amunits/src/otherlibs/ --output=amunits.chm $(CHMPARAMS)
 
 arosunits:
 		svn checkout http://svn.freepascal.org/svn/fpc/trunk/packages/arosunits arosunits
