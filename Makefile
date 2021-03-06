@@ -26,7 +26,7 @@ os4units.tgz: os4units
 		fpdoc --package=os4units --ostarget=amiga --cputarget=powerpc --content --descr-dir=./os4xml/ --input-dir=os4units/src/ --output=os4html/ $(HTMLPARAMS)
 		tar -czf os4units.tgz os4html/*
 os4units.chm: os4units
-		./fpdoc --package=os4units --ostarget=amiga --cputarget=powerpc --content --descr-dir=./os4xml/ --input-dir=os4units/src/ --output=os4units.chm $(CHMPARAMS)
+		fpdoc --package=os4units --ostarget=amiga --cputarget=powerpc --content --descr-dir=./os4xml/ --input-dir=os4units/src/ --output=os4units.chm $(CHMPARAMS)
 
 ami-extra.tgz: ami-extra
 		fpdoc --package=ami-extra --ostarget=amiga --cputarget=m68k --content --descr-dir=./amiextraxml/ --input-dir=ami-extra/src --output=amiextrahtml/ $(HTMLPARAMS)
