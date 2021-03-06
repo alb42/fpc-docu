@@ -1,0 +1,2235 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fpdoc-descriptions>
+<package name="amunits">
+
+<!--
+  ====================================================================
+    utility
+  ====================================================================
+-->
+
+<module name="utility">
+<short>Tag Handling, Date routines in utility.library</short>
+<descr>
+</descr>
+
+<!-- pointer type Visibility: default -->
+<element name="PClockData">
+<short>Pointer to timing informations</short>
+<descr>
+</descr>
+<seealso>
+<link id="Amiga2Date"/>
+<link id="Date2Amiga"/>
+<link id="CheckDate"/>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TClockData">
+<short>Structure to hold timing informations</short>
+<descr>
+</descr>
+<seealso>
+<link id="Amiga2Date"/>
+<link id="Date2Amiga"/>
+<link id="CheckDate"/>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TClockData.Sec">
+<short>Seconds</short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TClockData.Min">
+<short>Minutes</short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TClockData.Hour">
+<short>Hour</short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TClockData.MDay">
+<short>Day</short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TClockData.Month">
+<short>Month</short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TClockData.Year">
+<short>Year</short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TClockData.WDay">
+<short>Weekday</short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PHook">
+<short>Pointer to a callback function</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="THook">
+<short>Hook function structure</short>
+<descr>
+</descr>
+<seealso>
+<link id="CALLHOOKPKT_"/>
+<link id="CallHookPkt"/>
+<link id="CallHook"/>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="THook.h_MinNode">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="THook.h_Entry">
+<short>Main entry point.</short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="THook.h_SubEntry">
+<short>Secondary entry point</short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="THook.h_Data">
+<short>Owner specific data</short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PNamedObject">
+<short>Pointer to named object structure</short>
+<descr>
+</descr>
+<seealso>
+<link id="AddNamedObject"/>
+<link id="RemNamedObject"/>
+<link id="AllocNamedObjectA"/>
+<link id="AllocNamedObject"/>
+<link id="ReleaseNamedObject"/>
+<link id="FreeNamedObject"/>
+<link id="AttemptRemNamedObject"/>
+<link id="FindNamedObject"/>
+<link id="NamedObjectName"/>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TNamedObject">
+<short>Named object structure</short>
+<descr>
+</descr>
+<seealso>
+<link id="AddNamedObject"/>
+<link id="RemNamedObject"/>
+<link id="AllocNamedObjectA"/>
+<link id="AllocNamedObject"/>
+<link id="ReleaseNamedObject"/>
+<link id="FreeNamedObject"/>
+<link id="AttemptRemNamedObject"/>
+<link id="FindNamedObject"/>
+<link id="NamedObjectName"/>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TNamedObject.no_Object">
+<short>Your pointer, for whatever you want</short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ANO_NameSpace">
+<short>Tag for <link id="AllocNamedObjectA">AllocNamedObjectA()</link>. Tag to define namespace</short>
+<descr>
+  Allocate a NameSpace for this
+  NamedObject. This will allow you to link other
+  NamedObjects into a group. You cannot add a
+  NamedObject with a NameSpace to another NameSpace.
+  Boolean, default is False.
+</descr>
+<seealso>
+<link id="AllocNamedObjectA"/>
+<link id="AllocNamedObject"/>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ANO_UserSpace">
+<short>Tag for <link id="AllocNamedObjectA">AllocNamedObjectA()</link>. Taf to define userspace</short>
+<descr>
+This tag says that you want extra memory
+allocated for a UserSpace. The <link id="TTagItem">ti_Data</link> field of
+this TagItem contains the amount of memory to
+allocate. Specifying this Tag with a ti_Data of 0,
+is equivalent to the default, which is no UserSpace.
+The UserSpace address can be found in the <link id="TNamedObject">no_Object</link>
+field of the NamedObject structure.
+</descr>
+<seealso>
+<link id="AllocNamedObjectA"/>
+<link id="AllocNamedObject"/>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ANO_Priority">
+<short>Tag for <link id="AllocNamedObjectA">AllocNamedObjectA()</link>. Tag to define priority</short>
+<descr>
+This is the List priority of the
+NamedObject and should be a ShortInt value
+between -128 and 127. This is taken into account
+in adding and finding NamedObjects, as the highest
+priority NamedObject will be returned first. The
+default value is 0.
+</descr>
+<seealso>
+<link id="AllocNamedObjectA"/>
+<link id="AllocNamedObject"/>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ANO_Flags">
+<short>Tag for <link id="AllocNamedObjectA">AllocNamedObjectA()</link>. Tag to define flags (NSF_*)</short>
+<descr>
+This allows you to initialize the value of
+the NameSpace flags which control certain aspects
+of the NameSpace.
+</descr>
+<seealso>
+<link id="AllocNamedObjectA"/>
+<link id="AllocNamedObject"/>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NSB_NODUPS">
+<short>Flag bit for <link id="ANO_Flags"/> Default allow duplicates</short>
+<descr>
+</descr>
+<seealso>
+<link id="NSF_NODUPS"/>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NSF_NODUPS">
+<short>Flag value for <link id="ANO_Flags"/> Default allow duplicates</short>
+<descr>
+</descr>
+<seealso>
+<link id="ANO_Flags"/>
+<link id="AllocNamedObjectA"/>
+<link id="AllocNamedObject"/>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NSB_CASE">
+<short>Flag bit for <link id="ANO_Flags"/> Default to caseless</short>
+<descr>
+</descr>
+<seealso>
+<link id="NSF_CASE"/>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NSF_CASE">
+<short>Flag value for <link id="ANO_Flags"/> Default to caseless</short>
+<descr>
+</descr>
+<seealso>
+<link id="ANO_Flags"/>
+<link id="AllocNamedObjectA"/>
+<link id="AllocNamedObject"/>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PSTB_EXISTS">
+<short>Control bit for <link id="PackStructureTags"/>/<link id="UnpackStructureTags"/>. Tag exists bit true flag hack</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PSTF_EXISTS">
+<short>Control value for <link id="PackStructureTags"/>/<link id="UnpackStructureTags"/>. Tag exists bit true flag hack</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PSTB_PACK">
+<short>Control bit for <link id="PackStructureTags"/>/<link id="UnpackStructureTags"/>. Note that these are active low...</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PSTF_PACK">
+<short>Control value for <link id="PackStructureTags"/>/<link id="UnpackStructureTags"/>. Note that these are active low...</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PSTB_UNPACK">
+<short>Control bit for <link id="PackStructureTags"/>/<link id="UnpackStructureTags"/>. Note that these are active low...</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PSTF_UNPACK">
+<short>Control value for <link id="PackStructureTags"/>/<link id="UnpackStructureTags"/>. Note that these are active low...</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PSTB_SIGNED">
+<short>Control bit for <link id="PackStructureTags"/>/<link id="UnpackStructureTags"/>.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PSTF_SIGNED">
+<short>Control value for <link id="PackStructureTags"/>/<link id="UnpackStructureTags"/>.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PKCTRL_UBYTE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PKCTRL_BYTE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PKCTRL_UWORD">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PKCTRL_WORD">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PKCTRL_LONG">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PKCTRL_PACKUNPACK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PKCTRL_UNPACKONLY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PKCTRL_PACKONLY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PKCTRL_BIT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PKCTRL_FLIPBIT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TAG_DONE">
+<short>Tag terminate the array of TagItems.<link id="TTagItem">ti_Data</link> unused</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TAG_END">
+<short>Tag terminate the array of TagItems.<link id="TTagItem">ti_Data</link> unused</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TAG_IGNORE">
+<short>Ignore this item, <b>not</b> end of array</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TAG_MORE">
+<short><link id="TTagItem">ti_Data</link> is pointer to another array of TagItems note that this tag terminates the current array</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TAG_SKIP">
+<short>Skip this <b>and</b> the next <link id="TTagItem">ti_Data</link> items</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TAGFILTER_AND">
+<short>Tag filter logic specifiers for use with <link id="FilterTagItems">FilterTagItems()</link> exclude everything but filter hits</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TAGFILTER_NOT">
+<short>Tag filter logic specifiers for use with <link id="FilterTagItems">FilterTagItems()</link> exclude only filter hits</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MAP_REMOVE_NOT_FOUND">
+<short>Mapping types for use with <link id="MapTags">MapTags()</link> remove tags that aren't in mapList</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MAP_KEEP_NOT_FOUND">
+<short>Mapping types for use with <link id="MapTags">MapTags()</link> keep tags that aren't in mapList</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PUtilityBase">
+<short>Pointer to utility libbase</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TUtilityBase">
+<short>Utility libbase</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TUtilityBase.ub_LibNode">
+<short>Standard libbase</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TUtilityBase.ub_Language">
+<short>Language identifier</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TUtilityBase.ub_Reserved">
+<short>Reserverd</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddNamedObject">
+<short>Add a named object to the given namespace.</short>
+<descr>
+Adds a given NamedObject to a NameSpace which is addressed through
+a second NamedObject. Allows you to link a common group of
+NamedObjects together. If the NameSpace doesn't support duplicate
+names, then a search for a duplicate will be made, and False returned
+if one is found.
+</descr>
+<errors>
+Although the AmigaOS 3.1 autodocs did not say so, under 3.0 you
+couldn't add a NamedObject to a NameSpace when the NamedObject you
+were adding had a NameSpace itself. This has changed. This is
+because the autodocs did not say this, and they are right :)
+</errors>
+<seealso>
+<link id="RemNamedObject"/>
+<link id="AllocNamedObjectA"/>
+<link id="AllocNamedObject"/>
+<link id="ReleaseNamedObject"/>
+<link id="FreeNamedObject"/>
+<link id="AttemptRemNamedObject"/>
+<link id="FindNamedObject"/>
+<link id="NamedObjectName"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddNamedObject.Result">
+<short>If the NamedObject can be added to either the supplied NameSpace or
+the system global NameSpace, this function will return True.
+Otherwise it will return False. This will generally happen when
+the <link id="NSF_NODUPS"/> flag is set and this NamedObject has the same name
+as a second object, or when the object is already in a NameSpace.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddNamedObject.NameSpace">
+<short>The NameSpace to add the NamedObject object to.
+If this value is nil, then the NamedObject will
+be added to the root NameSpace. This is useful
+for sharing NamedObjects between Tasks.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddNamedObject.Object_">
+<short>The NamedObject to add to the NameSpace.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AllocateTagItems">
+<short>Allocate a tag list.</short>
+<descr><p>
+  Allocates the specified number of usable TagItems slots.</p>
+<p>
+  Note that to access the TagItems in 'tagList', you should use
+  the function <link id="NextTagItem">NextTagItem()</link>. This will insure you respect any
+  chaining (<link id="TAG_MORE"/>) and secret hiding places (<link id="TAG_IGNORE"/>) that
+  this function might generate.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="FreeTagItems"/>
+<link id="CloneTagItems"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AllocateTagItems.Result">
+<short>the allocated chain of TagItem structures, or nil if
+there was not enough memory. An allocated tag list must
+eventually be freed using <link id="FreeTagItems">FreeTagItems()</link>.
+</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocateTagItems.Num">
+<short>The number of TagItem slots you want to allocate.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AllocNamedObjectA">
+<short>Allocate a named object.</short>
+<descr>
+<p>Allocate a new NamedObject and initializes it as requested.
+This object can then be used as an object in a name space.
+Optionally you give this object a name space, and use it to
+nest name spaces. You can also allocate some memory which is
+attached to this object for your own personal use.</p>
+<p>
+When the object is allocated, it will automatically have one user.
+To allow other users to remove this object from a namespace, you
+must call <link id="ReleaseNamedObject">ReleaseNamedObject()</link> on this object.
+</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="FreeNamedObject"/>
+<link id="ANO_NameSpace"/>
+<link id="ANO_UserSpace"/>
+<link id="ANO_Priority"/>
+<link id="ANO_Flags"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AllocNamedObjectA.Result">
+<short>The object allocated, or nil for failure. The object
+is defined as a pointer to a pointer.  You can do what you
+wish with the pointer. (It may be nil or contain a pointer
+to memory that you had asked for in the tags.)
+</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocNamedObjectA.Name">
+<short>The name of the NamedObject. Obviously this <b>must</b> be specified</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocNamedObjectA.TagList">
+<short>A TagList containing some extra information for this NamedObject. (ANO_*)</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="Amiga2Date">
+<short>Fill in a ClockData structure based on a system time stamp</short>
+<descr><p>
+Convert the time value given as the number of seconds since the
+1st of January 1978 (00:00:00 1.1.78), to a more useful values,
+which is easier for most people to understand. These values will
+be stored in the ClockData structure whose address is passed as
+an argument.</p>
+<p>
+The ClockData structure will contain the converted time values.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="CheckDate"/>
+<link id="Date2Amiga"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Amiga2Date.Seconds">
+<short>Number of seconds since 1.1.78 00:00:00</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Amiga2Date.Resultat">
+<short>The ClockData structure to store the information in.</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="ApplyTagChanges">
+<short>Change a tag list based on a second tag list.</short>
+<descr>For any tag that appears in both 'list' and 'changeList', this
+  function will change the <link id="TTagItem">ti_Data</link> field of the tag in 'list' to
+  match the <link id="TTagItem">ti_Data</link> field of the tag in 'changeList'. In effect,
+  'changeList' contains a series of new values for tags already in
+  'list'. Any tag in 'changeList' that is not in 'list' is ignored.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="FilterTagChanges"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ApplyTagChanges.List">
+<short>A list of existing tags (may be nil)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ApplyTagChanges.ChangeList">
+<short>A list of tags to modify 'list' with (may be nil)</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AttemptRemNamedObject">
+<short>Attempt to remove a named object.</short>
+<descr>
+  Attempts to remove an object from whatever NameSpace it's in.
+  You must have found the object first (in order to get a use count)
+  before trying to remove it.  If the object is in use or is
+  in the process of being removed, this function will return
+  a failure code.  If the object is fully removed, the object will
+  then be available to be <link id="FreeNamedObject">FreeNamedObject()</link>.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="RemNamedObject"/>
+<link id="AllocNamedObjectA"/>
+<link id="AllocNamedObject"/>
+<link id="ReleaseNamedObject"/>
+<link id="FreeNamedObject"/>
+<link id="AddNamedObject"/>
+<link id="FindNamedObject"/>
+<link id="NamedObjectName"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AttemptRemNamedObject.Result">
+<short>If the NamedObject can be removed, then it will be removed from
+the list. Otherwise the routine will just return.
+If the NamedObject has a removal message associated with it that
+message will be returned to the owner of the NamedObject.
+</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AttemptRemNamedObject.Object_">
+<short>NamedObject to attempt to remove. The address of the NameSpace is contained within the NamedObject.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="CallHookPkt">
+<short>Invoke a Hook function callback.</short>
+<descr>
+<p>Call the callback hook defined by a Hook structure.
+This is effectively a long jump to the <link id="THook">PHook^.h_Entry</link> vector
+of the structure.</p>
+<p>
+The Hook will be called with the same arguments as this function.</p>
+</descr>
+<errors>
+If your callback function does not have the correct register
+definitions, the result of this function is entirely unreliable.
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="CallHookPkt.Result">
+<short>Depends upon the Hook itself.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CallHookPkt.Hook">
+<short>Pointer to an initialized Hook structure.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CallHookPkt.Object_">
+<short>The object that this Hook is to act upon.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CallHookPkt.ParamPaket">
+<short>The arguments to this callback. This will depend entirely on the type of the object.
+</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="CheckDate">
+<short>Checks a ClockData structure for legal date.</short>
+<descr>
+<p>Examine the date described in the ClockData structure and
+determine whether it is a valid date. In particular this
+checks whether the ranges of the fields are within normal
+limits.</p>
+<p>
+This function does not check whether the wday field of the
+ClockData structure is valid.</p>
+<p>The date 01-Jan-78 00:00:00 is actually returned as invalid.</p>
+<p>
+This also assumes that the ClockDate refers to a date in the
+Gregorian calendar. (60 sec/min, 60 min/hour, 24 hr/day,
+12 months/year).</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="Amiga2Date"/>
+<link id="Date2Amiga"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="CheckDate.Result">
+<short>If the date is valid, the number of seconds from midnight
+1-Jan-1978 AD to the date, or 0 if the date is invalud.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CheckDate.Date">
+<short>A ClockData structure desribing the date to check.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="CloneTagItems">
+<short>Copy a tag list.</short>
+<descr><p>Copies the essential contents of a tag list into a new tag list.</p>
+<p>
+The cloning is such that calling FindTagItem() with a given tag on
+the original or cloned tag lists will always return the same
+tag value. That is, the ordering of the tags is maintained.
+</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="AllocateTagItems"/>
+<link id="FreeTagItems"/>
+<link id="RefreshTagItemClones"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="CloneTagItems.Result">
+<short>Copy of the original tag list, or nil if there was not enough
+    memory. This tag list must eventually by freed by calling
+    <link id="FreeTagItems">FreeTagItems()</link>.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CloneTagItems.TagList">
+<short>A tag list to clone. May be nil, in which case an empty tag list is returned.
+</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="Date2Amiga">
+<short>Calculate seconds from 01-Jan-1978.</short>
+<descr>
+  Calculates the number of seconds from 01-Jan-1978 to the date
+  specified in the ClockData structure.
+</descr>
+<errors>
+This function does no sanity checking of the data in the ClockData structure.
+</errors>
+<seealso>
+<link id="Amiga2Date"/>
+<link id="CheckDate"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="Date2Amiga.Result">
+<short>The number of seconds from 01-Jan-1978 to the date specified.
+</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Date2Amiga.Date">
+<short>A pointer to a ClockData structure containing the date of interest.</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="FilterTagChanges">
+<short>Eliminate tags which specify no change.</short>
+<descr>
+This function goes through changeList. For each item found in
+changeList, if the item is also present in originalList, and their
+data values are identical, then the tag is removed from changeList.
+If the two tag's data values are different and the 'apply' value is
+True, then the tag data in OldValues will be updated to match
+the value from ChangeList.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="ApplyTagChanges"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FilterTagChanges.ChangeList">
+<short>A list of new tags (may be nil)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FilterTagChanges.Oldvalues">
+<short>A list of existing tags (may be nil)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FilterTagChanges.Apply">
+<short>Boolean specification as to whether the data values in
+originalList are to be updated to the data values in changeList.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="FilterTagItems">
+<short>Remove selected items from a tag list.</short>
+<descr><p>Removes tag items from a tag list (by changing <link id="TTagItem">ti_Data</link> to
+  <link id="TAG_IGNORE"/>TAG_IGNORE) depending on whether its <link id="TTagItem">ti_Data</link> value is
+  found in an array of tag values.</p>
+<p>
+  If the 'logic' parameter is <link id="TAGFILTER_AND"/>TAGFILTER_AND, then all items
+  not appearing in 'tagArray' are excluded from 'tagList'.</p>
+<p>
+  If 'logic' is <link id="TAGFILTER_NOT"/>TAGFILTER_NOT, then items not found in 'tagArray'
+  are preserved, and the ones in the array are cast out.
+</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="TagInArray"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="FilterTagItems.Result">
+<short>Number of valid items left in resulting filtered list.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FilterTagItems.TagList">
+<short>input list of tag items which is to be filtered by having selected items changed to <link id="TAG_IGNORE"/>.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FilterTagItems.FilterArray">
+<short>An array of tag values, terminated by <link id="TAG_DONE"/>, as specified in the documentation for <link id="TagInArray">TagInArray()</link>.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FilterTagItems.Logic">
+<short>Apecification whether items in 'tagArray' are to be included or excluded in the filtered result.
+</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="FindNamedObject">
+<short>Find the next object of a given name.</short>
+<descr><p>Finds an object and adds to the open count of the object. The
+  object is guaranteed not to be freed until <link id="ReleaseNamedObject">ReleaseNamedObject()</link> is
+  called. The name comparison is caseless, using the current
+  locale string comparison routines.</p>
+<p>
+  If name is nil, then all objects will be matched.</p>
+<p>
+  If lastObject is non-nil, it must be an object from the same
+  NameSpace found on a previous call to <i>FindNamedObject()</i>. It
+  will not be freed by this call. The search will start at the
+  node after lastobject, if non-nil.</p>
+<p>
+  nameSpace is the name space from the named object given
+  or the root name space if nil is given.</p>
+<p>If you are going to use a returned NamedObject to be the starting
+point for another search you must call <link id="ReleaseNamedObject">ReleaseNamedObject()</link> <b>after</b>
+searching, as the <link id="ReleaseNamedObject">ReleaseNamedObject()</link> call can cause the NamedObject
+to be freed, leaving you with an invalid pointer.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="ReleaseNamedObject"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="FindNamedObject.Result">
+<short>If a NamedObject with the name supplied exists, it will be returned.
+Otherwise will return nil.
+When you have finised with this NamedObject, you should call
+<link id="ReleaseNamedObject">ReleaseNamedObject()</link>.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FindNamedObject.NameSpace">
+<short>The NameSpace to search through. If nil will use the system default NameSpace.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FindNamedObject.Name">
+<short>The name of the object to search for. If nil, any and all NamedObjects will be matched.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FindNamedObject.LastObject">
+<short>The (optional) last NamedObject to start the search from.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="FindTagItem">
+<short>Scan a tag list for a specific tag.</short>
+<descr>
+Scans a tag list and returns a pointer to the first item with
+<link id="TTagItem">ti_Tag</link> matching the 'tagValue' parameter.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="GetTagData"/>
+<link id="PackBoolTags"/>
+<link id="NextTagITem"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="FindTagItem.Result">
+<short>A pointer to the item with <link id="TTagItem">ti_Tag</link> matching 'tagValue' or nil if no match was found.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FindTagItem.TagValue">
+<short>A tag value to search for</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FindTagItem.TagList">
+<short>A tag item list to search (may be nil)</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="FreeNamedObject">
+<short>Frees a name object.</short>
+<descr>
+  Free one of a number of structures used by utility.library.
+  The item must not be a member of any NameSpace, and no one
+  may have it open other than yourself. If the object also
+  contained a NameSpace, that namespace must be empty.
+  Any additional space allocated via the datasize parameter
+  for <link id="AllocNamedObject">AllocNamedObject()</link> is also released.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="AllocNamedObjectA"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FreeNamedObject.Object_">
+<short>The object to be freed</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="FreeTagItems">
+<short>Free an allocated tag list.</short>
+<descr><p>
+Frees the memory of a TagItem list allocated either by
+  <link id="AllocateTagItems">AllocateTagItems()</link> or <link id="CloneTagItems">CloneTagItems()</link>.</p>
+<code>
+var
+  tagList: PTagItem;
+begin
+  tagList := AllocateTagItems(4);
+  tagList[0]^.ti_Tag := NA_Name;
+  tagList[0]^.ti_Data := IPTR(PChar('A list of tags'));
+  tagList[3]^.ti_Tag := TAG_DONE;
+// Do what you want with your TagList here ...
+  FreeTagItems(tagList);
+end;
+</code>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="AllocateTagItems"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FreeTagItems.TagList">
+<short>list to free, must have been obtained from <link id="AllocateTagItems">AllocateTagItems()</link> or <link id="CloneTagItems">CloneTagItems()</link> (may be nil)</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="GetTagData">
+<short>Obtain the data corresponding to a tag.</short>
+<descr><p>
+Searches a tag list for a matching tag, and returns the
+  corresponding <link id="TTagItem">ti_Data</link> value for the TagItem found. If no match is
+  found, this function returns the value passed in as 'default'.</p>
+<code>
+// Find out the value for the WA_Left tag
+window^.Left := GetTagData(WA_Left, 320, wintags);
+</code>
+<p>If the input TagList doesn't exist (e.g. for some reason equals
+nil), then the return value will be nil. This way you can
+check for broken code, whereas returing the default would allow
+code that is possibly buggy to still seem to work. (Until you
+tried to do anything special at least).
+</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="FindTagItem"/>
+<link id="PackBoolTags"/>
+<link id="NextTagItem"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="GetTagData.Result">
+<short>The <link id="TTagItem">ti_Data</link> value for the first matching TagItem, or 'default'
+    if a <link id="TTagItem">ti_Tag</link> matching 'Tag' is not found.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetTagData.TagValue">
+<short>A tag value to search for</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetTagData.Default">
+<short>Value to be returned if tagValue is not found.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetTagData.TagList">
+<short>The tag list to search.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="GetUniqueID">
+<short>Return a relatively unique number.</short>
+<descr>
+  Returns a unique value each time it is called. This is useful for
+  things that need unique ID such as the GadgetHelp ID, etc.
+  Note that this is only unique for 4,294,967,295 calls to this
+  function. Under normal use this is not a problem.
+  This function is safe in interrupts.
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="GetUniqueID.Result">
+<short>A 32-bit value that is unique.</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="MapTags">
+<short>Convert <link id="TTagItem">ti_Tag</link> values in a list via map pairing.</short>
+<descr><p>Apply a "mapping list" mapList to tagList.</p>
+<p>
+  If the <link id="TTagItem">ti_Tag</link> field of an item in tagList appears as <link id="TTagItem">ti_Tag</link> in some
+  item in mapList, overwrite <link id="TTagItem">ti_Tag</link> with the corresponding ti_Data
+  from the map list.</p>
+<p>
+  The mapType parameter specifies how the mapping operation is to
+  proceed, with the following available types:</p>
+<dl>
+  <dt>MAP_REMOVE_NOT_FOUND</dt>
+  <dd>If a tag in tagList does not appear in the mapList, remove
+    it from tagList.</dd>
+  <dt>MAP_KEEP_NOT_FOUND</dt>
+  <dd>To have items which do not appear in the mapList survive the
+    mapping process as-is.</dd>
+</dl>
+<p>
+  <i>MapTags()</i> is central to BOOPSI gadget interconnections where you want
+  to convert the tag values from one space (the sender) to another (the
+  receiver).</p>
+<p>
+  The procedure will change the values of the input tag list
+  tagList (but not mapList).</p>
+<p>
+  You can "filter" a list by passing <link id="MAP_REMOVE_NOT_FOUND"/> as mapType,
+  and having the data items in mapList equal the corresponding tags.</p>
+<p>
+  You can perform the inverse filter ("everything but") by passing
+  a mapType of <link id="MAP_KEEP_NOT_FOUND"/>, and creating a map item for every tag
+  you want to filter out, pairing it with a mapped data value of
+  <link id="TAG_IGNORE"/>.</p>
+<p>
+  For safety and "order independence" of tag item arrays, if you
+  attempt to map some tag to the value <link id="TAG_DONE"/>, the value <link id="TAG_IGNORE"/>
+  will be substituted instead.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="ApplyTagChanges"/>
+<link id="FilterTagChanges"/>
+<link id="MAP_REMOVE_NOT_FOUND"/>
+<link id="MAP_KEEP_NOT_FOUND"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MapTags.TagList">
+<short>Input list of tag items which is to be mapped to tag values
+as specified in <i>MapList</i>.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MapTags.MapList">
+<short>A "mapping list" tag list which pairs tag values expected to
+      appear in tagList with new values to be substituted in the
+      <link id="TTagItem">ti_Tag</link> fields of tagList (may be nil)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MapTags.MapType">
+<short>one of the available mapping types (MAP_*)</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NamedObjectName">
+<short>Return the name of the object.</short>
+<descr>
+  Returns the name of the object passed in...
+  Note that the name string is passed back as just a pointer to
+  a read-only name. If the object goes away, so does the name.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="FindNamedObject"/>
+<link id="RemNamedObject"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NamedObjectName.Result">
+<short>A pointer to the name string, or nil if 'object' is nil.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NamedObjectName.Object_">
+<short>The object, may be nil in which case this function returns nil.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NextTagItem">
+<short>Iterate through a tag list.</short>
+<descr><p>
+  Iterates through a tag list, skipping and chaining as dictated by
+  system tags. <link id="TAG_SKIP"/> will cause it to skip the entry and a number
+  of following tags as specified in ti_Data. <link id="TAG_IGNORE"/> ignores that
+  single entry, and <link id="TAG_MORE"/> has a pointer to another array of tags (and
+  terminates the current array!). <link id="TAG_DONE"/> also terminates the current
+  array. Each call returns either the next tagitem you should examine,
+  or nil when the end of the list has been reached.</p>
+<code>
+procedure Iterate(tags: PTagItem);
+var
+  tag: PTagItem;
+begin
+  tag := NextTagItem(tags);
+  while tag &lt;&gt; nil do
+  begin
+    case tag^.ti_Tag of
+      TAG1: ...
+      TAG2: ...
+    else ...
+    end;
+    tag := NextTagItem(tags);
+  end;
+end;
+</code>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="GetTagData"/>
+<link id="PackBoolTags"/>
+<link id="FindTagItem"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NextTagItem.Result">
+<short>Each TagItem in the array or chain of arrays that should be
+      processed according to system tag values is returned in turn with successive
+      calls.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NextTagItem.Item">
+<short>Doubly-indirect reference to a TagItem structure. The pointer will be changed to keep track of the iteration.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="PackBoolTags">
+<short>Builds a "flag" word from a tag list</short>
+<descr><p>
+  Picks out the boolean tag items in a tag list and converts
+  them into bit-flag representations according to a correspondence
+  defined by the tag list 'boolMap'.</p>
+<p>
+  A boolean tag item is one where only the logical value of
+  the <link id="TTagItem">ti_Data</link> is relevant. If this field is 0, the value is
+  False, otherwise True.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="PackBoolTags.Result">
+<short>The accumulated longword of bit-flags, starting with
+    initialFlags and modified by each boolean tag item
+    encountered.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="PackBoolTags.InitialFlags">
+<short>A starting set of bit-flags which will be changed by the processing of True and False boolean tags in tagList.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="PackBoolTags.TagList">
+<short>A TagItem list which may contain several tag items defined to
+      be boolean by their presence in boolMap. The logical value of
+      ti_Data determines whether a tag item causes the bit-flag
+      value related by boolMap to be set or cleared in the returned
+      flag longword.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="PackBoolTags.BoolMap">
+<short>A tag list defining the boolean tags to be recognized, and
+      the bit (or bits) in the returned longword that are to be set
+      or cleared when a boolean Tag is found to be True or False in
+      tagList.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="PackStructureTags">
+<short>Pack a structure with values from taglist.</short>
+<descr>
+For each table entry, a <link id="FindTagItem">FindTagItem()</link> will be done and if the
+  matching tag is found in the taglist, the data field will be
+  packed into the given structure based on the packtable
+  definition.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="FindTagItem"/>
+<link id="UnpackStructureTags"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="PackStructureTags.Result">
+<short>The number of tag items packed</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="PackStructureTags.Pack">
+<short>A pointer to the data area to fill in.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="PackStructureTags.PackTable">
+<short>A pointer to the packing information table.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="PackStructureTags.TagList">
+<short>A pointer to the taglist to pack into the structure</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="RefreshTagItemClones">
+<short>Rejuvenate a clone from the original.</short>
+<descr>
+  If (and only if) the tag list 'clone' was created from 'original' by
+  <link id="CloneTagItems">CloneTagItems()</link>, and if 'original' has not been changed in any way,
+  you can reset the clone list to its original state by using this
+  function.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="CloneTagItems"/>
+<link id="AllocateTagItems"/>
+<link id="FreeTagItems"/>
+<link id="ApplyTagChanges"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RefreshTagItemClones.Clone">
+<short>Return value from CloneTagItems(original)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RefreshTagItemClones.Original">
+<short>A tag list that hasn't changed since <link id="CloneTagItems">CloneTagItems()</link></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="ReleaseNamedObject">
+<short>Free a named object.</short>
+<descr>
+  Decrements the open count of the object. If the object has been
+  removed, and the count goes to 0, the remover will be notified
+  that the object is now free.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="FindNamedObject"/>
+<link id="RemNamedObject"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ReleaseNamedObject.Object_">
+<short>The object to release. (No action if nil)</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="RemNamedObject">
+<short>Remove a named object.</short>
+<descr><p>This function will post a request to release the object
+  from whatever NameSpace it is in.  It will reply the message
+  when the object is fully removed.  The <link id="Exec.TMessage">TMessage.mn_Node</link>.<link id="Exec.TNode">ln_Name</link>
+  field will contain the object pointer or nil if the object
+  was removed by another process.</p>
+<p>
+  This function will effectively do a <link id="ReleaseNamedObject">ReleaseNamedObject()</link>
+  thus you must have "found" the object first.</p>
+<p>
+  The message is replied with the ln_Name field either being
+  the object or nil. If it contains the object, the object
+  is completely removed.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="AttemptRemNamedObject"/>
+<link id="AddNamedObject"/>
+<link id="ReleaseNamedObject"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RemNamedObject.Object_">
+<short>The object to remove: Must be a valid NamedObject.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RemNamedObject.Message">
+<short>Message to ReplyMsg() (must be supplied)</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="SDivMod32">
+<short>Signed 32 by 32 bit division and modulus.</short>
+<descr><p>
+  Divides the signed 32 bit dividend by the signed 32 bit divisor
+  and returns a signed 32 bit quotient and remainder.</p>
+</descr>
+<errors>
+It is very hard for a C programmer to obtain the value of the
+remainder. In fact, its pretty near impossible.
+</errors>
+<seealso>
+<link id="SMult32"/>
+<link id="UDivMod32"/>
+<link id="UMult32"/>
+<link id="SMult64"/>
+<link id="UMult64"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="SDivMod32.Result">
+<short>The quotient is returned in the high 32 bits of the result. The remainder in the low 32 bits.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SDivMod32.Dividend">
+<short>The number to divide.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SDivMod32.Divisor">
+<short>The to divide by.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="SMult32">
+<short>Signed 32 by 32 bit multiply with 32 bit result.</short>
+<descr><p>
+Performs the signed 32-bit multiplication of arg1 * arg2 and
+returns a signed 32 bit value.</p>
+<p>
+This can perform the multiplication either using the machines
+native instructions (if they exist), or in software using a
+simple algorithm based on expanding algebraic products.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="SDivMod32"/>
+<link id="UDivMod32"/>
+<link id="UMult32"/>
+<link id="SMult64"/>
+<link id="UMult64"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="SMult32.Result">
+<short>The signed 32 bit result of multiplying arg1 by arg2.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SMult32.Arg1">
+<short>Number to multiply</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SMult32.Arg2">
+<short>Number to multiply</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="SMult64">
+<short>Signed 32 by 32 bit multiply with 64 bit result.</short>
+<descr>
+Returns the signed 64 bit result of multiplying arg1 by arg2.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="SDivMod32"/>
+<link id="UDivMod32"/>
+<link id="UMult32"/>
+<link id="SMult32"/>
+<link id="UMult64"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="SMult64.Result">
+<short>The signed 64 bit result of multiplying arg1 by arg2.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SMult64.Arg1">
+<short>Number to multiply</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SMult64.Arg2">
+<short>Number to multiply</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="Stricmp">
+<short>Case-insensitive string comparison.</short>
+<descr><p>
+  This function compares two strings, ignoring case using a generic
+  case conversion routine. If the strings have different lengths,
+  the shorter is treated as if it were extended with zeros.</p>
+<p>Whenever locale.library is installed in a system, this function is
+  replaced by language-specific code. This means that depending on
+  which language the user has currently selected, identical pairs of
+  strings may return different values when passed to this function.
+  This fact must be taken into consideration when using this function.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="Strnicmp"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="Stricmp.Result">
+<short>Relationship between string1 and string2
+      &lt;0 means string1 &lt; string2
+      =0 means string1 = string2
+      &gt;0 means string1 &gt; string2</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Stricmp.Str1">
+<short>String to compare</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Stricmp.Str2">
+<short>String to compare</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="Strnicmp">
+<short>Length-limited case-insensitive string compare.</short>
+<descr><p>
+This function compares two strings, ignoring case using a generic
+  case conversion routine. If the strings have different lengths,
+  the shorter is treated as if it were extended with zeros. This function
+  never compares more than 'length' characters.</p>
+<p>Whenever locale.library is installed in a system, this function is
+  replaced by language-specific code. This means that depending on
+  which language the user has currently selected, identical pairs of
+  strings may return different values when passed to this function.
+  This fact must be taken into consideration when using this function.
+</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="Stricmp"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="Strnicmp.Result">
+<short>Relationship between string1 and string2
+      &lt;0 means string1 &lt; string2
+      =0 means string1 = string2
+      &gt;0 means string1 &gt; string2</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Strnicmp.Str1">
+<short>String to compare</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Strnicmp.Str2">
+<short>String to compare</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Strnicmp.Length_">
+<short>Maximum number of characters to examine</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="TagInArray">
+<short>Check if a tag value appears in an array of tag values.</short>
+<descr>
+Determines whether the value tagValue exists in an array of Tags
+pointed to by tagArray. This array must be contiguous, and must be
+terminated by <link id="TAG_DONE"/>.
+This is an array of Tags, not an array of TagItems.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="FilterTagItems"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TagInArray.Result">
+<short>True if tagValue was found in tagArray.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TagInArray.TagValue">
+<short>Tag value to search array for in array.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TagInArray.TagArray">
+<short>A simple array of tag values terminated by <link id="TAG_DONE"/>.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ToLower">
+<short>Convert a character to lower case.</short>
+<descr><p>Converts a character to lower case, handling international character
+  sets. Currently only works for ASCII characters. Would not be difficult
+to adapt for other character sets (Unicode for example).</p>
+<p>Whenever locale.library is installed in a system, this function is
+  replaced by language-specific code. This means that depending on
+  which language the user has currently selected, a given character may
+  return different results when passed to this function. This fact must
+  be taken into consideration when using this function.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="ToUpper"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ToLower.Result">
+<short>Lower case version of the input character.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ToLower.c">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ToUpper">
+<short>Convert a character to upper case.</short>
+<descr><p>Converts a character to upper case, handling international character
+  sets. Currently only works for ASCII characters. Would not be difficult
+to adapt for other character sets (Unicode for example).</p>
+<p>Whenever locale.library is installed in a system, this function is
+  replaced by language-specific code. This means that depending on
+  which language the user has currently selected, a given character may
+  return different results when passed to this function. This fact must
+  be taken into consideration when using this function.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="ToLower"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ToUpper.Result">
+<short>Upper case version of input character.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ToUpper.c">
+<short>Character to be converted.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="UDivMod32">
+<short>Unsigned 32 by 32 bit division and modulus.</short>
+<descr>
+Divides the unsigned 32 bit dividend by the unsigned 32 bit divisor
+  and returns an unsigned 32 bit quotient and remainder.
+</descr>
+<errors>
+It is impossible for Pascal/C programmers to obtain the value of remainder.
+</errors>
+<seealso>
+<link id="SDivMod32"/>
+<link id="SMult64"/>
+<link id="UMult32"/>
+<link id="SMult32"/>
+<link id="UMult64"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="UDivMod32.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UDivMod32.Dividend">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UDivMod32.Divisor">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="UMult32">
+<short>Unsigned 32 by 32 bit multiply with 32 bit result.</short>
+<descr>
+Returns the unsigned 32 bit result of multiplying arg1 by arg2.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="SDivMod32"/>
+<link id="SMult64"/>
+<link id="UDivMod32"/>
+<link id="SMult32"/>
+<link id="UMult64"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="UMult32.Result">
+<short>The unsigned 32 bit result of multiplying arg1 by arg2.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UMult32.Arg1">
+<short>Number to multiply</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UMult32.Arg2">
+<short>Number to multiply</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="UMult64">
+<short>Unsigned 32 by 32 bit multiply with 64 bit result.</short>
+<descr>Returns the unsigned 64 bit result of multiplying arg1 by arg2.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="SDivMod32"/>
+<link id="SMult64"/>
+<link id="UDivMod32"/>
+<link id="SMult32"/>
+<link id="UMult32"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="UMult64.Result">
+<short>The unsigned 64 bit result of multiplying arg1 by arg2.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UMult64.Arg1">
+<short>Number to multiply</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UMult64.Arg2">
+<short>Number to multiply</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="UnpackStructureTags">
+<short>Unpack a structure to values in taglist.</short>
+<descr>
+  For each table entry, a <link id="FindTagItem">FindTagItem()</link> will be done and if the
+  matching tag is found in the taglist, the data in the structure
+  will be placed into the memory pointed to by the tag's <link id="TTagItem">ti_Data</link>.
+  <link id="TTagItem">ti_Data</link> <b>must</b> point to a LongWord.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="FindTagITem"/>
+<link id="PackStructureTags"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="UnpackStructureTags.Result">
+<short>The number of tag items unpacked</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnpackStructureTags.Pack">
+<short>A pointer to the data area to be unpacked</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnpackStructureTags.PackTable">
+<short>A pointer to the packing information table.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnpackStructureTags.TagList">
+<short>A pointer to the taglist to unpack into</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AllocNamedObject">
+<short>VarArgs Version for <link id="AllocNamedObjectA">AllocNamedObjectA()</link></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AllocNamedObject.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocNamedObject.Name">
+<short></short>
+</element>
+
+
+<!-- uses unit Visibility: default -->
+<element name="exec">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PKCTRL_ULONG">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- alias type Visibility: default -->
+<element name="Tag">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="pTag">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="pTagItem">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tTagItem">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tTagItem.ti_Tag">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tTagItem.ti_Data">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="ppTagItem">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TAG_USER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="UtilityBase">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddNamedObject.obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Amiga2Date.amigatime">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ApplyTagChanges.TagList">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AttemptRemNamedObject.obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CallHookPkt.h">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CallHookPkt.obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CallHookPkt.paramPkt">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FilterTagItems.tagArray">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FindTagItem.TagVal">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FreeNamedObject.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetTagData.tagval">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MapTags.IncludeMiss">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NamedObjectName.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NextTagItem.ItemPtr">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="PackStructureTags.packk">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RefreshTagItemClones.cloneTagItem">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RefreshTagItemClones.OriginalTagItems">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ReleaseNamedObject.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RemNamedObject.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RemNamedObject.Msg">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Strnicmp.len">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TagInArray.t">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnpackStructureTags.pac">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocNamedObject.argv">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Stricmp.string1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Stricmp.string2">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Strnicmp.string1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Strnicmp.string2">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Strnicmp.length">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="TAG_">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TAG_.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TAG_.value">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AsTag">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AsTag.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AsTag.value">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="HookEntry">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="HookEntryPas">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+</module> <!-- utility -->
+
+</package>
+</fpdoc-descriptions>
