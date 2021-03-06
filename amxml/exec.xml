@@ -2592,8 +2592,6 @@ This structure is <b>READ ONLY</b> and only EXEC can create it!
 <link id="RemIntServer"/>
 <link id="AddMemHandler"/>
 <link id="RemMemHandler"/>
-<link id="AddResetCallback"/>
-<link id="RemResetCallback"/>
 <link id="Cause"/>
 <link id="SetIntVector"/>
 </seealso>
@@ -2609,8 +2607,6 @@ This structure is <b>READ ONLY</b> and only EXEC can create it!
 <link id="RemIntServer"/>
 <link id="AddMemHandler"/>
 <link id="RemMemHandler"/>
-<link id="AddResetCallback"/>
-<link id="RemResetCallback"/>
 <link id="Cause"/>
 <link id="SetIntVector"/>
 </seealso>

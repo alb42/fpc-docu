@@ -14,7 +14,7 @@ amunits.tgz: amunits
 		fpdoc --package=amunit --ostarget=amiga --content --descr-dir=amxml --input-dir=amunits/src/coreunits/ --output=amhtml/ $(HTMLPARAMS)
 		tar -czf amunits.tgz amhtml/*
 amunits.chm: amunits
-		fpdoc --package=amunits --ostarget=amiga --content --descr-dir=amxml --input-dir=amunits/srccoreunits/ --output=amunits.chm $(CHMPARAMS)
+		fpdoc --package=amunits --ostarget=amiga --content --descr-dir=amxml --input-dir=amunits/src/coreunits/ --output=amunits.chm $(CHMPARAMS)
 
 arosunits:
 		svn checkout http://svn.freepascal.org/svn/fpc/trunk/packages/arosunits arosunits
