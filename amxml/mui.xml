@@ -4138,15 +4138,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Family">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_Family_AddHead">
 <short></short>
 <descr>
@@ -4193,15 +4184,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIM_Family_Transfer">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Family_GetChild">
 <short></short>
 <descr>
 </descr>
@@ -4434,51 +4416,6 @@
 </seealso>
 </element>
 
-<!-- record type Visibility: default -->
-<element name="TMUIP_Family_GetChild">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Family_GetChild.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Family_GetChild.nr">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Family_GetChild.ref">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Family_GetChild">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
 <!-- constant Visibility: default -->
 <element name="MUIA_Family_Child">
 <short></short>
@@ -4490,51 +4427,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIA_Family_List">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Family_ChildCount">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Family_GetChild_First">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Family_GetChild_Last">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Family_GetChild_Next">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Family_GetChild_Previous">
 <short></short>
 <descr>
 </descr>
@@ -4613,21 +4505,16 @@
     <th><td>_______________ Method _______________</td><td>Short description</td></th>
     <tr><td><link id="MUIM_Application_AboutMUI"/></td><td>Show the MUI about window.</td></tr>
     <tr><td><link id="MUIM_Application_AddInputHandler"/></td><td>Set Input Handler for custom classes.</td></tr>
-    <tr><td><link id="MUIM_Application_CheckRefresh"/></td><td>Check all currently open windows if they need refreshing and refreshes them if necessary.</td></tr>
-    <tr><td><link id="MUIM_Application_GetMenuCheck"/></td><td>Ask whether a checkmark menu item has its checkmark set or cleared.</td></tr>
-    <tr><td><link id="MUIM_Application_GetMenuState"/></td><td>Ask whether a menu item is enabled or disabled.</td></tr>
-    <tr><td><link id="MUIM_Application_Input"/></td><td>Process user input.</td></tr>
+    <tr><td><link id="MUIM_Application_CheckRefresh"/></td><td>Check all currently open windows if they need refreshing and refreshes them if necessary.</td></tr>    
     <tr><td><link id="MUIM_Application_InputBuffered"/></td><td>Buffer user input.</td></tr>
     <tr><td><link id="MUIM_Application_Load"/></td><td>Load programs configuration.</td></tr>
-    <tr><td><link id="MUIM_Application_NewInput"/></td><td>This is an enhanced replacement for <link id="MUIM_Application_Input"/>.</td></tr>
+    <tr><td><link id="MUIM_Application_NewInput"/></td><td>This is an enhanced replacement for MUIM_Application_Input.</td></tr>
     <tr><td><link id="MUIM_Application_OpenConfigWindow"/></td><td>Open applications own MUI configuration.</td></tr>
     <tr><td><link id="MUIM_Application_PushMethod"/></td><td>Push method from second task to main task.</td></tr>
     <tr><td><link id="MUIM_Application_RemInputHandler"/></td><td>Remove Input Handler for custom classes.</td></tr>
-    <tr><td><link id="MUIM_Application_RemInputHandler"/></td><td>Tell MUI to return the given id with the next call to <link id="MUIM_Application_Input"/>.</td></tr>
+    <tr><td><link id="MUIM_Application_ReturnID"/></td><td>Tell MUI to return the given id with the next call to <link id="MUIM_Application_NewInput"/>.</td></tr>
     <tr><td><link id="MUIM_Application_Save"/></td><td>Save programs configuration.</td></tr>
     <tr><td><link id="MUIM_Application_SetConfigItem"/></td><td>Private Method for PSI.</td></tr>
-    <tr><td><link id="MUIM_Application_SetMenuCheck"/></td><td>Set or clear the checkmark of a menu item.</td></tr>
-    <tr><td><link id="MUIM_Application_SetMenuState"/></td><td>Enable or disable a menu item.</td></tr>
     <tr><td><link id="MUIM_Application_ShowHelp"/></td><td>Show an AmigaGuide help file.</td></tr>
   </table>
   <table>
@@ -4657,15 +4544,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Application">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_Application_AboutMUI">
 <short></short>
 <descr>
@@ -4685,33 +4563,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIM_Application_CheckRefresh">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Application_GetMenuCheck">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Application_GetMenuState">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Application_Input">
 <short></short>
 <descr>
 </descr>
@@ -4801,79 +4652,7 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIM_Application_SetMenuCheck">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Application_SetMenuState">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_Application_ShowHelp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Application_UnpushMethod">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Application_SetConfigdata">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Application_OpenWindows">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Application_Iconify">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Application_Execute">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Application_UpdateMenus">
 <short></short>
 <descr>
 </descr>
@@ -5142,15 +4921,6 @@
 </seealso>
 </element>
 
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Application_Load">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
 <!-- record type Visibility: default -->
 <element name="TMUIP_Application_NewInput">
 <short></short>
@@ -5261,60 +5031,6 @@
 
 <!-- pointer type Visibility: default -->
 <element name="PMUIP_Application_PushMethod">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Application_UnpushMethod">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Application_UnpushMethod.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Application_UnpushMethod.dest">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Application_UnpushMethod.NewMethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Application_UnpushMethod.method">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Application_UnpushMethod">
 <short></short>
 <descr>
 </descr>
@@ -5863,60 +5579,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIA_Application_SetWinPos">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Application_GetWinPos">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Application_SearchWinId">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Application_GetWinPosAddr">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Application_GetWinPosSize">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Application_CopyWinPosToApp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Application_Version">
 <short></short>
 <descr>
@@ -5944,142 +5606,7 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIA_Application_Configdata">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Application_Version_Number">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Application_Version_Date">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Application_Version_Extra">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MAXWINS">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIV_Application_Package_NetConnect">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TWindowPos">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TWindowPos.id">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TWindowPos.x1">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TWindowPos.y1">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TWindowPos.w1">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TWindowPos.h1">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TWindowPos.x2">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TWindowPos.y2">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TWindowPos.w2">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TWindowPos.h2">
 <short></short>
 <descr>
 </descr>
@@ -6089,42 +5616,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIIHNF_TIMER">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Application_Save_ENV">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Application_Save_ENVARC">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Application_Load_ENV">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Application_Load_ENVARC">
 <short></short>
 <descr>
 </descr>
@@ -6232,7 +5723,6 @@
     <tr><td><link id="MUIA_Window_CloseRequest"/></td><td>__G</td><td>BOOL (0/1)</td><td>Set to True if the user tries to close the window.</td></tr>
     <tr><td><link id="MUIA_Window_DefaultObject"/></td><td>ISG</td><td><link id="PObject_"/></td><td>The default object in a window receives keyboard input.</td></tr>
     <tr><td><link id="MUIA_Window_DepthGadget"/></td><td>I__</td><td>BOOL (0/1)</td><td>Enable or disable the depth gadget.</td></tr>
-    <tr><td><link id="MUIA_Window_DisableKeys"/></td><td>ISG</td><td>LongWord</td><td>Undocumented</td></tr>
     <tr><td><link id="MUIA_Window_DragBar"/></td><td>I__</td><td>BOOL (0/1)</td><td>Tell MUI to give your window a dragbar.</td></tr>
     <tr><td><link id="MUIA_Window_FancyDrawing"/></td><td>ISG</td><td>BOOL (0/1)</td><td>Obsolete relaxed way of custom class drawing.</td></tr>
     <tr><td><link id="MUIA_Window_Height"/></td><td>I_G</td><td>LongInt</td><td>Specify the height of a window.</td></tr>
@@ -6282,11 +5772,9 @@
   <caption><b>Methods</b></caption>
     <th><td>_______________ Method _______________</td><td>Short description</td></th>
     <tr><td><link id="MUIM_Window_AddEventHandler"/></td><td>Add an Event Handler for custom class.</td></tr>
-    <tr><td><link id="MUIM_Window_Cleanup"/></td><td>undocumented.</td></tr>
     <tr><td><link id="MUIM_Window_RemEventHandler"/></td><td>Remove an Event Handler for custom class.</td></tr>
     <tr><td><link id="MUIM_Window_ScreenToBack"/></td><td>Put the window's screen to back.</td></tr>
     <tr><td><link id="MUIM_Window_ScreenToFront"/></td><td>Put the window's screen to front.</td></tr>
-    <tr><td><link id="MUIM_Window_Setup"/></td><td>undocumented.</td></tr>
     <tr><td><link id="MUIM_Window_Snapshot"/></td><td>Remember Windows current position and size.</td></tr>
     <tr><td><link id="MUIM_Window_ToBack"/></td><td>Put the window to back.</td></tr>
     <tr><td><link id="MUIM_Window_ToFront"/></td><td>Put the window to front.</td></tr>
@@ -6318,34 +5806,7 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Window">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Window_ActionIconify">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_Window_AddEventHandler">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Window_Cleanup">
 <short></short>
 <descr>
 </descr>
@@ -6381,15 +5842,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIM_Window_Setup">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_Window_Snapshot">
 <short></short>
 <descr>
@@ -6409,51 +5861,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIM_Window_ToFront">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Window_AllocGadgetID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Window_FreeGadgetID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_ActionIconify">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_ActionIconify.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Window_ActionIconify">
 <short></short>
 <descr>
 </descr>
@@ -6490,60 +5897,6 @@
 
 <!-- pointer type Visibility: default -->
 <element name="PMUIP_Window_AddEventHandler">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_Cleanup">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_Cleanup.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Window_Cleanup">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_RemEventHandler">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_RemEventHandler.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_RemEventHandler.ehnode">
 <short></short>
 <descr>
 </descr>
@@ -6607,33 +5960,6 @@
 
 <!-- pointer type Visibility: default -->
 <element name="PMUIP_Window_ScreenToFront">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_Setup">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_Setup.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Window_Setup">
 <short></short>
 <descr>
 </descr>
@@ -6731,303 +6057,6 @@
 </seealso>
 </element>
 
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_AddControlCharHandler">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_AddControlCharHandler.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_AddControlCharHandler.ccnode">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Window_AddControlCharHandler">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_AllocGadgetID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_AllocGadgetID.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Window_AllocGadgetID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_DrawBackground">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DrawBackground.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DrawBackground.left">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DrawBackground.top">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DrawBackground.width">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DrawBackground.height">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DrawBackground.xoffset">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DrawBackground.yoffset">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DrawBackground.flags">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Window_DrawBackground">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_DragObject">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DragObject.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DragObject.obj">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DragObject.touchx">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DragObject.touchy">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_DragObject.flags">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Window_DragObject">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_FreeGadgetID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_FreeGadgetID.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_FreeGadgetID.gadgetid">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Window_FreeGadgetID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_RecalcDisplay">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_RecalcDisplay.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_RecalcDisplay.originator">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Window_RecalcDisplay">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_RemControlCharHandler">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
 <!-- variable Visibility: default -->
 <element name="TMUIP_Window_RemControlCharHandler.MethodID">
 <short></short>
@@ -7039,33 +6068,6 @@
 
 <!-- variable Visibility: default -->
 <element name="TMUIP_Window_RemControlCharHandler.ccnode">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Window_RemControlCharHandler">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Window_UpdateMenu">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Window_UpdateMenu.MethodID">
 <short></short>
 <descr>
 </descr>
@@ -7183,15 +6185,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIA_Window_DepthGadget">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Window_DisableKeys">
 <short></short>
 <descr>
 </descr>
@@ -7452,33 +6445,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIA_Window_EraseArea">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Window_ZoomGadget">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Window_ToolBox">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIV_Window_ActiveObject_None">
 <short></short>
 <descr>
@@ -7650,42 +6616,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIV_Window_Button_MUI">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Window_Button_Snapshot">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Window_Button_Iconify">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Window_Button_Popup">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Area">
 <short>Area class is a super class for every other MUI class except windows and applications.</short>
 <descr>
@@ -7828,15 +6758,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Area">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_AskMinMax">
 <short></short>
 <descr>
@@ -7882,25 +6803,7 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIM_CreateDragImage">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_CreateShortHelp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_CustomBackfill">
 <short></short>
 <descr>
 </descr>
@@ -7918,25 +6821,7 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIM_DeleteDragImage">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_DeleteShortHelp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_DoDrag">
 <short></short>
 <descr>
 </descr>
@@ -8008,24 +6893,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIM_GoActive">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_GoInactive">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_HandleEvent">
 <short></short>
 <descr>
@@ -8063,42 +6930,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIM_Show">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_UnknownDropDestination">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Layout">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_DrawParentBackground">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_CreateBubble_DontHidePointer">
 <short></short>
 <descr>
 </descr>
@@ -8386,60 +7217,6 @@
 </element>
 
 <!-- record type Visibility: default -->
-<element name="TMUIP_CreateDragImage">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_CreateDragImage.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_CreateDragImage.touchx">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_CreateDragImage.touchy">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_CreateDragImage.flags">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_CreateDragImage">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
 <element name="TMUIP_CreateShortHelp">
 <short></short>
 <descr>
@@ -8485,87 +7262,6 @@
 </element>
 
 <!-- record type Visibility: default -->
-<element name="TMUIP_CustomBackfill">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_CustomBackfill.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_CustomBackfill.left">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_CustomBackfill.top">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_CustomBackfill.right">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_CustomBackfill.bottom">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_CustomBackfill.xoffset">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_CustomBackfill.yoffset">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_CustomBackfill">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
 <element name="TMUIP_DeleteBubble">
 <short></short>
 <descr>
@@ -8602,42 +7298,6 @@
 </element>
 
 <!-- record type Visibility: default -->
-<element name="TMUIP_DeleteDragImage">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DeleteDragImage.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DeleteDragImage.di">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_DeleteDragImage">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
 <element name="TMUIP_DeleteShortHelp">
 <short></short>
 <descr>
@@ -8666,96 +7326,6 @@
 
 <!-- pointer type Visibility: default -->
 <element name="PMUIP_DeleteShortHelp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_DoDrag">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DoDrag.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DoDrag.touchx">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DoDrag.touchy">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DoDrag.flags">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_DoDrag">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_UnknownDropDestination">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_UnknownDropDestination.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_UnknownDropDestination.imsg">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_UnknownDropDestination">
 <short></short>
 <descr>
 </descr>
@@ -9115,159 +7685,6 @@
 </element>
 
 <!-- record type Visibility: default -->
-<element name="TMUIP_DrawBackgroundBuffered">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DrawBackgroundBuffered.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DrawBackgroundBuffered.rp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DrawBackgroundBuffered.left">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DrawBackgroundBuffered.top">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DrawBackgroundBuffered.width">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DrawBackgroundBuffered.height">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DrawBackgroundBuffered.xoffset">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DrawBackgroundBuffered.yoffset">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_DrawBackgroundBuffered.flags">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_DrawBackgroundBuffered">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_GoActive">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_GoActive.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_GoActive">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_GoInactive">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_GoInactive.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_GoInactive">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
 <element name="TMUIP_HandleEvent">
 <short></short>
 <descr>
@@ -9447,42 +7864,6 @@
 </seealso>
 </element>
 
-<!-- record type Visibility: default -->
-<element name="TMUIP_Layout">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Layout.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Layout">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_DrawParentBackground">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
 <!-- variable Visibility: default -->
 <element name="TMUIP_DrawParentBackground.MethodID">
 <short></short>
@@ -9555,33 +7936,6 @@
 </seealso>
 </element>
 
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_DrawParentBackground">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIF_DRAGIMAGE_HASMASK">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIF_DRAGIMAGE_SOURCEALPHA">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
 <!-- constant Visibility: default -->
 <element name="MUIA_Background">
 <short></short>
@@ -9638,15 +7992,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIA_Disabled">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_DoubleBuffer">
 <short></short>
 <descr>
 </descr>
@@ -9978,33 +8323,6 @@
 </seealso>
 </element>
 
-<!-- constant Visibility: default -->
-<element name="MUIA_NestedDisabled">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUI_ImageSpec_intern">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUI_ImageSpec_intern">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
 <!-- record type Visibility: default -->
 <element name="TMUI_AreaData">
 <short></short>
@@ -10141,15 +8459,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MADF_DRAWALL">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIV_Frame_None">
 <short></short>
 <descr>
@@ -10267,34 +8576,7 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIV_Frame_Knob">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Frame_Drag">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIV_Frame_Count">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_Frame_Register">
 <short></short>
 <descr>
 </descr>
@@ -10348,33 +8630,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Group">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Group_AddHead">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Group_AddTail">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_Group_ExitChange">
 <short></short>
 <descr>
@@ -10394,96 +8649,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIM_Group_Sort">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Group_Remove">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Group_DoMethodNoForward">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Group_AddHead">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Group_AddHead.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Group_AddHead.obj">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Group_AddHead">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Group_AddTail">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Group_AddTail.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Group_AddTail.obj">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Group_AddTail">
 <short></short>
 <descr>
 </descr>
@@ -10581,78 +8746,6 @@
 </seealso>
 </element>
 
-<!-- record type Visibility: default -->
-<element name="TMUIP_Group_Remove">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Group_Remove.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Group_Remove.obj">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Group_Remove">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Group_DoMethodNoForward">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Group_DoMethodNoForward.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Group_DoMethodNoForward.DoMethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Group_DoMethodNoForward">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
 <!-- constant Visibility: default -->
 <element name="MUIA_Group_ActivePage">
 <short></short>
@@ -10682,15 +8775,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIA_Group_Columns">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Group_Forward">
 <short></short>
 <descr>
 </descr>
@@ -10781,15 +8865,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIA_Group_VertSpacing">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Group_Virtual">
 <short></short>
 <descr>
 </descr>
@@ -11099,15 +9174,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Rectangle">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Rectangle_BarTitle">
 <short></short>
 <descr>
@@ -11280,15 +9346,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Text">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Text_Contents">
 <short></short>
 <descr>
@@ -11299,15 +9356,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIA_Text_HiChar">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Text_HiCharIdx">
 <short></short>
 <descr>
 </descr>
@@ -11442,15 +9490,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Numeric">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_Numeric_Decrease">
 <short></short>
 <descr>
@@ -11497,15 +9536,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIM_Numeric_ValueToScale">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Numeric_ValueToScaleExt">
 <short></short>
 <descr>
 </descr>
@@ -11747,60 +9777,6 @@
 </seealso>
 </element>
 
-<!-- record type Visibility: default -->
-<element name="TMUIP_Numeric_ValueToScaleExt">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Numeric_ValueToScaleExt.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Numeric_ValueToScaleExt.value">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Numeric_ValueToScaleExt.scalemin">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Numeric_ValueToScaleExt.scalemax">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Numeric_ValueToScaleExt">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
 <!-- constant Visibility: default -->
 <element name="MUIA_Numeric_CheckAllSizes">
 <short></short>
@@ -11884,15 +9860,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Slider">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Slider">
 <short></short>
 <descr>
 </descr>
@@ -12069,15 +10036,6 @@
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_String">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_String_Accept">
 <short></short>
 <descr>
@@ -12223,231 +10181,6 @@
 
 <!-- constant Visibility: default -->
 <element name="MUIV_String_Format_Right">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_String_Columns">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_String_NoInput">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_String_SelectSize">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_String_StayActive">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_String_KeyUpFocus">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_String_KeyDownFocus">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_String_ClearSelected">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_String_FileNameStart">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_String_Insert">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_String_Insert_StartOfString">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_String_Insert_EndOfString">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_String_Insert_BufferPos">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIV_String_BufferPos_End">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIR_String_FileNameStart_Volume">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_String_ClearSelected">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_String_ClearSelected.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_String_ClearSelected">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_String_FileNameStart">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_String_FileNameStart.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_String_FileNameStart.buffer">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_String_FileNameStart.pos">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_String_Insert">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_String_Insert.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_String_Insert.text">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_String_Insert.pos">
 <short></short>
 <descr>
 </descr>
@@ -12629,16 +10362,6 @@
 <seealso>
 </seealso>
 </element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Boopsi">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
 <!-- constant Visibility: default -->
 <element name="MUIA_Boopsi_Class">
 <short></short>
@@ -12914,15 +10637,6 @@ any imagery for the knob and for the background.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Prop">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_Prop_Decrease">
 <short></short>
 <descr>
@@ -13103,34 +10817,7 @@ any imagery for the knob and for the background.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIA_Prop_DeltaFactor">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Prop_DoSmooth">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Scrollbar">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Scrollbar">
 <short></short>
 <descr>
 </descr>
@@ -13193,15 +10880,6 @@ any imagery for the knob and for the background.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Register">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Register_Frame">
 <short></short>
 <descr>
@@ -13212,15 +10890,6 @@ any imagery for the knob and for the background.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIA_Register_Titles">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Register_Columns">
 <short></short>
 <descr>
 </descr>
@@ -13317,15 +10986,6 @@ any imagery for the knob and for the background.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Menustrip">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Menustrip_Enabled">
 <short></short>
 <descr>
@@ -13409,15 +11069,6 @@ item objects.</p>
     <tr><td><link id="MUIM_WriteLong"/></td><td>This method simply writes a longword somewhere to memory.</td></tr>
     <tr><td><link id="MUIM_WriteString"/></td><td>This method simply copies a string somewhere to memory.</td></tr>
   </table>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Menu">
-<short></short>
-<descr>
 </descr>
 <seealso>
 </seealso>
@@ -13539,15 +11190,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Menuitem">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Menuitem_Checked">
 <short></short>
 <descr>
@@ -13629,15 +11271,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIA_Menuitem_NewMenu">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIV_Menuitem_Shortcut_Check">
 <short></short>
 <descr>
@@ -13648,15 +11281,6 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Dataspace">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Dataspace">
 <short></short>
 <descr>
 </descr>
@@ -14025,15 +11649,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Virtgroup">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Virtgroup_Height">
 <short></short>
 <descr>
@@ -14080,15 +11695,6 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Scrollgroup">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Scrollgroup">
 <short></short>
 <descr>
 </descr>
@@ -14151,79 +11757,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIC_Scrollbutton">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Scrollbutton">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Scrollbutton_NewPosition">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Scrollbutton_Horiz">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Scrollbutton_Vert">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Scrollbutton_HorizProp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Scrollbutton_VertProp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Semaphore">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Semaphore">
 <short></short>
 <descr>
 </descr>
@@ -14561,24 +12095,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Bitmap">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Bitmap_Alpha">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Bitmap_Bitmap">
 <short></short>
 <descr>
@@ -14820,15 +12336,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Bodychunk">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Bodychunk_Body">
 <short></short>
 <descr>
@@ -14865,70 +12372,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIC_ChunkyImage">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_ChunkyImage">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_ChunkyImage_Pixels">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_ChunkyImage_Palette">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_ChunkyImage_NumColors">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_ChunkyImage_Modulo">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Listview">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Listview">
 <short></short>
 <descr>
 </descr>
@@ -15117,34 +12561,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_List">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_List_Clear">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_List_Compare">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_List_Construct">
 <short></short>
 <descr>
 </descr>
@@ -15298,114 +12715,6 @@ item objects.</p>
 
 <!-- pointer type Visibility: default -->
 <element name="PMUIP_List_Clear">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_List_Compare">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_List_Compare.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_List_Compare.entry1">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_List_Compare.entry2">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_List_Compare.sort_type1">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_List_Compare.sort_type2">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_List_Compare">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_List_Construct">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_List_Construct.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_List_Construct.entry">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_List_Construct.pool">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_List_Construct">
 <short></short>
 <descr>
 </descr>
@@ -16647,15 +13956,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIV_NList_SelectChange_Flag_Multi">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Scrmodelist">
 <short></short>
 <descr>
@@ -16665,70 +13965,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Scrmodelist">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Floattext">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Floattext">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Floattext_Append">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Floattext_Append">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Floattext_Append.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Floattext_Append.Text">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Floattext_Append">
 <short></short>
 <descr>
 </descr>
@@ -16774,15 +14011,6 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Popstring">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Popstring">
 <short></short>
 <descr>
 </descr>
@@ -16926,15 +14154,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Popobject">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Popobject_Follow">
 <short></short>
 <descr>
@@ -16999,15 +14218,6 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Cycle">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Cycle">
 <short></short>
 <descr>
 </descr>
@@ -17188,15 +14398,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Gauge">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Gauge_Current">
 <short></short>
 <descr>
@@ -17234,15 +14435,6 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIA_Gauge_Max">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Gauge_DupInfoText">
 <short></short>
 <descr>
 </descr>
@@ -17390,15 +14582,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Image">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Image_FontMatch">
 <short></short>
 <descr>
@@ -17480,61 +14663,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Imagedisplay">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Imagedisplay_Spec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Imagedisplay_UseDefSize">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Imagedisplay_FreeHoriz">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Imagedisplay_FreeVert">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Popasl">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Popasl">
 <short></short>
 <descr>
 </descr>
@@ -17580,15 +14709,6 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Settingsgroup">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Settingsgroup">
 <short></short>
 <descr>
 </descr>
@@ -17696,25 +14816,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Settings">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Aboutmui">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Aboutmui">
 <short></short>
 <descr>
 </descr>
@@ -17741,816 +14843,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Configdata">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_GetWindowPos">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_SetWindowPos">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_GetString">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_GetULong">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_SetULong">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_SetImspec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_SetFramespec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_SetFont">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_Save">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_Load">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_SetPenspec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Configdata_SetString">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Configdata_GetString">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_GetString.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_GetString.id">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Configdata_GetString">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Configdata_GetULong">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_GetULong.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_GetULong.id">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Configdata_GetULong">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Configdata_SetULong">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetULong.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetULong.id">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetULong.val">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Configdata_SetULong">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Configdata_SetImspec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetImspec.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetImspec.id">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetImspec.imspec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Configdata_SetImspec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Configdata_SetFramespec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetFramespec.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetFramespec.id">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetFramespec.framespec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Configdata_SetFramespec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Configdata_SetFont">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetFont.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetFont.id">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetFont.font">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Configdata_SetFont">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Configdata_Save">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_Save.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_Save.filename">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Configdata_Save">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Configdata_Load">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_Load.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_Load.filename">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Configdata_Load">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Configdata_SetPenspec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetPenspec.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetPenspec.id">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetPenspec.penspec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Configdata_SetPenspec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Configdata_SetString">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetString.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetString.id">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Configdata_SetString.Newstring">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Configdata_SetString">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Configdata_Application">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Configdata_ApplicationBase">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Invalid">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Window_Spacing_Left">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Window_Spacing_Right">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Window_Spacing_Top">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Window_Spacing_Bottom">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Radio_HSpacing">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Radio_VSpacing">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Group_HSpacing">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Group_VSpacing">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Scrollbar_Arrangement">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Listview_Refresh">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Listview_Font_Leading">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Listview_SmoothVal">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Listview_Multi">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_GroupTitle_Position">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_GroupTitle_Color">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Cycle_MenuCtrl_Level">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Cycle_MenuCtrl_Position">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_Drag">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Cycle_Menu_Recessed">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Cycle_MenuCtrl_Speed">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Listview_Smoothed">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Window_Redraw">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Font_Normal">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Font_List">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Font_Tiny">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Font_Fixed">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Font_Title">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Font_Big">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUICFG_PublicScreen">
 <short></short>
 <descr>
@@ -18560,1204 +14852,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUICFG_Frame_Button">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_ImageButton">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_Text">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_String">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_ReadList">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_InputList">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_Prop">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_Gauge">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_Group">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_PopUp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_Virtual">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_Slider">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_Window">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_Requester">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_Button">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_List">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_Text">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_Prop">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_PopUp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_Selected">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_ListCursor">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_ListSelect">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_ListSelCur">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_ArrowUp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_ArrowDown">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_ArrowLeft">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_ArrowRight">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_CheckMark">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_RadioButton">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_Cycle">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_PopUp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_PopFile">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_PopDrawer">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_PropKnob">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_Drawer">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_HardDisk">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_Disk">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_Chip">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_Volume">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_Network">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_Assign">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_Register">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_TapePlay">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_TapePlayBack">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_TapePause">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_TapeStop">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_TapeRecord">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_Framed">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_Slider">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_SliderKnob">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_TapeUp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Image_TapeDown">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_Press">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_Toggle">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_Up">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_Down">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_PageUp">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_PageDown">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_Top">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_Bottom">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_Left">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_Right">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_WordLeft">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_WordRight">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_LineStart">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_LineEnd">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_NextGadget">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_PrevGadget">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_GadgetOff">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_CloseWindow">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_NextWindow">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_PrevWindow">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_Help">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Keyboard_Popup">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Window_Positions">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Balance_Look">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Font_Button">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Scrollbar_Type">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_String_Background">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_String_Text">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_String_ActiveBackground">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_String_ActiveText">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Font_Knob">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Drag_LeftButton">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Drag_MiddleButton">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Drag_LMBModifier">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Drag_MMBModifier">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Drag_Autostart">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Drag_Autostart_Length">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_ActiveObject_Color">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Frame_Knob">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Dragndrop_Look">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_Page">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Background_ReadList">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_String_Cursor">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_String_MarkedBackground">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_String_MarkedText">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Register_TruncateTitles">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Window_Refresh">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Screen_Mode">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Screen_Mode_ID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Screen_Width">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Screen_Height">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_WindowPos">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Window_Buttons">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_1">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_2">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_3">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_4">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_5">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_6">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_7">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_8">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_9">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_10">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_11">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_12">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_13">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_14">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_15">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_CustomFrame_16">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_PublicScreen_PopToFront">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Iconification_Hotkey">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Iconification_ShowIcon">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Iconification_ShowMenu">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Iconification_OnStartup">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_Interfaces_EnableARexx">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_BubbleHelp_FirstDelay">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUICFG_BubbleHelp_NextDelay">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Imageadjust">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Imageadjust">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Imageadjust_Type">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Imageadjust_Spec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Imageadjust_Originator">
 <short></short>
 <descr>
 </descr>
@@ -19803,15 +14898,6 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Popimage">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Popimage">
 <short></short>
 <descr>
 </descr>
@@ -19964,15 +15050,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Scale">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Scale_Horiz">
 <short></short>
 <descr>
@@ -19983,15 +15060,6 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Radio">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Radio">
 <short></short>
 <descr>
 </descr>
@@ -20039,7 +15107,6 @@ item objects.</p>
   <table>
     <caption><b>Fields</b></caption>
     <th><td>_______________ Field _______________</td><td>___ Access ___</td><td>_____ Type _____</td><td>Short description</td></th>
-    <tr><td><link id="MUIA_Balance_Quiet"/></td><td>I__</td><td>PChar</td><td>Undocumented.</td></tr>
   </table>
   <table>
     <caption>Fields inherited from <link id="MUIC_Area">Area</link></caption>
@@ -20155,34 +15222,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Balance">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Balance_Quiet">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Pendisplay">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Pendisplay">
 <short></short>
 <descr>
 </descr>
@@ -20210,132 +15250,6 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIM_Pendisplay_SetRGB">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Pendisplay_SetColormap">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pendisplay_SetColormap.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pendisplay_SetColormap.colormap">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Pendisplay_SetColormap">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Pendisplay_SetMUIPen">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pendisplay_SetMUIPen.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pendisplay_SetMUIPen.muipen">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Pendisplay_SetMUIPen">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Pendisplay_SetRGB">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pendisplay_SetRGB.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pendisplay_SetRGB.red">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pendisplay_SetRGB.green">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pendisplay_SetRGB.blue">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PMUIP_Pendisplay_SetRGB">
 <short></short>
 <descr>
 </descr>
@@ -20389,15 +15303,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Penadjust">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Penadjust_PSIMode">
 <short></short>
 <descr>
@@ -20416,25 +15321,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Poppen">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Colorfield">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Colorfield">
 <short></short>
 <descr>
 </descr>
@@ -20489,15 +15376,6 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Coloradjust">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Coloradjust">
 <short></short>
 <descr>
 </descr>
@@ -20569,43 +15447,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Frameadjust">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Frameadjust_Spec">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Framedisplay">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Framedisplay">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Framedisplay_Spec">
 <short></short>
 <descr>
 </descr>
@@ -20623,25 +15465,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Popframe">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Volumelist">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Volumelist">
 <short></short>
 <descr>
 </descr>
@@ -20659,34 +15483,7 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Dirlist">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIM_Dirlist_ReRead">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Dirlist_ReRead">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Dirlist_ReRead.MethodID">
 <short></short>
 <descr>
 </descr>
@@ -20947,15 +15744,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Poplist">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIA_Poplist_Array">
 <short></short>
 <descr>
@@ -20966,24 +15754,6 @@ item objects.</p>
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Popscreen">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Popscreen">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIC_Crawling">
 <short></short>
 <descr>
 </descr>
@@ -21028,60 +15798,6 @@ item objects.</p>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MUIB_Palette">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Dtpic_Alpha">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Dtpic_DarkenSelState">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Dtpic_Fade">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Dtpic_LightenOnMouse">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Dtpic_Name">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="MUIC_Palette">
 <short></short>
 <descr>
@@ -21116,343 +15832,6 @@ item objects.</p>
 <seealso>
 </seealso>
 </element>
-
-<!-- constant Visibility: default -->
-<element name="MUIC_Title">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIC_Process">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Process_Kill">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Process_Launch">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Process_Process">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Process_Signal">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Process_Kill">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Process_Kill.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Process_Kill.maxdelay">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Process_Launch">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Process_Launch.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Process_Process">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Process_Process.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Process_Process.kill">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Process_Process.proc">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Process_Signal">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Process_Signal.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Process_Signal.sigs">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Process_AutoLaunch">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Process_Name">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Process_Priority">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Process_SourceClass">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Process_SourceObject">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Process_StackSize">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIA_Process_Task">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIC_Pixmap">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIB_Pixmap">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MUIM_Pixmap_DrawSection">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="TMUIP_Pixmap_DrawSection">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pixmap_DrawSection.MethodID">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pixmap_DrawSection.sx">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pixmap_DrawSection.sy">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pixmap_DrawSection.sw">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pixmap_DrawSection.sh">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pixmap_DrawSection.mri">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pixmap_DrawSection.dx">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="TMUIP_Pixmap_DrawSection.dy">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-
-
-
 
 <!-- constant Visibility: default -->
 <element name="MUIC_Gadget">
@@ -24150,6 +18529,478 @@ item objects.</p>
 
 <!-- argument Visibility: default -->
 <element name="MUI_Request.Params">
+<short></short>
+</element>
+
+
+<!-- uses unit Visibility: default -->
+<element name="exec">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="intuition">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="utility">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="agraphics">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="iffparse">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="plongword">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUI_PenSpec.buf">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUI_InputHandlerNode.ihn_stuff.ihn_sigs">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUI_InputHandlerNode.ihn_stuff.ihn_timer">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUI_InputHandlerNode.ihn_stuff.ihn_timer.ihn_millis">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUI_InputHandlerNode.ihn_stuff.ihn_timer.ihn_current">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUI_EventHandlerNode.ehn_Reserved">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_NoNotifySet.format">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MUIA_Application_UsedClasses">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tMUIP_Window_GetMenuCheck">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_GetMenuCheck.MethodID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_GetMenuCheck.MenuID">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="pMUIP_Window_GetMenuCheck">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tMUIP_Window_GetMenuState">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_GetMenuState.MethodID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_GetMenuState.MenuID">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="pMUIP_Window_GetMenuState">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tMUIP_Window_RemEventHandler">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_RemEventHandler.MethodID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_RemEventHandler.ehnode">
+<short></short>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tMUIP_Window_SetCycleChain">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_SetCycleChain.MethodID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_SetCycleChain.obj">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="pMUIP_Window_SetCycleChain">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tMUIP_Window_SetMenuCheck">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_SetMenuCheck.MethodID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_SetMenuCheck.MenuID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_SetMenuCheck.stat">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="pMUIP_Window_SetMenuCheck">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tMUIP_Window_SetMenuState">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_SetMenuState.MethodID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_SetMenuState.MenuID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUIP_Window_SetMenuState.stat">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="pMUIP_Window_SetMenuState">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="MUIP_Dirlist_ReRead">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="MUIP_Dirlist_ReRead.MethodID">
+<short></short>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="MUIP_Pendisplay_SetColormap">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="MUIP_Pendisplay_SetColormap.MethodID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="MUIP_Pendisplay_SetColormap.colormap">
+<short></short>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="MUIP_Pendisplay_SetMUIPen">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="MUIP_Pendisplay_SetMUIPen.MethodID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="MUIP_Pendisplay_SetMUIPen.muipen">
+<short></short>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="MUIP_Pendisplay_SetRGB">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="MUIP_Pendisplay_SetRGB.MethodID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="MUIP_Pendisplay_SetRGB.red">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="MUIP_Pendisplay_SetRGB.green">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="MUIP_Pendisplay_SetRGB.blue">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUI_LayoutMsg.lm_Layout.Width">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUI_LayoutMsg.lm_Layout.Height">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUI_LayoutMsg.lm_Layout.priv5">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUI_LayoutMsg.lm_Layout.priv6">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tMUI_AreaData.priv7">
+<short></short>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="t__dummyXFC2__">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="t__dummyXFC2__.mnd">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="t__dummyXFC2__.mad">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="p__dummyXFC2__">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_NewObjectA.class_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_AllocAslRequest.typ">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_AllocAslRequest.tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_AslRequest.req">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_AslRequest.tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_FreeAslRequest.req">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_GetClass.name">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_Layout.l">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_Layout.t">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_Layout.w">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_Layout.h">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_AddClipping.l">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_AddClipping.t">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_AddClipping.w">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_AddClipping.h">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_RemoveClipping.h">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_RemoveClipRegion.region">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MUI_AllocAslRequestTags._type">
 <short></short>
 </element>
 
