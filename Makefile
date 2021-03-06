@@ -2,6 +2,8 @@
 HTMLPARAMS=--format=html --output=aroshtml/ --charset=UTF-8 --index-colcount=4 --footer-date=yyyy-mm-dd
 CHMPARAMS=--format=chm --output=arosunits.chm --charset=UTF-8 --auto-toc --auto-index --make-searchable --footer-date=yyyy-mm-dd
 
+# update example: makeskel --update --package=aros --descr=arosxml/exec.xml --input="-dAROS_ABIv0 arosunits/src/exec.pas" --output=execupdate.xml
+
 arosunits.tgz: arosunits
 		fpdoc --package=aros --ostarget=aros --content --descr-dir=arosxml --input-dir=arosunits/src $(HTMLPARAMS)
 		tar -czf arosunits.tgz aroshtml/*
