@@ -32,7 +32,7 @@ ami-extra.tgz: ami-extra
 		fpdoc --package=ami-extra --ostarget=amiga --cputarget=m68k --content --descr-dir=./amiextraxml/ --input-dir=ami-extra/src --output=amiextrahtml/ $(HTMLPARAMS)
 		tar -czf ami-extra.tgz amiextrahtml/*
 ami-extra.chm: ami-extra
-		fpdoc --package=ami-extra --ostarget=amiga --cputarget=m68k --content --descr-dir=./amiextraxml/  --input-dir=ami-extra/src --output=amiextraunits.chm $(CHMPARAMS)
+		fpdoc --package=ami-extra --ostarget=amiga --cputarget=m68k --content --descr-dir=./amiextraxml/  --input-dir=ami-extra/src --output=amiextra.chm $(CHMPARAMS)
 
 
 ami-extra:
