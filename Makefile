@@ -23,7 +23,7 @@ morphunits.chm: morphunits
 		fpdoc --package=morphunits --ostarget=morphos --cputarget=powerpc --content --descr-dir=./morphxml/ --input-dir=morphunits/src/ --output=morphunits.chm $(CHMPARAMS)
 
 os4units.tgz: os4units
-		fpdoc --package=os4units --ostarget=amiga --cputarget=powerpc --content --descr-dir=./os4xml/ --input-dir=os4units/src/--output=os4html/ $(HTMLPARAMS)
+		fpdoc --package=os4units --ostarget=amiga --cputarget=powerpc --content --descr-dir=./os4xml/ --input-dir=os4units/src/ --output=os4html/ $(HTMLPARAMS)
 		tar -czf os4units.tgz os4html/*
 os4units.chm: os4units
 		./fpdoc --package=os4units --ostarget=amiga --cputarget=powerpc --content --descr-dir=./os4xml/ --input-dir=os4units/src/ --output=os4units.chm $(CHMPARAMS)
