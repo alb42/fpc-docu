@@ -11,7 +11,7 @@ arosunits.chm: arosunits
 		fpdoc --package=aros --ostarget=aros --content --descr-dir=arosxml --input-dir=arosunits/src --output=arosunits.chm $(CHMPARAMS)
 
 amunits.tgz: amunits
-		fpdoc --package=amunit --ostarget=amiga --content --descr-dir=amxml --input-dir=amunits/src/coreunits/ --output=amhtml/ $(HTMLPARAMS)
+		fpdoc --package=amunit --ostarget=amiga --content --descr-dir=amxml --input-dir=amunits/src/coreunits/ --input-dir=amunits/src/otherlibs/ --output=amhtml/ $(HTMLPARAMS)
 		tar -czf amunits.tgz amhtml/*
 amunits.chm: amunits
 		fpdoc --package=amunits --ostarget=amiga --content --descr-dir=amxml --input-dir=amunits/src/coreunits/ --output=amunits.chm $(CHMPARAMS)
