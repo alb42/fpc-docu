@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fpdoc-descriptions>
+<package name="morphunits">
+
+<!--
+  ====================================================================
+    diskfont
+  ====================================================================
+-->
+
+<module name="diskfont">
+<short></short>
+<descr>
+</descr>
+
+<!-- constant Visibility: default -->
+<element name="MAXFONTPATH">
+<short>Maximum length (including null terminator) of a filesystem path to a Font file.</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PFontContents">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TFontContents">
+<short></short>
+<descr>
+</descr>
+<seealso>
+  <link id="TFontContentsHeader"/>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFontContents.fc_FileName">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFontContents.fc_YSize">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFontContents.fc_Style">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFontContents.fc_Flags">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PTFontContents">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TTFontContents">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTFontContents.tfc_FileName">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTFontContents.tfc_TagCount">
+<short>Including the TAG_DONE tag. if tfc_TagCount is non-zero, tfc_FileName is overlayed with Text Tags</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTFontContents.tfc_YSize">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTFontContents.tfc_Style">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTFontContents.tfc_Flags">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FCH_ID">
+<short><link id="TFontContentsHeader"/>.fch_FileID, then <link id="TFontContents"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TFCH_ID">
+<short><link id="TFontContentsHeader"/>.fch_FileID, then <link id="TTFontContents"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="OFCH_ID">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PFontContentsHeader">
+<short></short>
+<descr>
+</descr>
+<seealso>
+  <link id="NewFontContents"/>
+  <link id="DisposeFontContents"/>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TFontContentsHeader">
+<short></short>
+<descr>
+</descr>
+<seealso>
+  <link id="NewFontContents"/>
+  <link id="DisposeFontContents"/>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFontContentsHeader.fch_FileID">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFontContentsHeader.fch_NumEntries">
+<short><link id="FCH_ID"/>, <link id="TFCH_ID"/> or <link id="OFCH_ID"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DFH_ID">
+<short><link id="TDiskFontHeader"/>.dfh_FileID</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MAXFONTNAME">
+<short>Font name including '.font'#0</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PDiskFontHeader">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TDiskFontHeader">
+<short>If dfh_TF.tf_Style <b>FSB_TAGGED</b> bit is set, dfh_Segment points to a TagList
+the taglist is destroyed on loading</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskFontHeader.dfh_DF">
+<short>Node to link disk fonts</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskFontHeader.dfh_FileID">
+<short><link id="DFH_ID"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskFontHeader.dfh_Revision">
+<short>The font revision</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskFontHeader.dfh_Segment">
+<short>The segment address when loaded</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskFontHeader.dfh_Name">
+<short>the font name (#0 terminated)</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDiskFontHeader.dfh_TF">
+<short>loaded TextFont structure</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFB_MEMORY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFF_MEMORY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFB_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFF_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFB_SCALED">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFF_SCALED">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFB_BITMAP">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFF_BITMAP">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFB_TAGGED">
+<short>return <link id="TAvailFonts"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFF_TAGGED">
+<short>return <link id="TAvailFonts"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PAvailFonts">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TAvailFonts">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAvailFonts.af_Type">
+<short><link id="AFF_MEMORY"/>, <link id="AFF_DISK"/> or <link id="AFF_SCALED"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAvailFonts.af_Attr">
+<short>text attributes for font</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PTAvailFonts">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TTAvailFonts">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTAvailFonts.taf_Type">
+<short><link id="AFF_MEMORY"/>, <link id="AFF_DISK"/> or <link id="AFF_SCALED"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTAvailFonts.taf_Attr">
+<short>text attributes for font</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PAvailFontsHeader">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TAvailFontsHeader">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAvailFontsHeader.afh_NumEntries">
+<short>number of AvailFonts elements</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DISKFONTNAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="DiskfontBase">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AvailFonts">
+<short>Inquire available memory and disk fonts.</short>
+<descr>
+     <p>AvailFonts fills a user supplied buffer with the structure,
+     described below, that contains information about all the
+     fonts available in memory and/or on disk.  Those fonts
+     available on disk need to be loaded into memory and opened
+     via OpenDiskFont, those already in memory are accessed via
+     OpenFont.  The <link id="agraphics.TTextAttr">TTextAttr</link> structure required by the open calls
+     is part of the information AvailFonts supplies.</p>
+     <p>
+     When AvailFonts fails, it returns the number of extra bytes
+     it needed to complete the command.  Add this number to your
+     current buffer size, allocate a new buffer, and try again.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AvailFonts.Result">
+<short>if non-zero, this indicates the number of bytes needed
+       for AvailFonts in addition to those supplied.  Thus
+       structure elements were not returned because of
+       insufficient bufBytes.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AvailFonts.Buffer">
+<short>memory to be filled with <link id="TAvailFontsHeader"/>
+       followed by an array of <link id="TAvailFonts"/> elements, which
+       contains entries for the available fonts and their
+       names.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AvailFonts.BufBytes">
+<short>the number of bytes in the buffer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AvailFonts.Flags">
+<short><link id="AFF_MEMORY"/> is set to search memory for fonts to fill
+       the structure, <link id="AFF_DISK"/> is set to search the disk for
+       fonts to fill the structure. <link id="AFF_SCALED"/> is set to
+       not filter out memory fonts that are not designed.
+       Any combination may be specified. <link id="AFF_TAGGED"/> is set
+       to fill the buffer with <link id="TTAvailFonts"/> elements instead
+       of <link id="TAvailFonts"/> elements.</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="DisposeFontContents">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="DisposeFontContents.FontContentsHeader">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewFontContents">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewFontContents.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewFontContents.FontsLock">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewFontContents.FontName">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewScaledDiskFont">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewScaledDiskFont.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewScaledDiskFont.SourceFont">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewScaledDiskFont.DestTextAttr">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="OpenDiskFont">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="OpenDiskFont.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="OpenDiskFont.TextAttr">
+<short></short>
+</element>
+
+
+<!-- uses unit Visibility: default -->
+<element name="exec">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="agraphics">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="utility">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="GetDiskFontCtrl">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="GetDiskFontCtrl.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetDiskFontCtrl.tagid">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="SetDiskFontCtrlA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetDiskFontCtrlA.taglist">
+<short></short>
+</element>
+
+
+</module> <!-- diskfont -->
+
+</package>
+</fpdoc-descriptions>
