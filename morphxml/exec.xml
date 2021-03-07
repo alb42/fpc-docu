@@ -5007,78 +5007,6 @@ This structure is <b>READ ONLY</b> and only EXEC can create it!
 </seealso>
 </element>
 
-<!-- pointer type Visibility: default -->
-<element name="PAVLNode">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- record type Visibility: default -->
-<element name="tAVLNode">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- variable Visibility: default -->
-<element name="tAVLNode.reserved">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="ppAVLNode">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PAVLNODECOMP">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- alias type Visibility: default -->
-<element name="AVLNODECOMP">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- pointer type Visibility: default -->
-<element name="PAVLKEYCOMP">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- alias type Visibility: default -->
-<element name="AVLKEYCOMP">
-<short></short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
 <!-- function Visibility: default -->
 <element name="AbortIO">
 <short>Attempt to abort an in-progress I/O request</short>
@@ -6131,70 +6059,6 @@ A call to <link id="DeletePool"/> will free all memory blocks allocated in the p
 <!-- argument Visibility: default -->
 <element name="CheckIO.ioRequest">
 <short>Pointer to an I/O request block</short>
-</element>
-
-<!-- procedure Visibility: default -->
-<element name="ChildFree">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="ChildFree.tid">
-<short></short>
-</element>
-
-<!-- procedure Visibility: default -->
-<element name="ChildOrphan">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="ChildOrphan.tid">
-<short></short>
-</element>
-
-<!-- procedure Visibility: default -->
-<element name="ChildStatus">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="ChildStatus.tid">
-<short></short>
-</element>
-
-<!-- procedure Visibility: default -->
-<element name="ChildWait">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="ChildWait.tid">
-<short></short>
 </element>
 
 <!-- procedure Visibility: default -->
@@ -8750,69 +8614,6 @@ In fact it is recommended that you do not use it at all.
 <short>A pointer to the message port</short>
 </element>
 
-<!-- function Visibility: default -->
-<element name="BitMask">
-<short>Returns the Bit as Longint Value</short>
-<descr>Sets the Bit defined by <var>no</var> and returns the value.
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- function result Visibility: default -->
-<element name="BitMask.Result">
-<short>Longint Value where the bit number <var>no</var> is set.</short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="BitMask.no">
-<short>Number of bit to set</short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="IsListEmpty">
-<short>Check if a list is empty</short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- function result Visibility: default -->
-<element name="IsListEmpty.Result">
-<short>True is list is empty, false if it contains nodes.</short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="IsListEmpty.list">
-<short>A pointer to a list</short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="IsMsgPortEmpty">
-<short>Check if a messageport is empty</short>
-<descr>Easy way to check if a messageport has messages or not without removing the message from the messageport.
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- function result Visibility: default -->
-<element name="IsMsgPortEmpty.Result">
-<short>True if no messages are there, False if there are at least one message in the messageport</short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="IsMsgPortEmpty.mp">
-<short>A pointer to the messageport</short>
-</element>
-
 <!-- variable Visibility: default -->
 <element name="TResident.rt_Revision">
 <short></short>
@@ -8908,11 +8709,6 @@ In fact it is recommended that you do not use it at all.
 <short></short>
 </element>
 
-<!-- function result Visibility: default -->
-<element name="ChildWait.Result">
-<short></short>
-</element>
-
 <!-- argument Visibility: default -->
 <element name="AddMemHandler.MemHandler">
 <short></short>
@@ -8920,22 +8716,6 @@ In fact it is recommended that you do not use it at all.
 
 <!-- argument Visibility: default -->
 <element name="RemMemHandler.MemHandler">
-<short></short>
-</element>
-
-<!-- procedure Visibility: default -->
-<element name="NewList">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="NewList.List">
 <short></short>
 </element>
 
@@ -8981,263 +8761,252 @@ In fact it is recommended that you do not use it at all.
 <short></short>
 </element>
 
-<!-- function Visibility: default -->
-<element name="AVL_AddNode">
+
+<!-- variable Visibility: default -->
+<element name="ExecBase">
 <short></short>
 <descr>
 </descr>
-<errors>
-</errors>
 <seealso>
 </seealso>
 </element>
 
-<!-- function result Visibility: default -->
-<element name="AVL_AddNode.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_AddNode.Root">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_AddNode.Node">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_AddNode.Func">
-<short></short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="AVL_RemNodeByAddress">
+<!-- alias type Visibility: default -->
+<element name="WSTRPTR">
 <short></short>
 <descr>
 </descr>
-<errors>
-</errors>
 <seealso>
 </seealso>
 </element>
 
-<!-- function result Visibility: default -->
-<element name="AVL_RemNodeByAddress.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_RemNodeByAddress.Root">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_RemNodeByAddress.Node">
-<short></short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="AVL_RemNodeByKey">
+<!-- alias type Visibility: default -->
+<element name="IPTR">
 <short></short>
 <descr>
 </descr>
-<errors>
-</errors>
 <seealso>
 </seealso>
 </element>
 
-<!-- function result Visibility: default -->
-<element name="AVL_RemNodeByKey.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_RemNodeByKey.Root">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_RemNodeByKey.Key">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_RemNodeByKey.Func">
-<short></short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="AVL_FindNode">
+<!-- alias type Visibility: default -->
+<element name="SIPTR">
 <short></short>
 <descr>
 </descr>
-<errors>
-</errors>
 <seealso>
 </seealso>
-</element>
-
-<!-- function result Visibility: default -->
-<element name="AVL_FindNode.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_FindNode.Root">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_FindNode.Key">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_FindNode.Func">
-<short></short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="AVL_FindPrevNodeByAddress">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- function result Visibility: default -->
-<element name="AVL_FindPrevNodeByAddress.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_FindPrevNodeByAddress.Node">
-<short></short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="AVL_FindPrevNodeByKey">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- function result Visibility: default -->
-<element name="AVL_FindPrevNodeByKey.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_FindPrevNodeByKey.Node">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_FindPrevNodeByKey.Key">
-<short></short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="AVL_FindNextNodeByAddress">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- function result Visibility: default -->
-<element name="AVL_FindNextNodeByAddress.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_FindNextNodeByAddress.Node">
-<short></short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="AVL_FindNextNodeByKey">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- function result Visibility: default -->
-<element name="AVL_FindNextNodeByKey.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_FindNextNodeByKey.Node">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_FindNextNodeByKey.Key">
-<short></short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="AVL_FindFirstNode">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- function result Visibility: default -->
-<element name="AVL_FindFirstNode.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_FindFirstNode.Root">
-<short></short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="AVL_FindLastNode">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- function result Visibility: default -->
-<element name="AVL_FindLastNode.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="AVL_FindLastNode.Root">
-<short></short>
 </element>
 
 <!-- constant Visibility: default -->
-<element name="RTM_WHEN">
+<element name="TRAP_MASK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_AREA_START">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_LIB">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_LIB_QUICK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_LIBNR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_LIBNR_QUICK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_ISYNC">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_SYNC">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_EIEIO">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_LIBSR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_LIBSRNR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_LIBD0_D1">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_LIBRESTORE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_LIBD0D1SR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TRAP_LIBD0D1A0A1SR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EMULTAG_NAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EMULTAG_VERSION">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EMULTAG_REVISION">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EMULTAG_OPCODETABLE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EMULTAG_TYPE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EMULTAG_EMULHANDLE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EMULTAG_EMULHANDLESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EMULTAG_SUPERHANDLE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EMULTAG_SUPERHANDLESIZE">
 <short></short>
 <descr>
 </descr>
@@ -9246,7 +9015,7 @@ In fact it is recommended that you do not use it at all.
 </element>
 
 <!-- pointer type Visibility: default -->
-<element name="pSemaphore">
+<element name="PEmulLibEntry">
 <short></short>
 <descr>
 </descr>
@@ -9255,7 +9024,7 @@ In fact it is recommended that you do not use it at all.
 </element>
 
 <!-- record type Visibility: default -->
-<element name="tSemaphore">
+<element name="TEmulLibEntry">
 <short></short>
 <descr>
 </descr>
@@ -9264,74 +9033,244 @@ In fact it is recommended that you do not use it at all.
 </element>
 
 <!-- variable Visibility: default -->
-<element name="tSemaphore.sm_MsgPort">
+<element name="TEmulLibEntry.Trap">
 <short></short>
 </element>
 
 <!-- variable Visibility: default -->
-<element name="tSemaphore.sm_Bids">
+<element name="TEmulLibEntry.Extension">
 <short></short>
 </element>
 
-<!-- procedure Visibility: default -->
-<element name="NewMinList">
+<!-- variable Visibility: default -->
+<element name="TEmulLibEntry.Func">
+<short></short>
+</element>
+
+<!-- enumeration type Visibility: default -->
+<element name="TEmulRegs">
 <short></short>
 <descr>
 </descr>
-<errors>
-</errors>
 <seealso>
 </seealso>
 </element>
 
-<!-- argument Visibility: default -->
-<element name="NewMinList.minlist">
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regD0">
 <short></short>
 </element>
 
-<!-- argument Visibility: default -->
-<element name="AVL_FindPrevNodeByKey.root">
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regD1">
 <short></short>
 </element>
 
-<!-- argument Visibility: default -->
-<element name="AVL_FindPrevNodeByKey.func">
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regD2">
 <short></short>
 </element>
 
-<!-- argument Visibility: default -->
-<element name="AVL_FindNextNodeByKey.root">
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regD3">
 <short></short>
 </element>
 
-<!-- argument Visibility: default -->
-<element name="AVL_FindNextNodeByKey.func">
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regD4">
 <short></short>
 </element>
 
-<!-- procedure Visibility: default -->
-<element name="BeginIO">
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regD5">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regD6">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regD7">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regA0">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regA1">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regA2">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regA3">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regA4">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regA5">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regA6">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regA7">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regPC">
+<short></short>
+</element>
+
+<!-- enumeration value Visibility: default -->
+<element name="TEmulRegs.regSR">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PEmulHandle">
 <short></short>
 <descr>
 </descr>
-<errors>
-</errors>
 <seealso>
 </seealso>
 </element>
 
-<!-- argument Visibility: default -->
-<element name="BeginIO.IORequest">
+<!-- record type Visibility: default -->
+<element name="TEmulHandle">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TEmulHandle.reg">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TEmulHandle.SuperHandle">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TEmulHandle._Type">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TEmulHandle.Flags">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TEmulHandle.EmulFunc">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TEmulHandle.EmulCallOS">
+<short></short>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TEmulHandle.EmulCallOS.Result">
 <short></short>
 </element>
 
 <!-- argument Visibility: default -->
-<element name="CreateExtIO.Port">
+<element name="TEmulHandle.EmulCallOS.EmulCaos">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TEmulHandle.EmulCall68k">
+<short></short>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TEmulHandle.EmulCall68k.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TEmulHandle.EmulCall68k.EmulCaos">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TEmulHandle.EmulCallQuick68k">
+<short></short>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TEmulHandle.EmulCallQuick68k.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TEmulHandle.EmulCallQuick68k.EmulCaos">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TEmulHandle.EmulCallDirectOS">
+<short></short>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TEmulHandle.EmulCallDirectOS.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TEmulHandle.EmulCallDirectOS.arg">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TEmulHandle.EmulCallDirect68k">
+<short></short>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TEmulHandle.EmulCallDirect68k.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TEmulHandle.EmulCallDirect68k.arg">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TEmulHandle.OldEmulHandle">
 <short></short>
 </element>
 
 <!-- function Visibility: default -->
-<element name="CreateStdIO">
+<element name="GetEmulHandle">
 <short></short>
 <descr>
 </descr>
@@ -9342,33 +9281,12 @@ In fact it is recommended that you do not use it at all.
 </element>
 
 <!-- function result Visibility: default -->
-<element name="CreateStdIO.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="CreateStdIO.Port">
-<short></short>
-</element>
-
-<!-- procedure Visibility: default -->
-<element name="DeleteStdIO">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="DeleteStdIO.IOReq">
+<element name="GetEmulHandle.Result">
 <short></short>
 </element>
 
 <!-- function Visibility: default -->
-<element name="CreatePort">
+<element name="REG_D0">
 <short></short>
 <descr>
 </descr>
@@ -9379,38 +9297,12 @@ In fact it is recommended that you do not use it at all.
 </element>
 
 <!-- function result Visibility: default -->
-<element name="CreatePort.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="CreatePort.Name">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="CreatePort.Pri">
-<short></short>
-</element>
-
-<!-- procedure Visibility: default -->
-<element name="DeletePort">
-<short></short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="DeletePort.Port">
+<element name="REG_D0.Result">
 <short></short>
 </element>
 
 <!-- function Visibility: default -->
-<element name="CreateTask">
+<element name="REG_D1">
 <short></short>
 <descr>
 </descr>
@@ -9421,32 +9313,3681 @@ In fact it is recommended that you do not use it at all.
 </element>
 
 <!-- function result Visibility: default -->
-<element name="CreateTask.Result">
+<element name="REG_D1.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_D2">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_D2.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_D3">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_D3.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_D4">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_D4.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_D5">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_D5.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_D6">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_D6.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_D7">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_D7.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_A0">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_A0.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_A1">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_A1.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_A2">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_A2.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_A3">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_A3.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_A4">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_A4.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_A5">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_A5.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_A6">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_A6.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_A7">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_A7.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_PC">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_PC.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="REG_SR">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="REG_SR.Result">
+<short></short>
+</element>
+
+<!-- alias type Visibility: default -->
+<element name="PTagItem">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- alias type Visibility: default -->
+<element name="PHook">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TList.lh_pad">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="IOERR_NOMEMORY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="RTF_EXTENDED">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="RTF_PPC">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MEMF_SWAP">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MEMF_31BIT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MEMF_SEM_PROTECTED">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TFreeBlocksData">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFreeBlocksData.fbd_NumBlocks">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFreeBlocksData.fbd_Blocks">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PFreeBlocksData">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PETask">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PTaskTrapMessage">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TETask">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.Message">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.Parent">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.UniqueID">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.Children">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.TrapAlloc">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.TrapAble">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.Result1">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.Result2">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.MsgPort">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.MemPool">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.PPCSPLower">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.PPCSPUpper">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.PPCRegFrame">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.PPCLibData">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.PPCTrapMsgPort">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TETask.PPCTrapMessage">
+<short></short>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TTaskTrapMessage">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage.Message">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage.Task">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage.Version">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage.TType">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage.DAR">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage.DSISR">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PTaskInitExtension">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TTaskInitExtension">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskInitExtension.Trap">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskInitExtension.Extension">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskInitExtension.Tags">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TAG_USER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_DUMMY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_ERROR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_CODETYPE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_PC">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_FINALPC">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_STACKSIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_STACKSIZE_M68K">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_NAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_USERDATA">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_PRI">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_POOLPUDDLE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_POOLTHRESH">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_PPC_ARG1">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_PPC_ARG2">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_PPC_ARG3">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_PPC_ARG4">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_PPC_ARG5">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_PPC_ARG6">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_PPC_ARG7">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_PPC_ARG8">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_STARTUPMSG">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_TASKMSGPORT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_FLAGS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKTAG_TCBEXTRASIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="CODETYPE_M68K">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="CODETYPE_PPC">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKERROR_OK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKERROR_NOMEMORY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SIGB_NET">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SIGF_NET">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PTaskTrapMessage_68k">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TTaskTrapMessage_68k">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage_68k.Message">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage_68k.Task">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage_68k.Version">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage_68k.TType">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage_68k.Format">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage_68k.Address">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage_68k.FLSW">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskTrapMessage_68k.MyEmulHandle">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="VERSION_TASKTRAPMESSAGE_68k">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="VERSION_TASKTRAPMESSAGE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PPPCStackSwapArgs">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TPPCStackSwapArgs">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TPPCStackSwapArgs.Args">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_ALLTASK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_NAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PRI">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_TYPE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_STATE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_FLAGS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_SIGALLOC">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_SIGWAIT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_SIGRECVD">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_SIGEXCEPT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_EXCEPTDATA">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_EXCEPTCODE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_TRAPDATA">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_TRAPCODE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_STACKSIZE_M68K">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_STACKSIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_USEDSTACKSIZE_M68K">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_USEDSTACKSIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_TRAPMSGPORT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_STARTUPMSG">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_TASKMSGPORT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_POOLPTR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_POOLMEMFLAGS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_POOLPUDDLESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_POOLTHRESHSIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_NICE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_AGETICKS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_CPUTIME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_LASTSECCPUTIME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_RECENTCPUTIME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_VOLUNTARYCSW">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_INVOLUNTARYCSW">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_LASTSECVOLUNTARYCSW">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_LASTSECINVOLUNTARYCSW">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_LAUNCHTIMETICKS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_LAUNCHTIMETICKS1978">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PID_CLI">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_SPLOWER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_SPUPPER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_SPLOWER_M68K">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_SPUPPER_M68K">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_NAMECOPY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_USERDATA">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_RESURRECT_TASK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_EMULHANDLE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_EXCEPTIONCOUNT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_HITCOUNT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_MAXHITCOUNT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_ALERTCOUNT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_MAXALERTCOUNT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PID">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_68K_NEWFRAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_SRR0">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_SRR1">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_LR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_CTR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_CR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_XER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_GPR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_FPR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_FPSCR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_VSCR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_VMX">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_VSAVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_FRAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_FRAMESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTYPE_PPC_NEWFRAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTAG_DUMMY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTAG_HOOK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTAG_REGSTART">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TASKINFOTAG_REGCOUNT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PTaskFrame68k">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TTaskFrame68k">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskFrame68k.PC">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskFrame68k.SR">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TTaskFrame68k.Xn">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DEFAULT_PPCSTACKSIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DEFAULT_M68KSTACKSIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DEFAULT_TASKPUDDLESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DEFAULT_TASKTHRESHSIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PID_CURRENT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AG_MsgPortNotEmpty">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TAlertMessage">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAlertMessage.Message">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAlertMessage.Task">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAlertMessage.Version">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAlertMessage.ID">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="VERSION_ALERTMESSAGE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MACHINE_M68k">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MACHINE_PPC">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MACHINE_NO">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIB_GETQUERYATTR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBF_RAMLIB">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBF_QUERYINFO">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTAG_Dummy">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTAG_MACHINE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTAG_TYPE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTAG_IDNAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTAG_DELETE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTYPE_NORMAL">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTYPE_QUICK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTYPE_NORMALNR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTYPE_QUICKNR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTYPE_NORMALSR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTYPE_NORMALSRNR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTYPE_NORMALD0_D1">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTYPE_NORMALRESTORE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTYPE_SYSTEMV">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTYPE_NORMALD0D1SR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SETFUNCTYPE_NORMALD0D1A0A1SR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_BASE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_FUNCTIONINIT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_STRUCTINIT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_LIBRARYINIT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_MACHINE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_BASESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_SEGLIST">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_PRI">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_TYPE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_VERSION">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_FLAGS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_NAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_IDSTRING">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_PUBLIC">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_REVISION">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LIBTAG_QUERYINFO">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PFuncEntry">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TFuncEntry">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFuncEntry.EmulLibEntry">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFuncEntry.OldFunction">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PFuncOldEntry">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TFuncOldEntry">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFuncOldEntry.Command">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFuncOldEntry.FuncEntry">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCENTRYEXTF_LIBRARY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCENTRYEXTF_SETFUNCTION">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_16BIT_OLD">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_32BIT_NATIVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_BEGIN">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_END">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_32BIT_QUICK_NATIVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_32BIT_QUICKNR_NATIVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_32BIT_NR_NATIVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_32BIT_SR_NATIVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_32BIT_SRNR_NATIVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_32BIT_D0D1_NATIVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_32BIT_RESTORE_NATIVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_32BIT_SYSTEMV">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_32BIT_D0D1SR_NATIVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FUNCARRAY_32BIT_D0D1A0A1SR_NATIVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="CPUTBSTACKTRACECOUNT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TExecBase.ex_EmulHandleSize">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TExecBase.ex_PPCTrapMsgPort">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TExecBase.ex_PatchPool">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TExecBase.ex_PPCTaskExitCode">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFB_PRIVATE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="AFF_PRIVATE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SB_SAR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SB_TQE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SB_SINT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SF_SAR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SF_TQE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SF_SINT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_INITRESIDENT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_INITCODE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_FINDRESIDENT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_CREATELIBRARY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_SETFUNCTION">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_NEWSETFUNCTION">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_CHIPRAM">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_ADDTASK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_REMTASK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_GETTASKATTR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_SETTASKATTR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_EXCEPTHANDLER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_ADDDOSNODE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_PCI">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_RAMLIB">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_NOLOGSERVER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_NOLOGWINDOW">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_LOGFILE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_LOGKPRINTF">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_PERMMEMTRACK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_MEMTRACK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_CYBERGUARDDEADLY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_LOADSEG">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_UNLOADSEG">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_PPCSTART">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_CGXDEBUG">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_INIT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECDEBUGF_LOG">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECLIST_DEVICE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECLIST_INTERRUPT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECLIST_LIBRARY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECLIST_MEMHANDLER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECLIST_MEMHEADER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECLIST_PORT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECLIST_RESOURCE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECLIST_SEMAPHORE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECLIST_TASK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PExecNotifyMessage">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TExecNotifyMessage">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TExecNotifyMessage.MType">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TExecNotifyMessage.Flags">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TExecNotifyMessage.Extra">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TExecNotifyMessage.Extension">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECNOTIFYF_REMOVE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXECNOTIFYF_POST">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SAL_Dummy">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SAL_Type">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SAL_Priority">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SAL_Name">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="RAWFMTFUNC_STRING">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="RAWFMTFUNC_SERIAL">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="RAWFMTFUNC_COUNT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_SYSTEM">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_MACHINE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_CPUVERSION">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_CPUREVISION">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_CPUCLOCK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_BUSCLOCK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_ICACHEL1SIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_ICACHEL1LINES">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_ICACHEL1LINESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_DCACHEL1SIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_DCACHEL1LINES">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_DCACHEL1LINESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_CACHEL1TYPE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_CACHEL1FLAGS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_ICACHEL2SIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_ICACHEL2LINES">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_ICACHEL2LINESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_DCACHEL2SIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_DCACHEL2LINES">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_DCACHEL2LINESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_CACHEL2TYPE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_CACHEL2FLAGS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_ICACHEL3SIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_ICACHEL3LINES">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_ICACHEL3LINESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_DCACHEL3SIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_DCACHEL3LINES">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_DCACHEL3LINESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_CACHEL3TYPE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_CACHEL3FLAGS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_TLBENTRIES">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_TLBSETS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_FPU">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_ALTIVEC">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_PERFMONITOR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_DATASTREAM">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_RESERVATIONSIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_BUSTICKS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_CPUTEMP">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PPC_DABR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_PAGESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_CPUCOUNT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_TBCLOCKFREQUENCY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_UPTIMETICKS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_LASTSECTICKS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_RECENTTICKS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_CPUTIME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_LASTSECCPUTIME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_RECENTCPUTIME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_VOLUNTARYCSW">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_INVOLUNTARYCSW">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_LASTSECVOLUNTARYCSW">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_LASTSECINVOLUNTARYCSW">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_LOADAVG1">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_LOADAVG2">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_LOADAVG3">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_TASKSCREATED">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_TASKSFINISHED">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_LAUNCHTIMETICKS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_LAUNCHTIMETICKS1978">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_TASKSRUNNING">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_TASKSSLEEPING">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_EMULHANDLESIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_EXCEPTIONMSGPORT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_TASKEXITCODE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_TASKEXITCODE_M68K">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_EMULATION_START">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_EMULATION_SIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_MODULE_START">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_MODULE_SIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_EXCEPTIONMSGPORT_68K">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_ALERTMSGPORT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_VENDOR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_REVISION">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_MAGIC1">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_MAGIC2">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_MAXHITCOUNT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_MAXALERTCOUNT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_REGUSER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_FREEBLOCKS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_CPUNAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTYPE_CPUFAMILYNAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTAG_DUMMY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTAG_CPUINDEX">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTAG_MEMHEADER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYSTEMINFOTAG_HOOK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TLS_INVALID_INDEX">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TLSTAG_DUMMY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TLSTAG_DESTRUCTOR">
+<short>Tag for <link id="TLSAllocA"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TLSTAG_USERDATA">
+<short>Tag for <link id="TLSAllocA"/></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="InitResident.resident">
 <short></short>
 </element>
 
 <!-- argument Visibility: default -->
-<element name="CreateTask.Name">
+<element name="SetIntVector.interrupt">
 <short></short>
 </element>
 
 <!-- argument Visibility: default -->
-<element name="CreateTask.Pri">
+<element name="AddIntServer.interrupt">
 <short></short>
 </element>
 
 <!-- argument Visibility: default -->
-<element name="CreateTask.InitPC">
+<element name="RemIntServer.interrupt">
 <short></short>
 </element>
 
 <!-- argument Visibility: default -->
-<element name="CreateTask.StackSize">
+<element name="Cause.interrupt">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddLibrary.libHandle">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RemLibrary.libHandle">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CloseLibrary.libHandle">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetFunction.libHandle">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SumLibrary.libHandle">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="OpenDevice.numunit">
 <short></short>
 </element>
 
 <!-- procedure Visibility: default -->
-<element name="DeleteTask">
+<element name="RawIOInit">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function Visibility: default -->
+<element name="RawMayGetChar">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="RawMayGetChar.Result">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="RawPutChar">
 <short></short>
 <descr>
 </descr>
@@ -9457,8 +12998,1750 @@ In fact it is recommended that you do not use it at all.
 </element>
 
 <!-- argument Visibility: default -->
-<element name="DeleteTask.Task">
+<element name="RawPutChar.d0arg">
 <short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="OpenLibrary.libver">
+<short></short>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="SumKickData.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewGetTaskAttrsA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewGetTaskAttrsA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskAttrsA.Task">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskAttrsA.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskAttrsA.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskAttrsA.TType">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskAttrsA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewSetTaskAttrsA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewSetTaskAttrsA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskAttrsA.Task">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskAttrsA.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskAttrsA.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskAttrsA.TType">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskAttrsA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewSetFunction">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewSetFunction.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetFunction.libHandle">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetFunction.newfunction">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetFunction.offset">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetFunction.tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewCreateLibrary">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewCreateLibrary.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewCreateLibrary.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewPPCStackSwap">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewPPCStackSwap.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewPPCStackSwap.newStack">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewPPCStackSwap.sfunction">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewPPCStackSwap.args">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="TaggedOpenLibrary">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TaggedOpenLibrary.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TaggedOpenLibrary.d0arg">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ReadGayle">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ReadGayle.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="VNewRawDoFmt">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="VNewRawDoFmt.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="VNewRawDoFmt.FmtString">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="VNewRawDoFmt.PutChProc">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="VNewRawDoFmt.PutChData">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="VNewRawDoFmt.args">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="CacheFlushDataArea">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CacheFlushDataArea.Address">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CacheFlushDataArea.Size">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="CacheInvalidInstArea">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CacheInvalidInstArea.Address">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CacheInvalidInstArea.Size">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="CacheInvalidDataArea">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CacheInvalidDataArea.Address">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CacheInvalidDataArea.Size">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="CacheFlushDataInstArea">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CacheFlushDataInstArea.Address">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CacheFlushDataInstArea.Size">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="CacheTrashCacheArea">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CacheTrashCacheArea.Address">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CacheTrashCacheArea.Size">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AllocTaskPooled">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AllocTaskPooled.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocTaskPooled.Size">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="FreeTaskPooled">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FreeTaskPooled.Address">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FreeTaskPooled.Size">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AllocVecTaskPooled">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AllocVecTaskPooled.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocVecTaskPooled.Size">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="FreeVecTaskPooled">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FreeVecTaskPooled.Address">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="FlushPool">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FlushPool.poolHeader">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="FlushTaskPool">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AllocVecPooled">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AllocVecPooled.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocVecPooled.poolHeader">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocVecPooled.memSize">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="FreeVecPooled">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="FreeVecPooled.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FreeVecPooled.poolHeader">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FreeVecPooled.memory">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewGetSystemAttrsA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewGetSystemAttrsA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetSystemAttrsA.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetSystemAttrsA.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetSystemAttrsA.TType">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetSystemAttrsA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewSetSystemAttrsA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewSetSystemAttrsA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetSystemAttrsA.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetSystemAttrsA.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetSystemAttrsA.TType">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetSystemAttrsA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewCreateTaskA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewCreateTaskA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewCreateTaskA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AllocateAligned">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AllocateAligned.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocateAligned.memHeader">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocateAligned.byteSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocateAligned.alignSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocateAligned.alignOffset">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AllocMemAligned">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AllocMemAligned.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocMemAligned.byteSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocMemAligned.attributes">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocMemAligned.alignSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocMemAligned.alignOffset">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AllocVecAligned">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AllocVecAligned.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocVecAligned.byteSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocVecAligned.attributes">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocVecAligned.alignSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocVecAligned.alignOffset">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="AddExecNotify">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddExecNotify.hook">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="RemExecNotify">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="RemExecNotify.hook">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="FindExecNode">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="FindExecNode.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FindExecNode.ttype">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FindExecNode.name">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddExecNodeA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddExecNodeA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddExecNodeA.innode">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddExecNodeA.TagItems">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AllocVecDMA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AllocVecDMA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocVecDMA.byteSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocVecDMA.requirements">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="FreeVecDMA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FreeVecDMA.memoryBlock">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AllocPooledAligned">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AllocPooledAligned.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocPooledAligned.poolHeader">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocPooledAligned.byteSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocPooledAligned.alignSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocPooledAligned.alignOffset">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddResident">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddResident.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddResident.resident">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="FindTaskByPID">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="FindTaskByPID.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FindTaskByPID.processID">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="DumpTaskState">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="DumpTaskState.Task">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="AddExecNotifyType">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddExecNotifyType.Hook">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddExecNotifyType.Type_">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ShutdownA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ShutdownA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ShutdownA.MyTags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AvailPool">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AvailPool.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AvailPool.PoolHeader">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AvailPool.Flags">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="PutMsgHead">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="PutMsgHead.Port">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="PutMsgHead.Message">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewGetTaskPIDAttrsA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewGetTaskPIDAttrsA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskPIDAttrsA.PID">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskPIDAttrsA.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskPIDAttrsA.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskPIDAttrsA.Type_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskPIDAttrsA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewSetTaskPIDAttrsA">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewSetTaskPIDAttrsA.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskPIDAttrsA.PID">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskPIDAttrsA.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskPIDAttrsA.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskPIDAttrsA.Type_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskPIDAttrsA.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="TLSAlloc">
+<short>VarArgs version of <link id="TLSAllocA"/></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TLSAlloc.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TLSAlloc.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="TLSFree">
+<short>Free Thread-Local Storage index</short>
+<descr><p>Deallocates a Thread-Local Storage index and returns it to the global
+    index pool.</p>
+<p><b>Attention</b></p>
+<p>It is illegal to free a Thread-Local Storage index while it is still
+    in use. Unspecified bad things may happen if this is done. The caller
+    is responsible for ensuring that TLSFree is not called prematurely.</p>
+</descr>
+<errors>
+</errors>
+<seealso>  
+  <link id="TLSAlloc"/>
+  <link id="TLSFree"/>
+  <link id="TLSSetValue"/>
+  <link id="TLSCallDestructors"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TLSFree.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TLSFree.Idx">
+<short>Index to free. Must have been allocated with <link id="TLSAlloc"/> earlier. Passing <link id="TLS_INVALID_INDEX"/> is safe and does nothing.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="TLSGetValue">
+<short>get the task specific value associated with a given Thread-Local Storage index (V51.46)</short>
+<descr>
+<p>Return the task specific value currently associated with the given
+    Thread-Local Storage index. Initial value is NULL if not yet set with
+    TLSSetValue.</p>
+<p><b>Attention</b></p>
+<p>This function is safe to abort mid-execution: This means that there
+    is are global locks, nor does any state change during the execution
+    of this function. Typically you don't need to care about such issues
+    but in some specific instances this information is valueable.</p>
+<p>
+    This function is very fast.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TLSGetValue.Result">
+<short>value associated with the current task.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TLSGetValue.Idx">
+<short>index to return value for.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="TLSSetValue">
+<short>set the task specific value associated with a given Thread-Local Storage index (V51.46)</short>
+<descr><p>Set the task specific value associated with the given Thread-Local Storage index.</p>
+<p><b>Attention</b></p>
+<p>The result of this call must be checked and a viable error handling path taken.</p>
+<p><b>Example</b></p>
+<code>
+Ttlsdata = record
+  foo: LongWord;
+  bar: PChar;
+  // ... 
+end;
+Ptlsdata = ^TTtlsdata;
+
+var
+  tlsindex: LongWord; // Set and cleaned up elsewhere
+  TLSData: Ptlsdata;
+
+begin
+
+  Data := PTLSData(TLSGetValue(tlsindex));
+  if not Assigned(data) then
+  begin
+    data := PTLSData(AllocVec(SizeOf(Ttlsdata), MEMF_CLEAR));    
+    if not Assigned(data) or (TLSSetValue(tlsindex, data) &lt;&gt; 0) then
+    begin
+      if Assigned(data) then
+      begin
+        FreeVec(data);
+        data := NULL;
+      end;
+    end;
+  end;
+
+  if Assigned(data) then
+  begin
+    // Use the thread specific data. ...
+  end;
+
+  //...
+
+  // Thread specific data is no longer needed, free it.
+  data := PTLSData(TLSGetValue(tlsindex));
+  if Assigned(data) then
+  begin
+    FreeVec(Data);
+    TLSSetValue(tlsindex, nil); // Always succeeds
+  end;
+end;
+</code>
+</descr>
+<errors>
+</errors>
+<seealso>
+  <link id="TLSFree"/>
+  <link id="TLSAlloc"/>
+  <link id="TLSCallDestructors"/>
+  <link id="TLSGetValue"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TLSSetValue.Result">
+<short>Non-zero if the value could be set, zero if out of
+       resources. Note that setting value to nil will always
+       succeed.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TLSSetValue.Idx">
+<short>index to set value for.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TLSSetValue.Value">
+<short>value to set.</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="TLSCallDestructors">
+<short>Call Thread-Local Storage index destructors for the given task (V51.46)</short>
+<descr>
+<p>Calls destructors for all Thread-Local Storage indices with non-NULL
+    value. The value is passed to the destructor as the first parameter.
+    The value for the given index is set to nil before the call.</p>
+<p>
+    If new indices with destructors appear after the destructors have
+    been called this function performs unspecified number of retries
+    until either there are no more destructors to call or the function
+    gives up due to excessive retry attempts.</p>
+<p><b>Attention</b></p>
+<p>TLSCallDestructors is mainly meant to be used by someone
+    implementing a custom threading solution. This function can be
+    called after the thread has completed its processing and is
+    about the end.</p>
+<p>
+    Calling this function for any other purpose, or before being
+    terminated is illegal.</p>
+<p>
+    Calling this function for other task than self is unwise. The
+    destructor functions might not be called in this case, but could
+    still get deallocated and not called again, ever. Just Don't Do
+    It.</p>
+<p><b>Example</b></p>    
+<code>
+procedure Proc(Parent: PTask, ParentSigMask: LongWord);
+begin
+  // Much work here...
+
+  // Call destructors before we do internal cleanup
+  TLSCallDestructors(nil);
+  // Some cleanup that we need to do before exit
+      
+
+  Forbid();
+  Signal(Parent, ParentSigMask);
+end;
+
+var
+  Sig: ShortInt;
+begin
+  Sig := AllocSignal(-1);
+  if Sig &lt;&gt; -1 then
+  begin
+    if CreateNewProc([
+      NP_Entry,    AsTag(@Proc),
+      NP_CodeType, CODETYPE_PPC,
+      NP_PPC_Arg1, AsTag(FindTask(nil)),
+      NP_PPC_Arg2, 1 shl Sig,
+      TAG_DONE]) &lt;&gt; 0 then
+    begin
+      Wait(1 shl Sig);
+    end;
+  FreeSignal(Sig);
+end;
+</code>
+</descr>
+<errors>
+  MorphOS 3.14 (exec 51.46) had a bug which resulted in the
+  destructors being called out of the expected order. In particular
+  this could cause issues if destructor execution expected
+  destructors getting called once before (potentially) getting called
+  again. This bug was fixed in MorphOS 3.15 (exec 51.48) and later
+  versions. Now all destructors are guaranteed to get called once
+  before getting called again due to non-nil value appearing during
+  some destructor function execution.
+</errors>
+<seealso>
+  <link id="TLSFree"/>
+  <link id="TLSAlloc"/>
+  <link id="TLSSetValue"/>
+  <link id="TLSGetValue"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TLSCallDestructors.Task">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewGetTaskAttrs">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewGetTaskAttrs.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskAttrs.Task">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskAttrs.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskAttrs.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskAttrs.TType">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskAttrs.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewSetTaskAttrs">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewSetTaskAttrs.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskAttrs.Task">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskAttrs.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskAttrs.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskAttrs.TType">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskAttrs.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewCreateLibraryTags">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewCreateLibraryTags.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewCreateLibraryTags.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewGetSystemAttrs">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewGetSystemAttrs.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetSystemAttrs.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetSystemAttrs.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetSystemAttrs.MyType">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetSystemAttrs.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewSetSystemAttrs">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewSetSystemAttrs.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetSystemAttrs.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetSystemAttrs.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetSystemAttrs.MyType">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetSystemAttrs.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewCreateTask">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewCreateTask.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewCreateTask.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddExecNode">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddExecNode.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddExecNode.InNode">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddExecNode.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewGetTaskPIDAttrs">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewGetTaskPIDAttrs.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskPIDAttrs.PID">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskPIDAttrs.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskPIDAttrs.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskPIDAttrs.Type_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewGetTaskPIDAttrs.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewSetTaskPIDAttrs">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewSetTaskPIDAttrs.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskPIDAttrs.PID">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskPIDAttrs.Data">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskPIDAttrs.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskPIDAttrs.Type_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewSetTaskPIDAttrs.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="TLSAllocA">
+<short>Allocate Thread-Local Storage index (V51.46)</short>
+<descr>
+<p>Allocates a Thread-Local Storage index from the global index pool.</p>
+<p><b>Available Tags</b></p>
+<dl>
+  <dt>TLSTAG_DESTRUCTOR</dt><dd><p>A function to call when <link id="TLSCallDestructors"/>() function is called or when the task/process terminates.
+    Default is to call no function. Passing nil has the same effect. destructor is called as</p> <code>procedure(value: APTR; userdata: APTR);</code> </dd>
+  <dt>TLSTAG_USERDATA</dt><dd>Optional userdata to the <var>TLSTAG_DESTRUCTOR</var>
+    function. The default value is nil if thistag is not specified.</dd>
+</dl>
+<p>The destructor function should not take very long to complete. It
+    is for example unwise to ask for user input or similar. The
+    destructor may call <link id="TLSSetValue"/>(index, nil) for the same index.
+    It is also legal to <link id="TLSSetValue"/> some other index to non-nil value.
+    Refer to <link id="TLSCallDestructors"/> documentation for details about this.</p>
+<p>
+    Care must be taken that all accessed resources are valid and
+    accessible during destructor execution. It is also up to the caller
+    to implement any arbitration of resources with for example
+    signalsemaphore, if needed.</p>
+<p>
+    It is the responsiblity of the TLSAlloc caller to ensure that code
+    pointed by <var>TLSTAG_DESTRUCTOR</var> will remain executable for the
+    duration teh index is in use. Specifically the application may not
+    terminate (which unloads the code segment) if there are any other
+    tasks running which may call the destructor.</p>
+<p>
+    If you do not call <link id="TLSCallDestructors"/> yourself the destructor will
+    be executed when the process/task is about to terminate. For process
+    this happens before struct Process fields are deallocated.</p>
+<p><b>Attention</b></p>
+<p>The destructor function must remain callable for as long as index
+    remains allocated.</p>
+<p>
+    It is illegal to <link id="TLSFree"/> an index while it is still being used
+    by <link id="TLSGetValue"/> and/or <link id="TLSSetValue"/> by other tasks. The caller is
+    responsible for making sure this does not happen.</p>
+<p><b>Example</b></p>
+<code>
+uses
+  Exec;
+function func(value: APTR; userdata: APTR): APTR;
+begin
+  
+  FreeVec(value);
+end;
+// ...
+var
+  tlsindex: LongWord;
+begin
+  tlsindex := TLSAlloc([TLSTAG_DESTRUCTOR, AsTag(@func),
+                            TLSTAG_USERDATA,   AsTag(something),
+                            TAG_DONE);
+  if tlsindex &lt;&gt; TLS_INVALID_INDEX then
+  begin
+
+    // ... more code ...
+
+    TLSFree(tlsindex);
+  end
+end.
+</code>
+</descr>
+<errors>
+</errors>
+<seealso>
+  <link id="TLSAlloc"/>
+  <link id="TLSFree"/>
+  <link id="TLSCallDestructors"/>
+  <link id="TLSSetValue"/>
+  <link id="TLSGetValue"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TLSAllocA.Result">
+<short>a global index to Thread-Local Storage or <link id="TLS_INVALID_INDEX"/>
+            if no index was available due to lack of resources.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TLSAllocA.Tags">
+<short>Pointer to a taglist, or nil</short>
 </element>
 
 
