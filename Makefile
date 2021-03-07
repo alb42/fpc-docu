@@ -1,4 +1,4 @@
-.PHONY: arosunits.tgz arosunits.chm amunits.tgz amunits.chm os4units.tgz os4units.chm ami-extra.tgz ami-extra.chm
+.PHONY: arosunits.tgz arosunits.chm amunits.tgz amunits.chm os4units.tgz os4units.chm ami-extra.tgz ami-extra.chm morphunits.tgz morphunits.chm
 HTMLPARAMS=--format=html --charset=UTF-8 --index-colcount=4 --footer-date=yyyy-mm-dd
 CHMPARAMS=--format=chm --charset=UTF-8 --auto-toc --auto-index --make-searchable --footer-date=yyyy-mm-dd
 
