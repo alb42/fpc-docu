@@ -8655,6 +8655,51 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
 <p>
   You may make a local copy of the <link id="TFileInfoBlock">TFileInfoBlock</link>, as long as it is
   never passed to <link id="ExNext">ExNext()</link>.</p>
+<p>
+  So, follow these steps to examine a directory:</p>
+  <ol>
+  <li>Pass a Lock and a FileInfoBlock to <link id="Examine">Examine()</link>.  The lock must
+     be on the directory you wish to examine.</li>
+  <li>Pass <var>ExNext()</var> the same lock and <link id="TFileInfoBlock"/>.</li>
+  <li>Do something with the information returned in the <link id="TFileInfoBlock"/>.
+     Note that the <link id="TFileInfoBlock">fib_DirEntryType</link> field is positive for directories,
+     negative for files.</li>
+  <li>Keep calling <var>ExNext()</var> until it returns False. Check <link id="IoErr">IoErr()</link>
+     to ensure that the reason for failure was <link id="ERROR_NO_MORE_ENTRIES"/>.</li>
+  </ol>
+<p><b>Example</b></p>
+<code>
+program Examine64Test;
+uses
+  AmigaDos;
+procedure CheckDir(ALock: BPTR);
+var
+  FIB: PFileInfoBlock;
+begin
+  FIB := AllocDosObject(DOS_FIB, nil);
+  if Assigned(FIB) then
+  begin
+    if Examine(ALock, FIB) &lt;&gt; 0 then
+    begin
+      repeat
+        writeln(FIB^.fib_FileName);
+      until ExNext(ALock, FIB) = 0;
+    end;
+    if IOErr() = ERROR_NO_MORE_ENTRIES then
+      writeln('nothing more found')
+    else
+      writeln('Something went wrong ', IOErr);
+    FreeDosObject(DOS_FIB, FIB);
+  end;
+end;
+var
+  RAMLock: BPTR;
+begin
+  RAMLock := Lock('RAM:', SHARED_LOCK);
+  CheckDir(RAMLock);
+  unlock(RAMLock);
+end.
+</code>
 </descr>
 <errors>
 </errors>
@@ -8685,11 +8730,31 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
 <!-- function Visibility: default -->
 <element name="ExamineFH">
 <short>Gets information on an open file</short>
-<descr>Examines a filehandle and returns information about the file in the
+<descr><p>Examines a filehandle and returns information about the file in the
   FileInfoBlock.  There are no guarantees as to whether the fib_Size
   field will reflect any changes made to the file size it was opened,
   though filesystems should attempt to provide up-to-date information
-  for it.
+  for it.</p>
+<p><b>Example</b></p>
+<code>
+program ExamineFHTest;
+uses
+  AmigaDOS;
+var
+  FH: BPTR;
+  FIB: PFileInfoBlock;
+begin
+  FH := DOSOpen('c:dir', MODE_OLDFILE);
+  FIB := AllocDosObject(DOS_FIB, nil);
+  if Assigned(FIB) and (FH &lt;&gt; 0) then
+  begin
+    if Boolean(ExamineFH(FH, FIB)) then
+      writeln('Size: ',FIB^.fib_size);
+  end;
+  if Assigned(FIB) then FreeDosObject(DOS_FIB, FIB);
+  if FH &lt;&gt; 0 then DOSClose(FH);
+end.
+</code>
 </descr>
 <errors>
 </errors>
@@ -8797,8 +8862,42 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
   <li>Keep calling <var>ExNext()</var> until it returns False. Check <link id="IoErr">IoErr()</link>
      to ensure that the reason for failure was <link id="ERROR_NO_MORE_ENTRIES"/>.</li>
   </ol>
+<p><b>Example</b></p>
+<code>
+program Examine64Test;
+uses
+  AmigaDos;
+procedure CheckDir(ALock: BPTR);
+var
+  FIB: PFileInfoBlock;
+begin
+  FIB := AllocDosObject(DOS_FIB, nil);
+  if Assigned(FIB) then
+  begin
+    if Examine(ALock, FIB) &lt;&gt; 0 then
+    begin
+      repeat
+        writeln(FIB^.fib_FileName);
+      until ExNext(ALock, FIB) = 0;
+    end;
+    if IOErr() = ERROR_NO_MORE_ENTRIES then
+      writeln('nothing more found')
+    else
+      writeln('Something went wrong ', IOErr);
+    FreeDosObject(DOS_FIB, FIB);
+  end;
+end;
+var
+  RAMLock: BPTR;
+begin
+  RAMLock := Lock('RAM:', SHARED_LOCK);
+  CheckDir(RAMLock);
+  unlock(RAMLock);
+end.
+</code>
+<p><b>Attention</b></p>
 <p>
-  Note: if you wish to recursively scan the file tree and you find
+  If you wish to recursively scan the file tree and you find
   another directory while <var>ExNext()</var>ing you must Lock that directory and
   <link id="Examine">Examine()</link> it using a new FileInfoBlock.  Use of the same
   FileInfoBlock to enter a directory would lose important state

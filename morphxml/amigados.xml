@@ -122,24 +122,6 @@ Other programs can still access this file. (e.g. shared reading)
 </element>
 
 <!-- constant Visibility: default -->
-<element name="MAXINT">
-<short>Biggest number useable as Integer</short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="MININT">
-<short>smallest number useable as Integer</short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
 <element name="SHARED_LOCK">
 <short>Parameter for <link id="Lock"/> File is readable by others</short>
 <descr>
@@ -169,24 +151,6 @@ Other programs can still access this file. (e.g. shared reading)
 <!-- constant Visibility: default -->
 <element name="ACCESS_WRITE">
 <short>Parameter for <link id="Lock"/> Exclusive lock, so other access allowed</short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- alias type Visibility: default -->
-<element name="FileHandle">
-<short>File handle needed dor all File actions</short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- alias type Visibility: default -->
-<element name="FileLock">
-<short></short>
 <descr>
 </descr>
 <seealso>
@@ -264,6 +228,7 @@ Other programs can still access this file. (e.g. shared reading)
 </descr>
 <seealso>
 <link id="Examine"/>
+<link id="Examine64"/>
 </seealso>
 </element>
 
@@ -274,6 +239,7 @@ Other programs can still access this file. (e.g. shared reading)
 </descr>
 <seealso>
 <link id="Examine"/>
+<link id="Examine64"/>
 <link id="FIBF_DELETE"/>
 <link id="FIBF_EXECUTE"/>
 <link id="FIBF_WRITE"/>
@@ -3454,15 +3420,6 @@ have been returned by IoErr()
 
 <!-- constant Visibility: default -->
 <element name="ACTION_END">
-<short>Action for <link id="TDosPacket"/>.dp_Type</short>
-<descr>
-</descr>
-<seealso>
-</seealso>
-</element>
-
-<!-- constant Visibility: default -->
-<element name="ACTION_TRUNCATE">
 <short>Action for <link id="TDosPacket"/>.dp_Type</short>
 <descr>
 </descr>
@@ -7344,7 +7301,7 @@ Note that all other values of type are reserved.</p>
 </element>
 
 <!-- argument Visibility: default -->
-<element name="AllocDosObject.Type_">
+<element name="AllocDosObject.type1">
 <short>Type of object requested</short>
 </element>
 
@@ -8748,6 +8705,51 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
 <p>
   You may make a local copy of the <link id="TFileInfoBlock">TFileInfoBlock</link>, as long as it is
   never passed to <link id="ExNext">ExNext()</link>.</p>
+<p>
+  So, follow these steps to examine a directory:</p>
+  <ol>
+  <li>Pass a Lock and a FileInfoBlock to <link id="Examine">Examine()</link>.  The lock must
+     be on the directory you wish to examine.</li>
+  <li>Pass <var>ExNext()</var> the same lock and <link id="TFileInfoBlock"/>.</li>
+  <li>Do something with the information returned in the <link id="TFileInfoBlock"/>.
+     Note that the <link id="TFileInfoBlock">fib_DirEntryType</link> field is positive for directories,
+     negative for files.</li>
+  <li>Keep calling <var>ExNext()</var> until it returns False. Check <link id="IoErr">IoErr()</link>
+     to ensure that the reason for failure was <link id="ERROR_NO_MORE_ENTRIES"/>.</li>
+  </ol>
+<p><b>Example</b></p>
+<code>
+program Examine64Test;
+uses
+  AmigaDos;
+procedure CheckDir(ALock: BPTR);
+var
+  FIB: PFileInfoBlock;
+begin
+  FIB := AllocDosObject(DOS_FIB, nil);
+  if Assigned(FIB) then
+  begin
+    if Examine(ALock, FIB) &lt;&gt; 0 then
+    begin
+      repeat
+        writeln(FIB^.fib_FileName);
+      until ExNext(ALock, FIB) = 0;
+    end;
+    if IOErr() = ERROR_NO_MORE_ENTRIES then
+      writeln('nothing more found')
+    else
+      writeln('Something went wrong ', IOErr);
+    FreeDosObject(DOS_FIB, FIB);
+  end;
+end;
+var
+  RAMLock: BPTR;
+begin
+  RAMLock := Lock('RAM:', SHARED_LOCK);
+  CheckDir(RAMLock);
+  unlock(RAMLock);
+end.
+</code>
 </descr>
 <errors>
 </errors>
@@ -8778,11 +8780,31 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
 <!-- function Visibility: default -->
 <element name="ExamineFH">
 <short>Gets information on an open file</short>
-<descr>Examines a filehandle and returns information about the file in the
+<descr><p>Examines a filehandle and returns information about the file in the
   FileInfoBlock.  There are no guarantees as to whether the fib_Size
   field will reflect any changes made to the file size it was opened,
   though filesystems should attempt to provide up-to-date information
-  for it.
+  for it.</p>
+<p><b>Example</b></p>
+<code>
+program ExamineFHTest;
+uses
+  AmigaDOS;
+var
+  FH: BPTR;
+  FIB: PFileInfoBlock;
+begin
+  FH := DOSOpen('c:dir', MODE_OLDFILE);
+  FIB := AllocDosObject(DOS_FIB, nil);
+  if Assigned(FIB) and (FH &lt;&gt; 0) then
+  begin
+    if Boolean(ExamineFH(FH, FIB)) then
+      writeln('Size: ',FIB^.fib_size);
+  end;
+  if Assigned(FIB) then FreeDosObject(DOS_FIB, FIB);
+  if FH &lt;&gt; 0 then DOSClose(FH);
+end.
+</code>
 </descr>
 <errors>
 </errors>
@@ -8890,8 +8912,42 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
   <li>Keep calling <var>ExNext()</var> until it returns False. Check <link id="IoErr">IoErr()</link>
      to ensure that the reason for failure was <link id="ERROR_NO_MORE_ENTRIES"/>.</li>
   </ol>
+<p><b>Example</b></p>
+<code>
+program Examine64Test;
+uses
+  AmigaDos;
+procedure CheckDir(ALock: BPTR);
+var
+  FIB: PFileInfoBlock;
+begin
+  FIB := AllocDosObject(DOS_FIB, nil);
+  if Assigned(FIB) then
+  begin
+    if Examine(ALock, FIB) &lt;&gt; 0 then
+    begin
+      repeat
+        writeln(FIB^.fib_FileName);
+      until ExNext(ALock, FIB) = 0;
+    end;
+    if IOErr() = ERROR_NO_MORE_ENTRIES then
+      writeln('nothing more found')
+    else
+      writeln('Something went wrong ', IOErr);
+    FreeDosObject(DOS_FIB, FIB);
+  end;
+end;
+var
+  RAMLock: BPTR;
+begin
+  RAMLock := Lock('RAM:', SHARED_LOCK);
+  CheckDir(RAMLock);
+  unlock(RAMLock);
+end.
+</code>
+<p><b>Attention</b></p>
 <p>
-  Note: if you wish to recursively scan the file tree and you find
+  If you wish to recursively scan the file tree and you find
   another directory while <var>ExNext()</var>ing you must Lock that directory and
   <link id="Examine">Examine()</link> it using a new FileInfoBlock.  Use of the same
   FileInfoBlock to enter a directory would lose important state
@@ -8922,7 +8978,7 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
 
 <!-- function result Visibility: default -->
 <element name="ExNext.Result">
-<short></short>
+<short>=0 for fail, &lt;&gt; 0 for success</short>
 </element>
 
 <!-- argument Visibility: default -->
@@ -12800,7 +12856,7 @@ length is returned. This routine is buffered.
 </element>
 
 <!-- argument Visibility: default -->
-<element name="AllocDosObjectTags.Type_">
+<element name="AllocDosObjectTags.Type1">
 <short></short>
 </element>
 
@@ -12827,32 +12883,6 @@ length is returned. This routine is buffered.
 
 <!-- argument Visibility: default -->
 <element name="CreateNewProcTags.Tags">
-<short>Variable array of Tags use [TAG_1, 1, TAG_2, 2 ....] TAG_END will be automatically added at the end</short>
-</element>
-
-<!-- function Visibility: default -->
-<element name="NewLoadSegTags">
-<short>Variable args version for <link id="NewLoadSeg"/> for direct tag use.</short>
-<descr>
-</descr>
-<errors>
-</errors>
-<seealso>
-</seealso>
-</element>
-
-<!-- function result Visibility: default -->
-<element name="NewLoadSegTags.Result">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="NewLoadSegTags.File_">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
-<element name="NewLoadSegTags.Tags">
 <short>Variable array of Tags use [TAG_1, 1, TAG_2, 2 ....] TAG_END will be automatically added at the end</short>
 </element>
 
@@ -12926,11 +12956,6 @@ length is returned. This routine is buffered.
 
 <!-- uses unit Visibility: default -->
 <element name="exec">
-<short></short>
-</element>
-
-<!-- uses unit Visibility: default -->
-<element name="utility">
 <short></short>
 </element>
 
@@ -13114,7 +13139,7 @@ length is returned. This routine is buffered.
 
 <!-- function Visibility: default -->
 <element name="AllocDosObjectTagList">
-<short></short>
+<short>VarArgs version of <link id="AllocDosObject"/></short>
 <descr>
 </descr>
 <errors>
@@ -13144,9 +13169,10 @@ length is returned. This routine is buffered.
 </element>
 
 <!-- function Visibility: default -->
-<element name="CreateDir">
-<short></short>
-<descr>
+<element name="DOSCreateDir">
+<short>Creates a new directory under the given name.</short>
+<descr>Creates a new directory under the given name. If all went an
+    exclusive lock on the new diretory is returned.
 </descr>
 <errors>
 </errors>
@@ -13155,13 +13181,14 @@ length is returned. This routine is buffered.
 </element>
 
 <!-- function result Visibility: default -->
-<element name="CreateDir.Result">
-<short></short>
+<element name="DOSCreateDir.Result">
+<short>Exclusive lock to the new directory or 0 if couldn't be created.
+    <link id="IoErr"/>() gives additional information in that case.</short>
 </element>
 
 <!-- argument Visibility: default -->
-<element name="CreateDir.name">
-<short></short>
+<element name="DOSCreateDir.name">
+<short>#0 terminated name.</short>
 </element>
 
 <!-- function Visibility: default -->
@@ -13423,8 +13450,10 @@ length is returned. This routine is buffered.
 
 <!-- function Visibility: default -->
 <element name="Format">
-<short></short>
-<descr>
+<short>Initialise a filesystem for use by the system.</short>
+<descr>This instructs
+    a filesystem to write out the data that it uses to describe the
+    device. The device should already have been formatted.
 </descr>
 <errors>
 </errors>
@@ -13434,22 +13463,22 @@ length is returned. This routine is buffered.
 
 <!-- function result Visibility: default -->
 <element name="Format.Result">
-<short></short>
+<short>&lt;&gt; 0 if the format was successful, 0 otherwise.</short>
 </element>
 
 <!-- argument Visibility: default -->
 <element name="Format.filesystem">
-<short></short>
+<short>Name of the device to format.</short>
 </element>
 
 <!-- argument Visibility: default -->
 <element name="Format.volumename">
-<short></short>
+<short>The name you wish the volume to be called.</short>
 </element>
 
 <!-- argument Visibility: default -->
 <element name="Format.dostype">
-<short></short>
+<short>The DOS type you wish on the disk.</short>
 </element>
 
 <!-- argument Visibility: default -->
@@ -13711,11 +13740,6 @@ length is returned. This routine is buffered.
 </element>
 
 <!-- argument Visibility: default -->
-<element name="NewLoadSegTags.argv">
-<short></short>
-</element>
-
-<!-- argument Visibility: default -->
 <element name="SystemTags.argv">
 <short></short>
 </element>
@@ -13818,6 +13842,3632 @@ length is returned. This routine is buffered.
 </descr>
 <seealso>
 </seealso>
+</element>
+
+
+<!-- variable Visibility: default -->
+<element name="DosBase">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DOSNAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="OFFSET_BEGINING">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="_MAXINT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="_MININT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFileInfoBlock.fib_Size64">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFileInfoBlock.fib_NumBlocks64">
+<short></short>
+</element>
+
+<!-- alias type Visibility: default -->
+<element name="BPTR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- alias type Visibility: default -->
+<element name="BSTR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ID_INTER_DOS_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ID_INTER_FFS_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ID_FASTDIR_DOS_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ID_FASTDIR_FFS_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ID_LNFS_DOS_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ID_LNFS_FFS_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ID_CDFS_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ID_CDROM_ISO_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ID_CDROM_HSF_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ID_CDROM_CDDA_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ID_SFS_DISK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LOCK_SAME_VOLUME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DOS_DEVICENODE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DOS_FSCONTEXT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DOS_VOLUMENODE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DOS_ASSIGNNODE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PRB_CLOSEERROR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PRF_CLOSEERROR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFileHandle.fh_Interactive">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFileHandle.fh_BufSize">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TFileHandle.fh_OrigBuf">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_STARTUP">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_SET_FILE_SIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_GET_DISK_FSSM">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_FREE_DISK_FSSM">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_SEEK64">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_SET_FILE_SIZE64">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_LOCK_RECORD64">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_FREE_RECORD64">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_RESERVED_1">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_RESERVED_2">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_NEW_READ_LINK">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_QUERY_ATTR">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_EXAMINE_OBJECT64">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_EXAMINE_NEXT64">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_EXAMINE_FH64">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FQA_MaxFileNameLength">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FQA_MaxVolumeNameLength">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FQA_MaxFileSize">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FQA_IsCaseSensitive">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FQA_DeviceType">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FQA_ReservedAttr1">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FQA_NumBlocks">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FQA_NumBlocksUsed">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_GET_PREFS_TEMPLATE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_GET_CURRENT_PREFS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ACTION_SET_PREFS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDOSLibrary.dl_GU">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="CMD_NOTLOADED">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DLT_FSCONTEXT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DVPB_FSCONTEXT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DVPF_FSCONTEXT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TCLIDataItem">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCLIDataItem.cdi_CLINum">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCLIDataItem.cdi_DefaultStack">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCLIDataItem.cdi_GlobVec">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCLIDataItem.cdi_Future">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCLIDataItem.cdi_Pri">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCLIDataItem.cdi_Flags">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCLIDataItem.cdi_Command">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PCLIDataItem">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TCLIData">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCLIData.cd_NumCLIs">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TCLIData.cd_CLI">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PCLIData">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAnchorPath.ap_BreakBits_1">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAnchorPath.ap_FoundBreak_1">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAnchorPath.ap_Length">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TAnchorPath.ap_Extended">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="APB_FollowHLinks">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="APF_FollowHLinks">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="APSB_EXTENDED">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="APSF_EXTENDED">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="APEB_LiteralSLinks">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="APEF_LiteralSLinks">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="APEB_DontFollowSLinks">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="APEF_DontFollowSLinks">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="APEB_FutureExtension">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="APEF_FutureExtension">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNK_ABSRELOC32">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNK_RELRELOC16">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNK_RELRELOC8">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNK_RELOC32SHORT">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNK_RELRELOC32">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNK_ABSRELOC16">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNKB_ADVISORY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNKB_CHIP">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNKB_FAST">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNKF_ADVISORY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNKF_CHIP">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="HUNKF_FAST">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXT_ABSREF32">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXT_ABSCOMMON">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXT_RELREF16">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXT_RELREF8">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXT_RELREF32">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXT_RELCOMMON">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXT_ABSREF16">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="EXT_ABSREF8">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ED_SIZE64">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TExAllData.ed_Size64">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PRecordLock64">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TRecordLock64">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TRecordLock64.rec_FH">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TRecordLock64.rec_Offset">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TRecordLock64.rec_Length">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TRecordLock64.rec_Mode">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SYS_FilterTags">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_SeglistArray">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_UserData">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_StartupMsg">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_TaskMsgPort">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_CodeType">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_PPC_Arg1">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_PPC_Arg2">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_PPC_Arg3">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_PPC_Arg4">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_PPC_Arg5">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_PPC_Arg6">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_PPC_Arg7">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_PPC_Arg8">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NP_PPCStackSize">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADDS_Dummy">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADDS_Name">
+<short>Tag for <link id="AddSegmentTagList"/></short>
+<descr>Valus is a PChar
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADDS_Seglist">
+<short>Tag for <link id="AddSegmentTagList"/></short>
+<descr>Value is a BPTR
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADDS_Filename">
+<short>Tag for <link id="AddSegmentTagList"/></short>
+<descr>Value is a PChar
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADDS_Type">
+<short>Tag for <link id="AddSegmentTagList"/></short>
+<descr>Value is a LongInt
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_CLI_Dir">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_CLI_CommName">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_CLI_CommFile">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_CLI_Prompt">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_CLI_Result2">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_CLI_ReturnCode">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_CLI_FailLevel">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_CLI_Interactive">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_CLI_Background">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_CLI_DefaultStack">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_Name">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_MsgPort">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_Lock">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_Handler">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_Seglist">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_StackSize">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_Priority">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_Startup">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_GlobalVec">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_SerialID">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_StartupValue">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_Flags">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_Status">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DN_ExitNotifyMsg">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DNF_STARTONCE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DNF_UNLOADSEGLIST">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="DNF_REMDOSLIST">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_FSSM">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_FSSM_Device">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_FSSM_Unit">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_FSSM_Flags">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_TableSize">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_SizeBlock">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_SecOrg">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_NumHeads">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_Surfaces">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_SecsPerBlk">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_BlksPerTrack">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_ReservedBlks">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_PreFac">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_PreAlloc">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_Interleave">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_LowCyl">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_UpperCyl">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_HighCyl">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_NumBuffers">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_BufMemType">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_MaxTransfer">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_Mask">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_BootPri">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_DosType">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_Baud">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_Control">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_DE_BootBlocks">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_FS_DosType">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_VN_Name">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_VN_MsgPort">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_VN_Lock">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_VN_LockList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_VN_Date">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_VN_DiskType">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_AN_Name">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_AN_MsgPort">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_AN_Lock">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_AN_Type">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_AN_AssignName">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ADO_AN_AssignList">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TDosAttrBuffer">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDosAttrBuffer.dab_Ptr">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TDosAttrBuffer.dab_Len">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PDosAttrBuffer">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FNDS_Dummy">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FNDS_Name">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FNDS_From">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FNDS_System">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FNDS_Load">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FSCONTEXTTAG_Dummy">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FSCONTEXTTAG_SEGLIST">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FSCONTEXTTAG_PRIORITY">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FSCONTEXTTAG_STACKSIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FSCONTEXTTAG_STARTUPSTRING">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FSCONTEXTTAG_STARTUPVALUE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FSCONTEXTTAG_FSSM">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FSCONTEXTTAG_DOSTYPE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FSCONTEXTINFOTAG_Dummy">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="FSCONTEXTINFOTAG_NAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_Dummy">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_OBJDATA">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_SEGLISTTYPE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_DOS_SEGINDEX">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_ELF_SEGINDEX">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_SEGSTART">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_SEGSIZE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_ELF_SEGTYPE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_ELF_SEGOFFSET">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_ELF_SEGFLAGS">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_ELF_SEGADDRALIGN">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTAG_ELF_SEGNAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTYPE_ELF">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTYPE_POWERUP">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEGLISTTYPE_AMIGA">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="CLIDATATAG_Dummy">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="CLIDATATAG_CLINumber">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="CLIDATATAG_CommandName">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="CLIDATATAG_Sorted">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="BUF_LINE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="BUF_FULL">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="BUF_NONE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ENDSTREAMCH">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SEG_SEM">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PSegSem">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TSegSem">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TSegSem.seg_Semaphore">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TSegSem.seg_Find">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TSegSem.seg_List">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PSegArray">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TSegArray">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TSegArray.seg_Address">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TSegArray.seg_Size">
+<short></short>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="PSegNode">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="TSegNode">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TSegNode.seg_Node">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TSegNode.seg_Name">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="TSegNode.seg_Array">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="dosOpen.fname">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="dosClose.fileh">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="dosRead.fileh">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="dosWrite.fileh">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="dosSeek.fileh">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="dosSeek.posmode">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="dosDeleteFile.fname">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Lock.lname">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="dosCreateDir.dname">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetProtection.mask">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="WaitForChar.file1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="IsInteractive.file1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Execute.string1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Execute.file1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AllocDosObjectTagList.type1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FreeDosObject.type1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetVBuf.type1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SplitName.separator">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ChangeMode.type1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ErrorReport.type1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetArgStr.str">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MakeDosEntry.type1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewLoadSeg.file1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewLoadSegTagList.file1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ReadArgs.array1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="StrToLong.string1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FindVar.type1">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="AddSegmentTagList">
+<short>Adds a program segment to the system resident list. </short>
+<descr><p>Adds a program segment to the system resident list. You can later
+    use these segments to run programs.</p>
+<p>The name field should refer to a #0 terminated strings, which
+    will be copied. The type field determines the type of resident
+    program. Normal programs should have type &gt;= 0, system segments
+    should have type = <link id="CMD_SYSTEM"/>. The file name is only used if
+    no seglist is given. It is the name of the file that will be
+    loaded when someone tries to access this segment.</p>
+<p>
+    Note that all other values of <link id="ADDS_Type"/> are reserved.</p>
+<p><b>Available Tags</b></p>
+<dl>
+  <dt>ADDS_Name</dt><dd>(PChar), required</dd>
+  <dt>ADDS_Seglist</dt><dd>(BPTR)</dd>
+  <dt>ADDS_Filename</dt><dd>(PChar) required if no seglist is given</dd>
+  <dt>ADDS_Type</dt><dd>(LongInt) Defaults to 0</dd>
+</dl>
+</descr>
+<errors>
+Uses <link id="exec.Forbid">Forbid</link>() based locking.
+</errors>
+<seealso>
+<link id="FindSegment"/>
+<link id="RemSegment"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="AddSegmentTagList.Result">
+<short>= 0 failure, otherwise success</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="AddSegmentTagList.tags">
+<short>pointer to a taglist</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="FindSegmentTagList">
+<short>Search for a resident segment by name and type.</short>
+<descr><p>
+Search for a resident segment by name and type. FindSegmentTagList() will
+    return the first segment that exactly matches the name and type.</p>
+    <p>
+    You can continue searching by specifying the last returned segment
+    as the seg argument.</p>
+<p><b>Attention</b></p>
+<p>FindSegmentTagList() does no locking of the segment list. You should
+    lock yourself. FindSegmentTagList() also does not increment the value
+    of the <link id="TSegment">seg_UC</link> field. If the value of <link id="TSegment">seg_UC</link> &gt; 0, you <b>must</b>
+    perform user counting in order to prevent the segment from being
+    unloaded.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="AddSegment"/>
+<link id="FindSegment"/>
+<link id="RemSegment"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="FindSegmentTagList.Result">
+<short>Will return the segment structure if a match is found, otherwise
+    will return nil.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FindSegmentTagList.tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="Seek64">
+<short>Changes the current read/write position in a file</short>
+<descr><p>
+  Changes the current read/write position in a file and/or
+  reads the current position, e.g to get the current position do a</p>
+  <code>Seek64(file, 0, OFFSET_CURRENT).</code>
+<p>
+  This function may fail (obviously) on certain devices such
+  as pipes or console handlers.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="Seek64.Result">
+<short>Absolute position in bytes before the Seek64(), -1 if an error
+    happened. <link id="IoErr"/>() will give additional information in that case.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Seek64.fh">
+<short>filehandle</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Seek64.Position">
+<short>relative offset in bytes (positive, negative or 0).</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Seek64.Mode">
+<short>Where to count from. Either <link id="OFFSET_BEGINNING"/>, <link id="OFFSET_CURRENT"/> or <link id="OFFSET_END"/>.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="SetFileSize64">
+<short>Change the size of a file.</short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="SetFileSize64.Result">
+<short>New size of the file or -1 in case of an error.
+    <link id="IoErr"/>() gives additional information in that case.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetFileSize64.fh">
+<short>filehandle</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetFileSize64.Pos">
+<short>relative size</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetFileSize64.Mode">
+<short><link id="OFFSET_BEGINNING"/>, <link id="OFFSET_CURRENT"/> or <link id="OFFSET_END"/></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="LockRecord64">
+<short>Lock a portion of a file for exclusive access.</short>
+<descr><p>
+A timeout may be specified
+    which is the maximum amount of time to wait for the record to be available.</p>
+<p>Record locks are cooperative, meaning that they only affect other calls
+    to <link id="LockRecord"/>().</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="LockRecords64"/>
+<link id="UnLockRecord64"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="LockRecord64.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="LockRecord64.fh">
+<short>file handle for the file to lock a record of</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="LockRecord64.Offset">
+<short>starting position of the lock</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="LockRecord64.Length">
+<short>length of the record in bytes</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="LockRecord64.Mode">
+<short>lock type</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="LockRecord64.TimeOut">
+<short>timeout interval measured in ticks (may be 0)</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="LockRecords64">
+<short>Lock several records at the same time.</short>
+<descr><p>The timeout specified is applied
+    to each lock to attempt. The array of RecordLock:s is terminated with
+    an entry where rec_FH is equal to nil.</p>
+  <p>
+  A set of records should always be locked in the same order so as to
+    reduce possiblities of deadlock.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="UnLockRecords64"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="LockRecords64.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="LockRecords64.RecArray">
+<short>array of records to lock</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="LockRecords64.TimeOut">
+<short>maximum number of ticks to wait for a lock to be ready</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="UnLockRecord64">
+<short>Release a lock made with <link id="LockRecord64"/>().</short>
+<descr>
+The length and offset must match the corresponding <link id="LockRecord64"/>() call.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="LockRecord64"/>
+<link id="LockRecords64"/>
+<link id="UnLockRecords64"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="UnLockRecord64.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnLockRecord64.Fh">
+<short>filehandle the lock was made on</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnLockRecord64.Offset">
+<short>starting position of the lock</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnLockRecord64.Length">
+<short>length of the record in bytes</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="UnLockRecords64">
+<short>Release an array of record locks obtained with <link id="LockRecords64"/>().</short>
+<descr> A array of records may not be modified when records are locked.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="LockRecords64"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="UnLockRecords64.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnLockRecords64.RecArray">
+<short>array of record locks (previously locked with <link id="LockRecords64"/>())</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewReadLink">
+<short>Read the filename referred to by the soft-linked object</short>
+<descr>Read the filename referred to by the soft-linked object contained
+    in <var>path</var> (relative to the lock <var>lock</var>) into the buffer <var>buffer</var>.
+    The variable <var>path</var> should contain the name of the object that
+    caused the original OBJECT_IS_SOFT_LINK error. Unlike original
+    <link id="ReadLink"/>, NewReadLink works on hardlinks aswell as softlinks.
+</descr>
+<errors>Before dos 51.41 the filesystems not implementing this
+    functionality would result in <link id="IoErr"/>() not being set.
+    This was fixed in dos 51.41 which now consistently sets
+    <link id="IoErr"/>() to ERROR_NOT_IMPLMENTED in this case.
+</errors>
+<seealso>
+  <link id="ReadLink"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewReadLink.Result">
+<short>&gt; 0 success, actual length of the returned string;  0 failure, probably ERROR_NOT_IMPLEMENTED.; -1  failure, see IoErr() for more information. -2  failure, not enough space in the buffer.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewReadLink.Port">
+<short>The handler to send the request to.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewReadLink.Lock">
+<short>Object that <var>path</var> is relative to.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewReadLink.Path">
+<short>Name of the object that caused the error.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewReadLink.Buffer">
+<short>Buffer to fill with resolved filename.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="NewReadLink.Size">
+<short>Length of the buffer.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="GetFileSysAttr">
+<short>Query filesystem for attributes, such as maximum filename length,
+    or maximum file size.</short>
+<descr>
+<p>
+In case of a failure, <link id="IoErr"/>() gives
+more information about the failure:</p>
+<dl>
+  <dt>ERROR_ACTION_NOT_KNOWN</dt><dd>the packet is not supported</dd>
+  <dt>ERROR_BAD_NUMBER</dt><dd>the attribute is not known</dd>
+  <dt>ERROR_LINE_TOO_LONG</dt><dd>the result doesn't fit the provided <var>StorageSize</var>.</dd>
+</dl>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="GetFileSysAttr.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetFileSysAttr.DeviceName">
+<short>name of the filesystem to get attributes from</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetFileSysAttr.Attr">
+<short>attribute to get information about</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetFileSysAttr.Storage">
+<short>storage to hold the result</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetFileSysAttr.StorageSize">
+<short>size of the storage</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="GetSegListAttrTagList">
+<short>VarArgs Version of <link id="GetSegListAttr"/></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="GetSegListAttrTagList.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttrTagList.SegList">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttrTagList.Attr">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttrTagList.Storage">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttrTagList.StorageSize">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="SetDosObjectAttr">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="SetDosObjectAttr.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetDosObjectAttr.Type_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetDosObjectAttr.Ptr">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetDosObjectAttr.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="GetDosObjectAttr">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="GetDosObjectAttr.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetDosObjectAttr.Type_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetDosObjectAttr.Ptr">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetDosObjectAttr.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="Examine64">
+<short>Fill in a FileInfoBlock structure concerning a file or directory
+    associated with a particular lock.</short>
+<descr>
+<p>
+Fill in a FileInfoBlock structure concerning a file or directory
+associated with a particular lock.
+<link id="TFileInfoBlock">FileInfoBlock</link>.fib_Size64 contains
+the size of the file.
+<link id="TFileInfoBlock">FileInfoBlock</link>.fib_NumBlocks64 contains the number
+of blocks for the file.</p>
+<p>If scanning a filesystem tree recursively, you'll need to allocated a
+    new <link id="PFileInfoBlock"/> for each directory level.</p>
+<p>To examine a directory, do the following:</p>
+  <ol>
+  <li>Pass a lock on the directory and a <link id="PFileInfoBlock"/> (allocated by
+        <link id="AllocDosObject"/>()) to <link id="Examine64"/>().</li>
+  <li>Pass the same parameters to ExNext64()).</li>
+  <li>Do something with the <link id="PFileInfoBlock"/> returned.</li>
+  <li>Call ExNext64() repeatedly until it returns FALSE and use the
+      information you are provided. When ExNext64 returns False, check <link id="IoErr"/>()
+      to make sure that there was no real failure (<link id="ERROR_NO_MORE_ENTRIES"/>).</li>
+  </ol>
+<p><b>Example</b></p>
+<code>
+program Examine64Test;
+uses
+  AmigaDos;
+procedure CheckDir(ALock: BPTR);
+var
+  FIB: PFileInfoBlock;
+begin
+  FIB := AllocDosObject(DOS_FIB, nil);
+  if Assigned(FIB) then
+  begin
+    if Examine64(ALock, FIB, nil) &lt;&gt; 0 then
+    begin
+      repeat
+        writeln(FIB^.fib_FileName);
+      until ExNext64(ALock, FIB, nil) = 0;
+    end;
+    if IOErr() = ERROR_NO_MORE_ENTRIES then
+      writeln('nothing more found')
+    else
+      writeln('Something went wrong ', IOErr);
+    FreeDosObject(DOS_FIB, FIB);
+  end;
+end;
+var
+  RamLock: BPTR;
+begin
+  RamLock := Lock('RAM:', SHARED_LOCK);
+  CheckDir(RamLock);
+  Unlock(RamLock);
+end.
+</code>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="Examine64"/>
+<link id="AllocDosObject"/>
+<link id="ExAll"/>
+<link id="IOErr"/>
+<link id="ExamineFH64"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="Examine64.Result">
+<short>= 0 for error, otherwise success</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Examine64.Lock">
+<short>lock to examine</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Examine64.Fib">
+<short>file info to recieve the data</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Examine64.Tags">
+<short>tags, no tags defined for now</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="Examine64TagList">
+<short>VarArgs version of <link id="Examine64"/></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="Examine64TagList.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Examine64TagList.Lock">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Examine64TagList.Fib">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Examine64TagList.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ExNext64">
+<short>Examine the next entry in a directory.</short>
+<descr>
+<p>If scanning a filesystem tree recursively, you'll need to allocated a
+    new <link id="PFileInfoBlock"/> for each directory level.</p>
+<p>To examine a directory, do the following:</p>
+  <ol>
+  <li>Pass a lock on the directory and a <link id="PFileInfoBlock"/> (allocated by
+        <link id="AllocDosObject"/>()) to <link id="Examine64"/>().</li>
+  <li>Pass the same parameters to ExNext64()).</li>
+  <li>Do something with the <link id="PFileInfoBlock"/> returned.</li>
+  <li>Call ExNext64() repeatedly until it returns FALSE and use the
+      information you are provided. When ExNext64 returns False, check <link id="IoErr"/>()
+      to make sure that there was no real failure (<link id="ERROR_NO_MORE_ENTRIES"/>).</li>
+  </ol>
+<p><b>Example</b></p>
+<code>
+program Examine64Test;
+uses
+  AmigaDos;
+procedure CheckDir(ALock: BPTR);
+var
+  FIB: PFileInfoBlock;
+begin
+  FIB := AllocDosObject(DOS_FIB, nil);
+  if Assigned(FIB) then
+  begin
+    if Examine64(ALock, FIB, nil) &lt;&gt; 0 then
+    begin
+      repeat
+        writeln(FIB^.fib_FileName);
+      until ExNext64(ALock, FIB, nil) = 0;
+    end;
+    if IOErr() = ERROR_NO_MORE_ENTRIES then
+      writeln('nothing more found')
+    else
+      writeln('Something went wrong ', IOErr);
+    FreeDosObject(DOS_FIB, FIB);
+  end;
+end;
+var
+  RamLock: BPTR;
+begin
+  RamLock := Lock('RAM:', SHARED_LOCK);
+  CheckDir(RamLock);
+  Unlock(RamLock);
+end.
+</code>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="Examine64"/>
+<link id="AllocDosObject"/>
+<link id="ExAll"/>
+<link id="IOErr"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ExNext64.Result">
+<short>= 0 for fail, &lt;&gt; 0 for success whether the operation was successful
+                 or not. A failure occurs also if there is no "next" entry in
+         the directory. Then <link id="IoErr"/>() equals <link id="ERROR_NO_MORE_ENTRIES"/>.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExNext64.Lock">
+<short>lock on the direcory the contents of which to examine</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExNext64.Fib">
+<short>A FileInfoBlock previously initialized by <link id="Examine64"/>()
+              (or used before with <link id="ExNext64"/>()), <link id="TFileInfoBlock">fib_Size64</link> contains
+              the size of the file. <link id="TFileInfoBlock">fib_NumBlocks64</link> contains the number
+              of blocks for the file.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExNext64.Tags">
+<short>tags, no tags defined for now, supply nil</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ExNext64TagList">
+<short>VarArgs Version of <link id="ExNext64"/></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ExNext64TagList.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExNext64TagList.Lock">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExNext64TagList.Fib">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExNext64TagList.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ExamineFH64">
+<short>Fill in a FileInfoBlock structure concerning a file associated with
+    a particular filehandle.</short>
+<descr>
+<p>
+Fill in a FileInfoBlock structure where <link id="TFileHandle"/>.fib_Size64 containing the size of the file. <link id="TFileHandle"/>.fib_NumBlocks64
+contains the number of blocks for the file.</p>
+<p><b>Example</b></p>
+<code>
+program ExamineFH64Test;
+uses
+  AmigaDOS;
+var
+  FH: BPTR;
+  FIB: PFileInfoBlock;
+begin
+  FH := DOSOpen('c:dir', MODE_OLDFILE);
+  FIB := AllocDosObject(DOS_FIB, nil);
+  if Assigned(FIB) and (FH &lt;&gt; 0) then
+  begin
+    if Boolean(ExamineFH64(FH, FIB, nil)) then
+      writeln('Size: ', FIB^.fib_size64);
+  end;
+  if Assigned(FIB) then FreeDosObject(DOS_FIB, FIB);
+  if FH &lt;&gt; 0 then DOSClose(FH);
+end.
+</code>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="Examine64"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ExamineFH64.Result">
+<short>=0 fail, &lt;&gt; 0 success</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExamineFH64.Fh">
+<short>filehandle to examine</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExamineFH64.Fib">
+<short>FileInfoBlock where the result of the examination is stored</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExamineFH64.Tags">
+<short>tags, no tags defined for now</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ExamineFH64TagList">
+<short>VarArgs Version of <link id="ExamineFH64"/></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ExamineFH64TagList.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExamineFH64TagList.Fh">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExamineFH64TagList.Fib">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExamineFH64TagList.Tags">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="ReleaseCLINumber">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ReleaseCLINumber.CLINum">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="QueryCLIDataTagList">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="QueryCLIDataTagList.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="QueryCLIDataTagList.Tags">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="FreeCLIData">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FreeCLIData.Data">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="GetSegListAttr">
+<short>Query seglist for attributes, such as the ObjData ptr.</short>
+<descr><p>
+In case of a failure, <link id="IoErr"/>() gives
+more information about the failure:</p>
+<dl>
+  <dt>ERROR_ACTION_NOT_KNOWN</dt><dd>the packet is not supported</dd>
+  <dt>ERROR_BAD_NUMBER</dt><dd>the attribute is not known</dd>
+  <dt>ERROR_LINE_TOO_LONG</dt><dd>the result doesn't fit the provided <var>StorageSize</var>.</dd>
+</dl>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="GetSegListAttr.Result">
+<short>Success/failure indication</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttr.SegList">
+<short>SegList BPTR</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttr.Attr">
+<short>attribute to get information about</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttr.Storage">
+<short>storage to hold the result</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttr.StorageSize">
+<short>size of the storage</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttr.Tags">
+<short>taglist pointer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="BADDR.x">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MKBADDR.x">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ReadChar">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ReadChar.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="WriteChar">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="WriteChar.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="WriteChar.ch">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="UnReadChar">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="UnReadChar.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnReadChar.ch">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ReadChars">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ReadChars.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ReadChars.buf">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ReadChars.num">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="dosReadLn">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="dosReadLn.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="dosReadLn.buf">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="dosReadLn.num">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="dosWriteStr">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="dosWriteStr.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="dosWriteStr.str">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="VWritef">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="VWritef.format">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="VWritef.argv">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="SetDosObjectAttrTagList">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="SetDosObjectAttrTagList.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetDosObjectAttrTagList.Type_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetDosObjectAttrTagList.Ptr">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SetDosObjectAttrTagList.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="GetDosObjectAttrTagList">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="GetDosObjectAttrTagList.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetDosObjectAttrTagList.Type_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetDosObjectAttrTagList.Ptr">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetDosObjectAttrTagList.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="Examine64Tags">
+<short>VarArgs Version of <link id="Examine64"/></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="Examine64Tags.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Examine64Tags.Lock">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Examine64Tags.Fib">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="Examine64Tags.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ExNext64Tags">
+<short>VarArgs Version of <link id="ExNext64"/></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ExNext64Tags.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExNext64Tags.Lock">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExNext64Tags.Fib">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExNext64Tags.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="ExamineFH64Tags">
+<short>VarArgs Version of <link id="ExamineFH64"/></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="ExamineFH64Tags.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExamineFH64Tags.Fh">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExamineFH64Tags.Fib">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ExamineFH64Tags.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="QueryCLIDataTags">
+<short>VarArgsVersion of <link id="QueryCLIDataTagList"/></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="QueryCLIDataTags.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="QueryCLIDataTags.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="GetSegListAttrTags">
+<short>VarArgs Version of <link id="GetSegListAttrTagList"/></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="GetSegListAttrTags.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttrTags.SegList">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttrTags.Attr">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttrTags.Storage">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttrTags.StorageSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="GetSegListAttrTags.Tags">
+<short></short>
 </element>
 
 </module> <!-- amigados -->
