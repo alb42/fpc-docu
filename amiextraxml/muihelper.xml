@@ -26,7 +26,7 @@ begin
   app := MH_Application([
     MUIA_Application_Title,       AsTag('BalanceDemo'),
     MUIA_Application_Version,     AsTag('$VER: BalanceDemo 19.5 (12.02.97)'),
-    MUIA_Application_Copyright,   AsTag('©1995, Stefan Stuntz'),
+    MUIA_Application_Copyright,   AsTag('&#169;1995, Stefan Stuntz'),
     MUIA_Application_Author,      AsTag('Stefan Stuntz'),
     MUIA_Application_Description, AsTag('Show balancing groups'),
     MUIA_Application_Base,        AsTag('BALANCEDEMO'),
@@ -377,7 +377,7 @@ end.
 
 <!-- constant Visibility: default -->
 <element name="WindowContents">
-<short>Adding main Object to <link id="H_Window">Window</link> object</short>
+<short>Adding main Object to <link id="MH_Window">Window</link> object</short>
 <descr>
 </descr>
 <seealso>
