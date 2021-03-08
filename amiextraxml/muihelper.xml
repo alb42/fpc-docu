@@ -1,0 +1,3198 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fpdoc-descriptions>
+<package name="ami-extra">
+
+<!--
+  ====================================================================
+    muihelper
+  ====================================================================
+-->
+
+<module name="muihelper">
+<short>Helper function to create MUI applications</short>
+<descr>
+<p>A helper unit make it possible to create MUI application in the same way as you would in C (and MUI examples are written).
+C provides macros for this purpose. For Free Pascal this unit provides wrapper functions with the same name as the C define but with prefix "MH_".</p>
+<p><b>Example</b></p>
+<code>
+program balancing;
+uses
+  Exec, Utility, intuition, AmigaDos, mui, muihelper;
+procedure StartMe;
+var
+  App, Window: PObject_;
+  Sigs: LongInt;
+begin
+  app := MH_Application([
+    MUIA_Application_Title,       AsTag('BalanceDemo'),
+    MUIA_Application_Version,     AsTag('$VER: BalanceDemo 19.5 (12.02.97)'),
+    MUIA_Application_Copyright,   AsTag('©1995, Stefan Stuntz'),
+    MUIA_Application_Author,      AsTag('Stefan Stuntz'),
+    MUIA_Application_Description, AsTag('Show balancing groups'),
+    MUIA_Application_Base,        AsTag('BALANCEDEMO'),
+
+    SubWindow, AsTag(MH_Window(Window, [
+      MUIA_Window_Title,  AsTag('Balancing Groups'),
+      MUIA_Window_ID,     MAKE_ID('B','A','L','A'),
+      MUIA_Window_Width , MUIV_Window_Width_Screen(50),
+      MUIA_Window_Height, MUIV_Window_Height_Screen(50),
+
+      WindowContents, AsTag(MH_HGroup([
+
+        Child, AsTag(MH_VGroup(GroupFrame, [MUIA_Weight, 15,
+          Child, AsTag(MH_Rectangle(TextFrame, [MUIA_Weight,  50, TAG_END])),
+          Child, AsTag(MH_Rectangle(TextFrame, [MUIA_Weight, 100, TAG_END])),
+          Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+          Child, AsTag(MH_Rectangle(TextFrame, [MUIA_Weight, 200, TAG_END])),
+          TAG_END])),
+
+        Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+
+        Child, AsTag(MH_VGroup([
+          Child, AsTag(MH_HGroup(GroupFrame, [
+            Child, AsTag(MH_Rectangle(TextFrame, [MUIA_ObjectID, 123, TAG_END])),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_Rectangle(TextFrame, [MUIA_ObjectID, 456, TAG_END])),
+            TAG_END])),
+          Child, AsTag(MH_HGroup(GroupFrame, [
+            Child, AsTag(MH_Rectangle(TextFrame, [TAG_END])),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_Rectangle(TextFrame, [TAG_END])),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_Rectangle(TextFrame, [TAG_END])),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_Rectangle(TextFrame, [TAG_END])),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_Rectangle(TextFrame, [TAG_END])),
+            TAG_END])),
+          Child, AsTag(MH_HGroup(GroupFrame, [
+            Child, AsTag(MH_HGroup([
+              Child, AsTag(MH_Rectangle(TextFrame, [TAG_END])),
+              Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+              Child, AsTag(MH_Rectangle(TextFrame, [TAG_END])),
+              TAG_END])),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_HGroup([
+              Child, AsTag(MH_Rectangle(TextFrame, [TAG_END])),
+              Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+              Child, AsTag(MH_Rectangle(TextFrame, [TAG_END])),
+              TAG_END])),
+            TAG_END])),
+          Child, AsTag(MH_HGroup(GroupFrame, [
+            Child, AsTag(MH_Rectangle(TextFrame, [MUIA_Weight,  50, TAG_END])),
+            Child, AsTag(MH_Rectangle(TextFrame, [MUIA_Weight, 100, TAG_END])),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_Rectangle(TextFrame, [MUIA_Weight, 200, TAG_END])),
+            TAG_END])),
+          Child, AsTag(MH_HGroup(GroupFrame, [
+            Child, AsTag(MH_SimpleButton('Also')),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_SimpleButton('Try')),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_SimpleButton('Sizing')),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_SimpleButton('With')),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_SimpleButton('Shift')),
+            TAG_END])),
+          Child, AsTag(MH_HGroup(GroupFrame, [
+            Child, AsTag(MH_Label('Label 1:')),
+            Child, AsTag(MH_Text('data...', [TAG_END])),
+            Child, AsTag(MH_Balance([MUIA_CycleChain, 1, TAG_END])),
+            Child, AsTag(MH_Label('Label 2:')),
+            Child, AsTag(MH_Text('more data...', [TAG_END])),
+            TAG_END])),
+          TAG_END])),
+        TAG_END])),
+      TAG_END])),
+    TAG_END]);
+
+  if not Assigned(app) then
+  begin
+    writeln('Failed to create Application');
+    Exit;
+  end;
+
+  DoMethod(window, [MUIM_Notify, MUIA_Window_CloseRequest, MUI_TRUE,
+    AsTag(app), 2, AsTag(MUIM_Application_ReturnID), AsTag(MUIV_Application_ReturnID_Quit)]);
+
+  // This is the ideal input loop for an object oriented MUI application.
+  // Everything is encapsulated in classes, no return ids need to be used,
+  // we just check if the program shall terminate.
+  // Note that MUIM_Application_NewInput expects sigs to contain the result
+  // from Wait() (or 0). This makes the input loop significantly faster.
+
+  MH_Set(Window, MUIA_Window_Open, AsTag(True));
+  //
+  if MH_Get(Window, MUIA_Window_Open) &lt;&gt; 0 then
+  begin
+    while Integer(DoMethod(app, [MUIM_Application_NewInput, AsTag(@sigs)])) &lt;&gt; MUIV_Application_ReturnID_Quit do
+    begin
+      if Sigs &lt;&gt; 0 then
+      begin
+        Sigs := Wait(sigs or SIGBREAKF_CTRL_C);
+        if (Sigs and SIGBREAKF_CTRL_C) &lt;&gt; 0 then
+          Break;
+      end;
+    end;
+  end;
+  //Shut down...
+  MH_Set(Window, MUIA_Window_Open, AsTag(True));
+
+  MUI_DisposeObject(app);
+end;
+
+begin
+  StartMe;
+end.
+</code>
+</descr>
+
+<!-- uses unit Visibility: default -->
+<element name="exec">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="intuition">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="mui">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="amigados">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="utility">
+<short></short>
+</element>
+
+<!-- function type Visibility: default -->
+<element name="THookFunc">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="THookFunc.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="THookFunc.Hook">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="THookFunc.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="THookFunc.Msg">
+<short></short>
+</element>
+
+<!-- function type Visibility: default -->
+<element name="TDispatcherFunc">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="TDispatcherFunc.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TDispatcherFunc.Hook">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TDispatcherFunc.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="TDispatcherFunc.Msg">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MUI_TRUE">
+<short>True Value for MUI functions</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="MUI_FALSE">
+<short>False Value for MUI functions</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NoFrame">
+<short>Frame type, draw no Frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ButtonFrame">
+<short>Frame type, draw a button like Frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ImageButtonFrame">
+<short>Frame type, draw a image button like Frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="TextFrame">
+<short>Frame type, draw a text frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="StringFrame">
+<short>Frame type, draw a string gadget frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="ReadListFrame">
+<short>Frame type, draw a read only list frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="InputListFrame">
+<short>Frame type, draw a list frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="PropFrame">
+<short>Frame type, draw a propprtional gadget frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SliderFrame">
+<short>Frame type, draw a slider frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="GaugeFrame">
+<short>Frame type, draw a gague frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="VirtualFrame">
+<short>Frame type, draw a virtual frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="GroupFrame">
+<short>Frame type, draw a grouop box frame</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="Child">
+<short>Adding Child items to <link id="MH_Group">Group</link> objects</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="SubWindow">
+<short>Adding windows to <link id="MH_Application">application</link> object</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="WindowContents">
+<short>Adding main Object to <link id="H_Window">Window</link> object</short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Menustrip">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Menustrip.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Menustrip.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Menustrip.MenuStrip">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Menu">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Menu.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Menu.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Menu.Menu">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Menu.Name">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Menuitem">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Menuitem.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Menuitem.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Menuitem.Menuitem">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Window">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Window.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Window.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Window.Win">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Image">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Image.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Image.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Image.Image">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Bitmap">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Bitmap.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Bitmap.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Bitmap.Bitmap">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_BodyChunk">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_BodyChunk.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_BodyChunk.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_BodyChunk.BodyChunk">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Notify">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Notify.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Notify.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Notify.Notify">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Application">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Application.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Application.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Application.App">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Text">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Text.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Text.Contents">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Text.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Text.Text_">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Text.NText">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Rectangle">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Rectangle.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Rectangle.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Rectangle.Rectangle">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Rectangle.Frame">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Balance">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Balance.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Balance.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Balance.Balance">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_List">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_List.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_List.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_List.List">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Prop">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Prop.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Prop.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Prop.Prop">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_String">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_String.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_String.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_String.NString">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Scrollbar">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Scrollbar.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Scrollbar.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Scrollbar.Scrollbar">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Listview">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Listview.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Listview.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Listview.Listview">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Radio">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Radio.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Radio.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Radio.Radio">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Volumelist">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Volumelist.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Volumelist.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Volumelist.Volumelist">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Floattext">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Floattext.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Floattext.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Floattext.Floattext">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Dirlist">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Dirlist.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Dirlist.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Dirlist.Dirlist">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Cycle">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Cycle.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Cycle.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Cycle.Cycle">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Gauge">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Gauge.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Gauge.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Gauge.Gauge">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Scale">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Scale.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Scale.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Scale.Scale">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Numeric">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Numeric.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Numeric.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Numeric.Numeric">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Slider">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Slider.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Slider.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Slider.Slider">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Numericbutton">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Numericbutton.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Numericbutton.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Numericbutton.Numericbutton">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Knob">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Knob.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Knob.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Knob.Knob">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Levelmeter">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Levelmeter.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Levelmeter.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Levelmeter.Levelmeter">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Boopsi">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Boopsi.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Boopsi.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Boopsi.Boopsi">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Colorfield">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Colorfield.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Colorfield.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Colorfield.Colorfield">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Penadjust">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Penadjust.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Penadjust.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Penadjust.Penadjust">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Coloradjust">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Coloradjust.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Coloradjust.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Coloradjust.Coloradjust">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Palette">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Palette.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Palette.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Palette.Palette">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Group">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Group.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Group.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Group.Group">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Register">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Register.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Register.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Register.Register">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Virtgroup">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Virtgroup.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Virtgroup.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Virtgroup.Virtgroup">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Scrollgroup">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Scrollgroup.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Scrollgroup.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Scrollgroup.Scrollgroup">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Popstring">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Popstring.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Popstring.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Popstring.Popstring">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Popobject">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Popobject.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Popobject.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Popobject.Popobject">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Poplist">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Poplist.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Poplist.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Poplist.Poplist">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Popasl">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Popasl.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Popasl.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Popasl.Popasl">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Pendisplay">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Pendisplay.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Pendisplay.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Pendisplay.Pendisplay">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Poppen">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Poppen.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Poppen.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Poppen.Poppen">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Aboutmui">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Aboutmui.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Aboutmui.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Aboutmui.Aboutmui">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Scrmodelist">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Scrmodelist.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Scrmodelist.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Scrmodelist.Scrmodelist">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_VGroup">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_VGroup.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_VGroup.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_VGroup.Frame">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_VGroup.Title">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_HGroup">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_HGroup.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_HGroup.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_HGroup.Frame">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_HGroup.Title">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_ColGroup">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_ColGroup.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_ColGroup.Cols">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_ColGroup.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_ColGroup.Frame">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_ColGroup.Title">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_RowGroup">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_RowGroup.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_RowGroup.Rows">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_RowGroup.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_RowGroup.Frame">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_RowGroup.Title">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Pagegroup">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Pagegroup.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Pagegroup.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Pagegroup.Pagegroup">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_VGroupV">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_VGroupV.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_VGroupV.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_HGroupV">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_HGroupV.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_HGroupV.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_ColGroupV">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_ColGroupV.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_ColGroupV.Cols">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_ColGroupV.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_RowGroupV">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_RowGroupV.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_RowGroupV.Rows">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_RowGroupV.Tags">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_PagegroupV">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_PagegroupV.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_PagegroupV.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_PagegroupV.Pagegroup">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_RegisterGroup">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_RegisterGroup.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_RegisterGroup.Titles">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_RegisterGroup.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_RegisterGroup.RegisterGroup">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_HVSpace">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_HVSpace.Result">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_HSpace">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_HSpace.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_HSpace.x">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_VSpace">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_VSpace.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_VSpace.x">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_HCenter">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_HCenter.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_HCenter.Obj">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_VCenter">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_VCenter.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_VCenter.Obj">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Button">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Button.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Button.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Button.Button">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_SimpleButton">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_SimpleButton.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SimpleButton.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SimpleButton.Button">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_PopButton">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_PopButton.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_PopButton.Img">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_PopButton.PopButton">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Label">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Label.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Label.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Label.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Label1">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Label1.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Label1.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Label1.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Label2">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Label2.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Label2.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Label2.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_LLabel">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_LLabel.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_LLabel.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_LLabel.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_LLabel1">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_LLabel1.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_LLabel1.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_LLabel1.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_LLabel2">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_LLabel2.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_LLabel2.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_LLabel2.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_CLabel">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_CLabel.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CLabel.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CLabel.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_CLabel1">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_CLabel1.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CLabel1.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CLabel1.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_CLabel2">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_CLabel2.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CLabel2.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CLabel2.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_FreeLabel">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_FreeLabel.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLabel.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLabel.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_FreeLabel1">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_FreeLabel1.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLabel1.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLabel1.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_FreeLabel2">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_FreeLabel2.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLabel2.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLabel2.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_FreeLLabel">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_FreeLLabel.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLLabel.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLLabel.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_FreeLLabel1">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_FreeLLabel1.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLLabel1.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLLabel1.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_FreeLLabel2">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_FreeLLabel2.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLLabel2.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeLLabel2.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_FreeCLabel">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_FreeCLabel.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeCLabel.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeCLabel.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_FreeCLabel1">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_FreeCLabel1.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeCLabel1.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeCLabel1.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_FreeCLabel2">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_FreeCLabel2.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeCLabel2.BLabel">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_FreeCLabel2.OLabel">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_HBar">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_HBar.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_HBar.Space">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_HBar.HBar">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_VBar">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_VBar.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_VBar.Space">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_VBar.VBar">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MAKE_ID">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MAKE_ID.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MAKE_ID.c1">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MAKE_ID.c2">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MAKE_ID.c3">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MAKE_ID.c4">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="MH_Set">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Set.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Set.Tag">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Set.Data">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_Get">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_Get.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Get.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Get.Tag">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="MH_SetMutex">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetMutex.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetMutex.n">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="MH_SetCycle">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetCycle.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetCycle.n">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="MH_SetString">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetString.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetString.s">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="MH_SetCheckmark">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetCheckmark.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetCheckmark.b">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="MH_SetSlider">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetSlider.Obj">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetSlider.l">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_String.Contents">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_String.MaxLen">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_KeyString">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_KeyString.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyString.Contents">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyString.MaxLen">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyString.ControlChar">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyString.NString">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_CheckMark">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_CheckMark.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CheckMark.Selected">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CheckMark.CM">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_KeyCheckMark">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_KeyCheckMark.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyCheckMark.Selected">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyCheckMark.ControlChar">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyCheckMark.CM">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_KeyButton">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_KeyButton.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyButton.Name">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyButton.Key">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyButton.KB">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Cycle.Entries">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Cycle.CY">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_KeyCycle">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_KeyCycle.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyCycle.Entries">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyCycle.Key">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyCycle.KC">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Radio.Name">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Radio.Rarray">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Radio.RA">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_KeyRadio">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_KeyRadio.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyRadio.Name">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyRadio.Rarray">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyRadio.Key">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeyRadio.KR">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Slider.MinS">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Slider.MaxS">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Slider.Level">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_Slider.SL">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_KeySlider">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_KeySlider.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeySlider.MinS">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeySlider.MaxS">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeySlider.Level">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeySlider.Key">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_KeySlider.KS">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_NewObject">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_NewObject.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_NewObject.ClassPtr">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_NewObject.ClassID">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_NewObject.Tags">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_NewObject.Obj">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="MH_SetHook">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetHook.Hook">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetHook.Func">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_SetHook.Data">
+<short></short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MH_CreateCustomClass">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MH_CreateCustomClass.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CreateCustomClass.Base">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CreateCustomClass.Supername">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CreateCustomClass.Supermcc">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CreateCustomClass.DataSize">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MH_CreateCustomClass.Dispatcher">
+<short></short>
+</element>
+
+</module> <!-- muihelper -->
+
+</package>
+</fpdoc-descriptions>
