@@ -10768,6 +10768,27 @@ pointing to the file to be hard-linked must be provided</short>
   of the empty string ('').</p>
 <p>
   See <link id="ParsePattern">ParsePattern()</link> for more information on the patterns.</p>
+<p><b>Example</b></p>
+<code>
+program MatchTest;
+uses
+  amigados;
+procedure FindIcons(Pattern: AnsiString);
+var
+  Anchor: TAnchorPath;
+begin
+  if MatchFirst(PChar(Pattern), @Anchor) = 0 then
+  begin
+    repeat
+      writeln(Anchor.ap_Info.fib_Filename);
+    until MatchNext(@Anchor) &lt;&gt; 0;
+    MatchEnd(@Anchor);
+  end;
+end;
+begin
+  FindIcons('sys:#?.info');
+end.
+</code>
 </descr>
 <errors>
 </errors>

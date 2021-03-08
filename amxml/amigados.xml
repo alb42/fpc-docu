@@ -1645,7 +1645,7 @@ forget space for the header you pass in.
 
 <!-- pointer type Visibility: default -->
 <element name="PAnchorPath">
-<short>Structure expected by MatchFirst, MatchNext to find Files.</short>
+<short>Structure expected by <link id="MatchFirst">MatchFirst()</link>, <link id="MatchNext">MatchNext()</link> to find Files.</short>
 <descr><p> To search for files call <link id="MatchFirst">MatchFirst()</link> and then afterwards, <link id="MatchNext">MatchNext()</link> with this structure.
   You should check the return value each time and take the
   appropriate action, ultimately calling <link id="MatchEnd">MatchEnd()</link> when there are
@@ -1661,7 +1661,7 @@ forget space for the header you pass in.
 
 <!-- record type Visibility: default -->
 <element name="TAnchorPath">
-<short>Structure expected by MatchFirst, MatchNext to find Files.</short>
+<short>Structure expected by <link id="MatchFirst">MatchFirst()</link>, <link id="MatchNext">MatchNext()</link> to find Files.</short>
 <descr><p>
   Allocate this structure and initialize it as follows:</p>
 <p>
@@ -10488,7 +10488,7 @@ pointing to the file to be hard-linked must be provided</short>
   and take the appropriate action, ultimately calling <link id="MatchEnd">MatchEnd()</link> when
   there are no more files or you are done.  You can tell when you are
   done by checking for the normal AmigaDOS return code
-  ERROR_NO_MORE_ENTRIES.</p>
+  <link id="ERROR_NO_MORE_ENTRIES"/>.</p>
 <p>
   Note: patterns with trailing slashes may cause <var>MatchFirst()</var>/
   <link id="MatchNext">MatchNext()</link>
@@ -10496,6 +10496,27 @@ pointing to the file to be hard-linked must be provided</short>
   of the empty string ('').</p>
 <p>
   See <link id="ParsePattern">ParsePattern()</link> for more information on the patterns.</p>
+<p><b>Example</b></p>
+<code>
+program MatchTest;
+uses
+  amigados;
+procedure FindIcons(Pattern: AnsiString);
+var
+  Anchor: TAnchorPath;
+begin
+  if MatchFirst(PChar(Pattern), @Anchor) = 0 then
+  begin
+    repeat
+      writeln(Anchor.ap_Info.fib_Filename);
+    until MatchNext(@Anchor) &lt;&gt; 0;
+    MatchEnd(@Anchor);
+  end;
+end;
+begin
+  FindIcons('sys:#?.info');
+end.
+</code>
 </descr>
 <errors>
 </errors>
