@@ -14145,7 +14145,7 @@ In fact it is recommended that you do not use it at all.
 </errors>
 <seealso>  
   <link id="TLSAlloc"/>
-  <link id="TLSFree"/>
+  <link id="TLSGetValue"/>
   <link id="TLSSetValue"/>
   <link id="TLSCallDestructors"/>
 </seealso>
@@ -14179,6 +14179,10 @@ In fact it is recommended that you do not use it at all.
 <errors>
 </errors>
 <seealso>
+  <link id="TLSAlloc"/>
+  <link id="TLSFree"/>
+  <link id="TLSSetValue"/>
+  <link id="TLSCallDestructors"/>
 </seealso>
 </element>
 
