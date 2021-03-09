@@ -5027,7 +5027,7 @@ This structure is <b>READ ONLY</b> and only EXEC can create it!
   If a request has already completed when <var>AbortIO()</var> is called, no
   action is taken.</p>
   <p>
-  <b>Example:</b></p>
+  <b>Snippet:</b></p>
   <code>
 AbortIO(timer_request);
 WaitIO(timer_request);
@@ -5855,11 +5855,11 @@ A call to <link id="DeletePool"/> will free all memory blocks allocated in the p
 <p>
   Due to the effect of multitasking, the value returned may not
   actually be the amount of free memory available at that instant.</p>
-<p><b>Example:</b></p>
+<p><b>Snippet:</b></p>
 <code>
   AvailMem(MEMF_LARGEST);
   // return size of largest available memory chunk
-  </code>
+</code>
 </descr>
 <errors>
 </errors>
@@ -6652,26 +6652,8 @@ The programmer must execute exactly one call to <var>Enable()</var> for every ca
   returned.  No arbitration of the port list is done.  This function
   <b>must</b> be protected with A <link id="Forbid">Forbid()</link>/<link id="Permit">Permit()</link> pair!
   </p>
-  <p><b>Example:</b></p>
-  <code>
-function SafePutToPort(Msg: PMessage; Portname: string): Integer;
-var
-  Port: PMsgPort;
-  PName: PChar;
-begin
-  Result := -1;
-  PName := PChar(Portname + #0);
-  Forbid();
-  Port := FindPort(PName);
-  if Assigned(Port) then
-  begin
-    PutMsg(Port, Msg);
-    Result := 0;
-  end;
-  Permit();
-end;
-</code>
 </descr>
+<example file="example/SafePort.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -14624,32 +14606,8 @@ In fact it is recommended that you do not use it at all.
     It is illegal to <link id="TLSFree"/> an index while it is still being used
     by <link id="TLSGetValue"/> and/or <link id="TLSSetValue"/> by other tasks. The caller is
     responsible for making sure this does not happen.</p>
-<p><b>Example</b></p>
-<code>
-uses
-  Exec;
-function func(value: APTR; userdata: APTR): APTR;
-begin
-  
-  FreeVec(value);
-end;
-// ...
-var
-  tlsindex: LongWord;
-begin
-  tlsindex := TLSAlloc([TLSTAG_DESTRUCTOR, AsTag(@func),
-                            TLSTAG_USERDATA,   AsTag(something),
-                            TAG_DONE);
-  if tlsindex &lt;&gt; TLS_INVALID_INDEX then
-  begin
-
-    // ... more code ...
-
-    TLSFree(tlsindex);
-  end
-end.
-</code>
 </descr>
+<example file="TLS3.pp"/>
 <errors>
 </errors>
 <seealso>
