@@ -7128,9 +7128,9 @@ per cache buffer and the limit depends on the filesystem.</p>
 <li><link id="DosTrue"/> on success (<link id="IoErr">IoErr()</link> gives the actual number of buffers).</li>
 <li><link id="DosFalse"/> on error (<link id="IoErr">IoErr()</link> gives the error code).</li>
 </ul><p>
-Some old filesystems return the actual buffer size. See the example
+Some old filesystems return the actual buffer size. See the snippet
 for a workaround for that case.</p>
-<p><b>Example:</b></p>
+<p><b>Snippet:</b></p>
 <code>
 Res1 := AddBuffers('df0:', 10);
 Res2 := IoErr();
@@ -8717,40 +8717,8 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
   <li>Keep calling <var>ExNext()</var> until it returns False. Check <link id="IoErr">IoErr()</link>
      to ensure that the reason for failure was <link id="ERROR_NO_MORE_ENTRIES"/>.</li>
   </ol>
-<p><b>Example</b></p>
-<code>
-program Examine64Test;
-uses
-  AmigaDos;
-procedure CheckDir(ALock: BPTR);
-var
-  FIB: PFileInfoBlock;
-begin
-  FIB := AllocDosObject(DOS_FIB, nil);
-  if Assigned(FIB) then
-  begin
-    if Examine(ALock, FIB) &lt;&gt; 0 then
-    begin
-      repeat
-        writeln(FIB^.fib_FileName);
-      until ExNext(ALock, FIB) = 0;
-    end;
-    if IOErr() = ERROR_NO_MORE_ENTRIES then
-      writeln('nothing more found')
-    else
-      writeln('Something went wrong ', IOErr);
-    FreeDosObject(DOS_FIB, FIB);
-  end;
-end;
-var
-  RAMLock: BPTR;
-begin
-  RAMLock := Lock('RAM:', SHARED_LOCK);
-  CheckDir(RAMLock);
-  unlock(RAMLock);
-end.
-</code>
 </descr>
+<example file="examples/ExamineTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -8785,27 +8753,8 @@ end.
   field will reflect any changes made to the file size it was opened,
   though filesystems should attempt to provide up-to-date information
   for it.</p>
-<p><b>Example</b></p>
-<code>
-program ExamineFHTest;
-uses
-  AmigaDOS;
-var
-  FH: BPTR;
-  FIB: PFileInfoBlock;
-begin
-  FH := DOSOpen('c:dir', MODE_OLDFILE);
-  FIB := AllocDosObject(DOS_FIB, nil);
-  if Assigned(FIB) and (FH &lt;&gt; 0) then
-  begin
-    if Boolean(ExamineFH(FH, FIB)) then
-      writeln('Size: ',FIB^.fib_size);
-  end;
-  if Assigned(FIB) then FreeDosObject(DOS_FIB, FIB);
-  if FH &lt;&gt; 0 then DOSClose(FH);
-end.
-</code>
 </descr>
+<example file="examples/ExamineFHTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -8912,39 +8861,6 @@ end.
   <li>Keep calling <var>ExNext()</var> until it returns False. Check <link id="IoErr">IoErr()</link>
      to ensure that the reason for failure was <link id="ERROR_NO_MORE_ENTRIES"/>.</li>
   </ol>
-<p><b>Example</b></p>
-<code>
-program Examine64Test;
-uses
-  AmigaDos;
-procedure CheckDir(ALock: BPTR);
-var
-  FIB: PFileInfoBlock;
-begin
-  FIB := AllocDosObject(DOS_FIB, nil);
-  if Assigned(FIB) then
-  begin
-    if Examine(ALock, FIB) &lt;&gt; 0 then
-    begin
-      repeat
-        writeln(FIB^.fib_FileName);
-      until ExNext(ALock, FIB) = 0;
-    end;
-    if IOErr() = ERROR_NO_MORE_ENTRIES then
-      writeln('nothing more found')
-    else
-      writeln('Something went wrong ', IOErr);
-    FreeDosObject(DOS_FIB, FIB);
-  end;
-end;
-var
-  RAMLock: BPTR;
-begin
-  RAMLock := Lock('RAM:', SHARED_LOCK);
-  CheckDir(RAMLock);
-  unlock(RAMLock);
-end.
-</code>
 <p><b>Attention</b></p>
 <p>
   If you wish to recursively scan the file tree and you find
@@ -8963,6 +8879,7 @@ end.
   <link id="TFileInfoBlock"/>.  You may make a local copy of the <link id="TFileInfoBlock"/>, as
   long as it is never passed back to the operating system.</p>
 </descr>
+<example file="examples/ExamineTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -10418,28 +10335,8 @@ pointing to the file to be hard-linked must be provided</short>
   of the empty string ('').</p>
 <p>
   See <link id="ParsePattern">ParsePattern()</link> for more information on the patterns.</p>
-<p><b>Example</b></p>
-<code>
-program MatchTest;
-uses
-  amigados;
-procedure FindIcons(Pattern: AnsiString);
-var
-  Anchor: TAnchorPath;
-begin
-  if MatchFirst(PChar(Pattern), @Anchor) = 0 then
-  begin
-    repeat
-      writeln(Anchor.ap_Info.fib_Filename);
-    until MatchNext(@Anchor) &lt;&gt; 0;
-    MatchEnd(@Anchor);
-  end;
-end;
-begin
-  FindIcons('sys:#?.info');
-end.
-</code>
 </descr>
+<example file="examples/MatchTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -16712,40 +16609,8 @@ of blocks for the file.</p>
       information you are provided. When ExNext64 returns False, check <link id="IoErr"/>()
       to make sure that there was no real failure (<link id="ERROR_NO_MORE_ENTRIES"/>).</li>
   </ol>
-<p><b>Example</b></p>
-<code>
-program Examine64Test;
-uses
-  AmigaDos;
-procedure CheckDir(ALock: BPTR);
-var
-  FIB: PFileInfoBlock;
-begin
-  FIB := AllocDosObject(DOS_FIB, nil);
-  if Assigned(FIB) then
-  begin
-    if Examine64(ALock, FIB, nil) &lt;&gt; 0 then
-    begin
-      repeat
-        writeln(FIB^.fib_FileName);
-      until ExNext64(ALock, FIB, nil) = 0;
-    end;
-    if IOErr() = ERROR_NO_MORE_ENTRIES then
-      writeln('nothing more found')
-    else
-      writeln('Something went wrong ', IOErr);
-    FreeDosObject(DOS_FIB, FIB);
-  end;
-end;
-var
-  RamLock: BPTR;
-begin
-  RamLock := Lock('RAM:', SHARED_LOCK);
-  CheckDir(RamLock);
-  Unlock(RamLock);
-end.
-</code>
 </descr>
+<example file="examples/Examine64Test.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -16824,40 +16689,8 @@ end.
       information you are provided. When ExNext64 returns False, check <link id="IoErr"/>()
       to make sure that there was no real failure (<link id="ERROR_NO_MORE_ENTRIES"/>).</li>
   </ol>
-<p><b>Example</b></p>
-<code>
-program Examine64Test;
-uses
-  AmigaDos;
-procedure CheckDir(ALock: BPTR);
-var
-  FIB: PFileInfoBlock;
-begin
-  FIB := AllocDosObject(DOS_FIB, nil);
-  if Assigned(FIB) then
-  begin
-    if Examine64(ALock, FIB, nil) &lt;&gt; 0 then
-    begin
-      repeat
-        writeln(FIB^.fib_FileName);
-      until ExNext64(ALock, FIB, nil) = 0;
-    end;
-    if IOErr() = ERROR_NO_MORE_ENTRIES then
-      writeln('nothing more found')
-    else
-      writeln('Something went wrong ', IOErr);
-    FreeDosObject(DOS_FIB, FIB);
-  end;
-end;
-var
-  RamLock: BPTR;
-begin
-  RamLock := Lock('RAM:', SHARED_LOCK);
-  CheckDir(RamLock);
-  Unlock(RamLock);
-end.
-</code>
 </descr>
+<example file="examples/Examine64Test.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -16932,27 +16765,8 @@ end.
 <p>
 Fill in a FileInfoBlock structure where <link id="TFileHandle"/>.fib_Size64 containing the size of the file. <link id="TFileHandle"/>.fib_NumBlocks64
 contains the number of blocks for the file.</p>
-<p><b>Example</b></p>
-<code>
-program ExamineFH64Test;
-uses
-  AmigaDOS;
-var
-  FH: BPTR;
-  FIB: PFileInfoBlock;
-begin
-  FH := DOSOpen('c:dir', MODE_OLDFILE);
-  FIB := AllocDosObject(DOS_FIB, nil);
-  if Assigned(FIB) and (FH &lt;&gt; 0) then
-  begin
-    if Boolean(ExamineFH64(FH, FIB, nil)) then
-      writeln('Size: ', FIB^.fib_size64);
-  end;
-  if Assigned(FIB) then FreeDosObject(DOS_FIB, FIB);
-  if FH &lt;&gt; 0 then DOSClose(FH);
-end.
-</code>
 </descr>
+<example file="examples/ExamineFH64Test.pp"/>
 <errors>
 </errors>
 <seealso>
