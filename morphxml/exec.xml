@@ -14202,52 +14202,8 @@ In fact it is recommended that you do not use it at all.
 <descr><p>Set the task specific value associated with the given Thread-Local Storage index.</p>
 <p><b>Attention</b></p>
 <p>The result of this call must be checked and a viable error handling path taken.</p>
-<p><b>Example</b></p>
-<code>
-Ttlsdata = record
-  foo: LongWord;
-  bar: PChar;
-  // ... 
-end;
-Ptlsdata = ^TTtlsdata;
-
-var
-  tlsindex: LongWord; // Set and cleaned up elsewhere
-  TLSData: Ptlsdata;
-
-begin
-
-  Data := PTLSData(TLSGetValue(tlsindex));
-  if not Assigned(data) then
-  begin
-    data := PTLSData(AllocVec(SizeOf(Ttlsdata), MEMF_CLEAR));    
-    if not Assigned(data) or (TLSSetValue(tlsindex, data) &lt;&gt; 0) then
-    begin
-      if Assigned(data) then
-      begin
-        FreeVec(data);
-        data := NULL;
-      end;
-    end;
-  end;
-
-  if Assigned(data) then
-  begin
-    // Use the thread specific data. ...
-  end;
-
-  //...
-
-  // Thread specific data is no longer needed, free it.
-  data := PTLSData(TLSGetValue(tlsindex));
-  if Assigned(data) then
-  begin
-    FreeVec(Data);
-    TLSSetValue(tlsindex, nil); // Always succeeds
-  end;
-end;
-</code>
 </descr>
+<example file="examples/TLS2.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -14300,40 +14256,8 @@ end;
     destructor functions might not be called in this case, but could
     still get deallocated and not called again, ever. Just Don't Do
     It.</p>
-<p><b>Example</b></p>    
-<code>
-procedure Proc(Parent: PTask, ParentSigMask: LongWord);
-begin
-  // Much work here...
-
-  // Call destructors before we do internal cleanup
-  TLSCallDestructors(nil);
-  // Some cleanup that we need to do before exit
-      
-
-  Forbid();
-  Signal(Parent, ParentSigMask);
-end;
-
-var
-  Sig: ShortInt;
-begin
-  Sig := AllocSignal(-1);
-  if Sig &lt;&gt; -1 then
-  begin
-    if CreateNewProc([
-      NP_Entry,    AsTag(@Proc),
-      NP_CodeType, CODETYPE_PPC,
-      NP_PPC_Arg1, AsTag(FindTask(nil)),
-      NP_PPC_Arg2, 1 shl Sig,
-      TAG_DONE]) &lt;&gt; 0 then
-    begin
-      Wait(1 shl Sig);
-    end;
-  FreeSignal(Sig);
-end;
-</code>
 </descr>
+<example file="examples/TLS1.pp"/>
 <errors>
   MorphOS 3.14 (exec 51.46) had a bug which resulted in the
   destructors being called out of the expected order. In particular
