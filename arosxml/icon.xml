@@ -1779,7 +1779,7 @@ FindToolType(toolTypeArray, ':t');       // returns nil
   a known value.  It knows how to parse the syntax for a tool
   type value (in particular, it knows that '|' separates
   alternate values).  Note that the parsing is case insensitive.</p>
-<p><b>Example</b></p>
+<p><b>Snippet</b></p>
 <code>
 //Assume there are two type strings:
 type1 := 'text';

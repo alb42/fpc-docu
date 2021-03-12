@@ -8718,7 +8718,7 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
      to ensure that the reason for failure was <link id="ERROR_NO_MORE_ENTRIES"/>.</li>
   </ol>
 </descr>
-<example file="examples/ExamineTest.pp"/>
+<example file="../examples/ExamineTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -8754,7 +8754,7 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
   though filesystems should attempt to provide up-to-date information
   for it.</p>
 </descr>
-<example file="examples/ExamineFHTest.pp"/>
+<example file="../examples/ExamineFHTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -8879,7 +8879,7 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
   <link id="TFileInfoBlock"/>.  You may make a local copy of the <link id="TFileInfoBlock"/>, as
   long as it is never passed back to the operating system.</p>
 </descr>
-<example file="examples/ExamineTest.pp"/>
+<example file="../examples/ExamineTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -10336,7 +10336,7 @@ pointing to the file to be hard-linked must be provided</short>
 <p>
   See <link id="ParsePattern">ParsePattern()</link> for more information on the patterns.</p>
 </descr>
-<example file="examples/MatchTest.pp"/>
+<example file="../examples/MatchTest.pp"/>
 <errors>
 </errors>
 <seealso>

@@ -14259,7 +14259,7 @@ be made.
   being coerced to, and the ViewPort that is being coerced.
   Incompatibilities will cause a result of <link id="INVALID_ID"/>.
 </p>
-<p><b>Example</b></p>
+<p><b>Snippet</b></p>
 <code>
 newmode := CoerceMode(vp, VGA_MONITOR_ID, PRESERVE_COLORS);
 </code>

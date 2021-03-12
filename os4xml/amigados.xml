@@ -8667,40 +8667,8 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
   <li>Keep calling <var>ExNext()</var> until it returns False. Check <link id="IoErr">IoErr()</link>
      to ensure that the reason for failure was <link id="ERROR_NO_MORE_ENTRIES"/>.</li>
   </ol>
-<p><b>Example</b></p>
-<code>
-program Examine64Test;
-uses
-  AmigaDos;
-procedure CheckDir(ALock: BPTR);
-var
-  FIB: PFileInfoBlock;
-begin
-  FIB := AllocDosObject(DOS_FIB, nil);
-  if Assigned(FIB) then
-  begin
-    if Examine(ALock, FIB) &lt;&gt; 0 then
-    begin
-      repeat
-        writeln(FIB^.fib_FileName);
-      until ExNext(ALock, FIB) = 0;
-    end;
-    if IOErr() = ERROR_NO_MORE_ENTRIES then
-      writeln('nothing more found')
-    else
-      writeln('Something went wrong ', IOErr);
-    FreeDosObject(DOS_FIB, FIB);
-  end;
-end;
-var
-  RAMLock: BPTR;
-begin
-  RAMLock := Lock('RAM:', SHARED_LOCK);
-  CheckDir(RAMLock);
-  unlock(RAMLock);
-end.
-</code>
 </descr>
+<example file="../examples/ExamineTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -8735,27 +8703,8 @@ end.
   field will reflect any changes made to the file size it was opened,
   though filesystems should attempt to provide up-to-date information
   for it.</p>
-<p><b>Example</b></p>
-<code>
-program ExamineFHTest;
-uses
-  AmigaDOS;
-var
-  FH: BPTR;
-  FIB: PFileInfoBlock;
-begin
-  FH := DOSOpen('c:dir', MODE_OLDFILE);
-  FIB := AllocDosObject(DOS_FIB, nil);
-  if Assigned(FIB) and (FH &lt;&gt; 0) then
-  begin
-    if Boolean(ExamineFH(FH, FIB)) then
-      writeln('Size: ',FIB^.fib_size);
-  end;
-  if Assigned(FIB) then FreeDosObject(DOS_FIB, FIB);
-  if FH &lt;&gt; 0 then DOSClose(FH);
-end.
-</code>
 </descr>
+<example file="../examples/ExamineFHTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -10314,28 +10263,8 @@ pointing to the file to be hard-linked must be provided</short>
   of the empty string ('').</p>
 <p>
   See <link id="ParsePattern">ParsePattern()</link> for more information on the patterns.</p>
-<p><b>Example</b></p>
-<code>
-program MatchTest;
-uses
-  amigados;
-procedure FindIcons(Pattern: AnsiString);
-var
-  Anchor: TAnchorPath;
-begin
-  if MatchFirst(PChar(Pattern), @Anchor) = 0 then
-  begin
-    repeat
-      writeln(Anchor.ap_Info.fib_Filename);
-    until MatchNext(@Anchor) &lt;&gt; 0;
-    MatchEnd(@Anchor);
-  end;
-end;
-begin
-  FindIcons('sys:#?.info');
-end.
-</code>
 </descr>
+<example file="../examples/MatchTest.pp"/>
 <errors>
 </errors>
 <seealso>

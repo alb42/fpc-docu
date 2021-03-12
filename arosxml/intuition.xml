@@ -22013,7 +22013,7 @@ Values for flag bits are:</p>
       pointer change is cancelled.  This reduces short
       flashes of the busy pointer.</dd>
 </dl>
-<p><b>Example</b></p>
+<p><b>Snippet</b></p>
 <p>
   This example sets the standard busy pointer with pointer-delay,
   does a bit of work, then clears the pointer:</p>
@@ -22296,7 +22296,7 @@ the screen changes.</p>
   but you may also continue processing after an event which would
   normally terminate a normal call to <link id="EasyRequest">EasyRequest()</link>.
 </p>
-<p><b>Example</b></p>
+<p><b>Snippet</b></p>
 <p>
   Implementation of EasyRequest input loop:</p>
 <code>
