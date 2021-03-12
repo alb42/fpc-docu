@@ -31,8 +31,17 @@
 
 <!-- constant Visibility: default -->
 <element name="LAYERSIMPLE">
-<short></short>
+<short>Layer is a simple refresh layer</short>
 <descr>
+<p>When an application draws into the layer, any portion of the layer that is visible (not obscured) will be rendered into the common BitMap of the viewing area. All graphics rendering routines are "clipped" so that only exposed sections of the layer are drawn into. No back-up of obscured areas is provided.<p>
+<p>If another layer operation is performed that causes an obscured part of a simple refresh layer to be exposed, the application must determine if the section need be refreshed, re-drawing the newly exposed part of the layer as required.</p>
+<p>The basic advantage of simple refresh is that it does not require back-up area to save drawing sections that cannot be seen, saving memory. However, the application needs to monitor the layer to see if it needs refreshing. This is typically performed with statements like:</p>
+<code>
+if layer^.Flags and LAYERREFRESH &gt;&lt; 0 then
+  Refresh(layer);
+</code>
+<p>
+When an application restores the layer by performing a full-layer redraw, only the damaged areas are redrawn, making the operation fairly time efficient. </p>
 </descr>
 <seealso>
 </seealso>
@@ -40,8 +49,11 @@
 
 <!-- constant Visibility: default -->
 <element name="LAYERSMART">
-<short></short>
+<short>Layer is a smart refresh layer</short>
 <descr>
+<p>Under smart refresh, the system provides dynamic backup of obscured sections of the layer. The graphics routines will automatically draw into these backup areas when they encounter an obscured part of the layer. The backup memory will be used to automatically update the display when obscured sections later become exposed.</p>
+<p>With smart refresh layers, the system handles all of the refresh requirements of the layer, except when the layer is made larger. When parts of the layer are exposed by a sizing operation, the application must refresh the newly exposed areas.</p>
+<p>The advantage of smart refresh is the speed of updating exposed regions of the layer and the ability of the system to manage part of the updating process for the application.. Its main disadvantage is the additional memory required to handle this automatic refresh. </p>
 </descr>
 <seealso>
 </seealso>
@@ -51,6 +63,14 @@
 <element name="LAYERSUPER">
 <short></short>
 <descr>
+<p>A super bitmap layer is similar to a smart refresh layer. It too has a back-up area for rendering graphics for currently obscured parts of the display. Whenever an obscured area is made visible, the corresponding part of the backup area is copied to the display automatically.</p>
+<p>However, it differs from smart refresh in that:</p>
+<ul>
+<li>The back-up BitMap is user-supplied, rather than being allocated dynamically by the system.</li>
+<li>The back-up BitMap may be as large or larger than the the current size of the layer. It may also be larger than the maximum size of the layer.</li>
+</ul>
+<p>To see a larger portion of a super bitmap on-display, use SizeLayer(). To see a different portion of the super bitmap in the layer, use ScrollLayer().</p>
+<p>When the graphics routines perform drawing commands, part of the drawing appears in the common BitMap (the on-display portion). Any drawing outside the displayed portion itself is rendered into the super bitmap. When the layer is scrolled or sized, the layer contents are copied into the super bitmap, the scroll or size positioning is modified, and the appropriate portions are then copied back into the layer. (Refer to the graphics library functions SyncSBitMap() and CopySBitMap(). </p>
 </descr>
 <seealso>
 </seealso>
@@ -67,8 +87,8 @@
 
 <!-- constant Visibility: default -->
 <element name="LAYERBACKDROP">
-<short></short>
-<descr>
+<short>Layer is a backdrop layer</short>
+<descr>A layer of any type may be designated a backdrop layer which will always appear behind all other layers. They may not be moved, sized, or depth-arranged. Non-backdrop layers will always remain in front of backdrop layers regardless of how the non-backdrop layer is moved, sized or depth-arranged. 
 </descr>
 <seealso>
 </seealso>
