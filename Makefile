@@ -12,10 +12,10 @@ arosunits.chm: arosunits
 		fpdoc --package=aros --ostarget=AROS_ABIv0 --cputarget=i386 --content --descr-dir=arosxml --input-dir=arosunits/src --output=arosunits.chm $(CHMPARAMS)
 
 amunits.tgz: amunits
-		fpdoc --package=amunits --ostarget=amiga --cputarget=m68k --content --descr-dir=./amxml/ --input-dir=amunits/src/coreunits/ --input-dir=amunits/src/otherlibs/ --output=amhtml/ $(HTMLPARAMS)
+		fpdoc --package=amunits --ostarget=amiga --cputarget=m68k --content --descr-dir=./amxml/ --input-dir=amunits/src/coreunits/ --input-dir=amunits/src/otherlibs/ --input-dir=amunits/src/utilunits/ --output=amhtml/ $(HTMLPARAMS)
 		tar -czf amunits.tgz amhtml/*
 amunits.chm: amunits
-		fpdoc --package=amunits --ostarget=amiga --cputarget=m68k --content --descr-dir=./amxml/ --input-dir=amunits/src/coreunits/ --input-dir=amunits/src/otherlibs/ --output=amunits.chm $(CHMPARAMS)
+		fpdoc --package=amunits --ostarget=amiga --cputarget=m68k --content --descr-dir=./amxml/ --input-dir=amunits/src/coreunits/ --input-dir=amunits/src/otherlibs/ --input-dir=amunits/src/utilunits/ --output=amunits.chm $(CHMPARAMS)
 
 morphunits.tgz: morphunits
 		fpdoc --package=morphunits --ostarget=morphos --cputarget=powerpc --content --descr-dir=./morphxml/ --input-dir=morphunits/src/ --output=morphhtml/ $(HTMLPARAMS)
