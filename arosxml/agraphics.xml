@@ -904,7 +904,7 @@ back to a non-interleaved one.
 
 <!-- constant Visibility: default -->
 <element name="ISLESSX">
-<short>Code value for <link id="intuition.GetCode"/></short>
+<short>Code value for GetCode</short>
 <descr>
 </descr>
 <seealso>
@@ -913,7 +913,7 @@ back to a non-interleaved one.
 
 <!-- constant Visibility: default -->
 <element name="ISLESSY">
-<short>Code value for <link id="intuition.GetCode"/></short>
+<short>Code value for GetCode</short>
 <descr>
 </descr>
 <seealso>
@@ -922,7 +922,7 @@ back to a non-interleaved one.
 
 <!-- constant Visibility: default -->
 <element name="ISGRTRX">
-<short></short>
+<short>Code value for GetCode</short>
 <descr>
 </descr>
 <seealso>
@@ -931,7 +931,7 @@ back to a non-interleaved one.
 
 <!-- constant Visibility: default -->
 <element name="ISGRTRY">
-<short>Code value for <link id="intuition.GetCode"/></short>
+<short>Code value for GetCode</short>
 <descr>
 </descr>
 <seealso>
@@ -3780,7 +3780,7 @@ use of shadow mask for that plane
 
 <!-- constant Visibility: default -->
 <element name="LA_Dummy">
-<short>Tag start for <link id="Layers.CreateLayerTagList">CreateLayerTagList()</link></short>
+<short>Tag start for <link id="Layers.CreateBehindLayer">CreateBehindLayer()</link> and <link id="Layers.CreateUpfrontLayerTagList">CreateUpfrontLayerTagList()</link></short>
 <descr>
 </descr>
 <seealso>
@@ -3789,7 +3789,7 @@ use of shadow mask for that plane
 
 <!-- constant Visibility: default -->
 <element name="LA_Type">
-<short>Tag for <link id="Layers.CreateLayerTagList">CreateLayerTagList()</link> Type of layer</short>
+<short>Tag for <link id="Layers.CreateBehindLayer">CreateBehindLayer()</link> and <link id="Layers.CreateUpfrontLayerTagList">CreateUpfrontLayerTagList()</link> Type of layer</short>
 <descr> <link id="LAYERSIMPLE"/>, <link id="LAYERSMART"/>(default) or <link id="LAYERSUPER"/>
 </descr>
 <seealso>
@@ -3798,7 +3798,7 @@ use of shadow mask for that plane
 
 <!-- constant Visibility: default -->
 <element name="LA_Priority">
-<short>Tag for <link id="Layers.CreateLayerTagList">CreateLayerTagList()</link> Layer priority</short>
+<short>Tag for <link id="Layers.CreateBehindLayer">CreateBehindLayer()</link> and <link id="Layers.CreateUpfrontLayerTagList">CreateUpfrontLayerTagList()</link> Layer priority</short>
 <descr>-128 .. 127 or <link id="LPRI_NORMAL"/>(default) or <link id="LPRI_BACKDROP"/>
 </descr>
 <seealso>
@@ -3807,7 +3807,7 @@ use of shadow mask for that plane
 
 <!-- constant Visibility: default -->
 <element name="LA_Behind">
-<short>Tag for <link id="Layers.CreateLayerTagList">CreateLayerTagList()</link> LongBool. Default is False</short>
+<short>Tag for <link id="Layers.CreateBehindLayer">CreateBehindLayer()</link> and <link id="Layers.CreateUpfrontLayerTagList">CreateUpfrontLayerTagList()</link> LongBool. Default is False</short>
 <descr>
 </descr>
 <seealso>
@@ -3816,7 +3816,7 @@ use of shadow mask for that plane
 
 <!-- constant Visibility: default -->
 <element name="LA_Invisible">
-<short>Tag for <link id="Layers.CreateLayerTagList">CreateLayerTagList()</link> LongBool. Default is False</short>
+<short>Tag for <link id="Layers.CreateBehindLayer">CreateBehindLayer()</link> and <link id="Layers.CreateUpfrontLayerTagList">CreateUpfrontLayerTagList()</link> LongBool. Default is False</short>
 <descr>
 </descr>
 <seealso>
@@ -3825,7 +3825,7 @@ use of shadow mask for that plane
 
 <!-- constant Visibility: default -->
 <element name="LA_BackFill">
-<short>Tag for <link id="Layers.CreateLayerTagList">CreateLayerTagList()</link> <link id="Utility.PHook">PHook</link>. Default is <link id="LAYERS_BACKFILL"/></short>
+<short>Tag for <link id="Layers.CreateBehindLayer">CreateBehindLayer()</link> and <link id="Layers.CreateUpfrontLayerTagList">CreateUpfrontLayerTagList()</link> <link id="Utility.PHook">PHook</link>. Default is <link id="LAYERS_BACKFILL"/></short>
 <descr>
 </descr>
 <seealso>
@@ -3834,7 +3834,7 @@ use of shadow mask for that plane
 
 <!-- constant Visibility: default -->
 <element name="LA_SuperBitMap">
-<short>Tag for <link id="Layers.CreateLayerTagList">CreateLayerTagList()</link> <link id="PBitMap"/>. Default is nil (none)</short>
+<short>Tag for <link id="Layers.CreateBehindLayer">CreateBehindLayer()</link> and <link id="Layers.CreateUpfrontLayerTagList">CreateUpfrontLayerTagList()</link> <link id="PBitMap"/>. Default is nil (none)</short>
 <descr>
 </descr>
 <seealso>
@@ -3843,7 +3843,7 @@ use of shadow mask for that plane
 
 <!-- constant Visibility: default -->
 <element name="LA_Shape">
-<short>Tag for <link id="Layers.CreateLayerTagList">CreateLayerTagList()</link> <link id="PRegion"/>. Default is nil (rectangular shape)</short>
+<short>Tag for <link id="Layers.CreateBehindLayer">CreateBehindLayer()</link> and <link id="Layers.CreateUpfrontLayerTagList">CreateUpfrontLayerTagList()</link> <link id="PRegion"/>. Default is nil (rectangular shape)</short>
 <descr>
 </descr>
 <seealso>
@@ -3852,7 +3852,7 @@ use of shadow mask for that plane
 
 <!-- constant Visibility: default -->
 <element name="LPRI_NORMAL">
-<short>Default priority for <link id="Layers.CreateLayerTagList">CreateLayerTagList()</link> Tag: <link id="LA_Priority"/> </short>
+<short>Default priority for <link id="Layers.CreateBehindLayer">CreateBehindLayer()</link> and <link id="Layers.CreateUpfrontLayerTagList">CreateUpfrontLayerTagList()</link> Tag: <link id="LA_Priority"/> </short>
 <descr>
 </descr>
 <seealso>
@@ -3861,7 +3861,7 @@ use of shadow mask for that plane
 
 <!-- constant Visibility: default -->
 <element name="LPRI_BACKDROP">
-<short>lower priority for <link id="Layers.CreateLayerTagList">CreateLayerTagList()</link> Tag: <link id="LA_Priority"/></short>
+<short>lower priority for <link id="Layers.CreateBehindLayer">CreateBehindLayer()</link> and <link id="Layers.CreateUpfrontLayerTagList">CreateUpfrontLayerTagList()</link> Tag: <link id="LA_Priority"/></short>
 <descr>
 </descr>
 <seealso>

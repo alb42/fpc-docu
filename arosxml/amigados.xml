@@ -1592,13 +1592,13 @@ forget space for the header you pass in.
 <descr>
 </descr>
 <seealso>
-<link id="StrToDate"/>
-<link id="DateToStr"/>
+<link id="DOSStrToDate"/>
+<link id="DOSDateToStr"/>
 </seealso>
 </element>
 
 <!-- record type Visibility: default -->
-<element name="TDateTime">
+<element name="_TDateTime">
 <short>Structure to convert a <link id="TDateStamp"/> to a string and vice versa</short>
 <descr>
 </descr>
@@ -1607,7 +1607,7 @@ forget space for the header you pass in.
 </element>
 
 <!-- variable Visibility: default -->
-<element name="TDateTime.dat_Stamp">
+<element name="_TDateTime.dat_Stamp">
 <short>machine readable date time representation</short>
 <descr>
 </descr>
@@ -1616,7 +1616,7 @@ forget space for the header you pass in.
 </element>
 
 <!-- variable Visibility: default -->
-<element name="TDateTime.dat_Format">
+<element name="_TDateTime.dat_Format">
 <short>Controls appearance of dat_StrDate (FORMAT_*)</short>
 <descr>
 </descr>
@@ -1625,7 +1625,7 @@ forget space for the header you pass in.
 </element>
 
 <!-- variable Visibility: default -->
-<element name="TDateTime.dat_Flags">
+<element name="_TDateTime.dat_Flags">
 <short>Additional Flags (DTF_*)</short>
 <descr>
 </descr>
@@ -1634,7 +1634,7 @@ forget space for the header you pass in.
 </element>
 
 <!-- variable Visibility: default -->
-<element name="TDateTime.dat_StrDay">
+<element name="_TDateTime.dat_StrDay">
 <short>Day of the week string</short>
 <descr>
 </descr>
@@ -1643,7 +1643,7 @@ forget space for the header you pass in.
 </element>
 
 <!-- variable Visibility: default -->
-<element name="TDateTime.dat_StrDate">
+<element name="_TDateTime.dat_StrDate">
 <short>Date string</short>
 <descr>
 </descr>
@@ -1652,7 +1652,7 @@ forget space for the header you pass in.
 </element>
 
 <!-- variable Visibility: default -->
-<element name="TDateTime.dat_StrTime">
+<element name="_TDateTime.dat_StrTime">
 <short>Time string</short>
 <descr>
 </descr>
@@ -1662,7 +1662,7 @@ forget space for the header you pass in.
 
 <!-- constant Visibility: default -->
 <element name="LEN_DATSTRING">
-<short>Needed bytes for the Strings in <link id="TDateTime"/></short>
+<short>Needed bytes for the Strings in <link id="_TDateTime"/></short>
 <descr>
 </descr>
 <seealso>
@@ -1671,7 +1671,7 @@ forget space for the header you pass in.
 
 <!-- constant Visibility: default -->
 <element name="DTB_SUBST">
-<short>Format Bit for <link id="TDateTime"/><var>.dat_Format</var> substitute Today, Tomorrow, etc. </short>
+<short>Format Bit for <link id="_TDateTime"/><var>.dat_Format</var> substitute Today, Tomorrow, etc. </short>
 <descr>
 </descr>
 <seealso>
@@ -1680,7 +1680,7 @@ forget space for the header you pass in.
 
 <!-- constant Visibility: default -->
 <element name="DTF_SUBST">
-<short>Format Value for <link id="TDateTime"/><var>.dat_Format</var> substitute Today, Tomorrow, etc. </short>
+<short>Format Value for <link id="_TDateTime"/><var>.dat_Format</var> substitute Today, Tomorrow, etc. </short>
 <descr>
 </descr>
 <seealso>
@@ -1689,7 +1689,7 @@ forget space for the header you pass in.
 
 <!-- constant Visibility: default -->
 <element name="DTB_FUTURE">
-<short>Format Bit for <link id="TDateTime"/><var>.dat_Format</var> day of the week can be future</short>
+<short>Format Bit for <link id="_TDateTime"/><var>.dat_Format</var> day of the week can be future</short>
 <descr>
 </descr>
 <seealso>
@@ -1698,7 +1698,7 @@ forget space for the header you pass in.
 
 <!-- constant Visibility: default -->
 <element name="DTF_FUTURE">
-<short>Format Value for <link id="TDateTime"/><var>.dat_Format</var> day of the week can be future</short>
+<short>Format Value for <link id="_TDateTime"/><var>.dat_Format</var> day of the week can be future</short>
 <descr>
 </descr>
 <seealso>
@@ -1707,7 +1707,7 @@ forget space for the header you pass in.
 
 <!-- constant Visibility: default -->
 <element name="FORMAT_DOS">
-<short>Flag Value for <link id="TDateTime"/><var>.dat_Flags</var> dd-mmm-yy</short>
+<short>Flag Value for <link id="_TDateTime"/><var>.dat_Flags</var> dd-mmm-yy</short>
 <descr>
 </descr>
 <seealso>
@@ -1716,7 +1716,7 @@ forget space for the header you pass in.
 
 <!-- constant Visibility: default -->
 <element name="FORMAT_INT">
-<short>Flag Value for <link id="TDateTime"/><var>.dat_Flags</var> yy-mm-dd</short>
+<short>Flag Value for <link id="_TDateTime"/><var>.dat_Flags</var> yy-mm-dd</short>
 <descr>
 </descr>
 <seealso>
@@ -1725,7 +1725,7 @@ forget space for the header you pass in.
 
 <!-- constant Visibility: default -->
 <element name="FORMAT_USA">
-<short>Flag Value for <link id="TDateTime"/><var>.dat_Flags</var> mm-dd-yy</short>
+<short>Flag Value for <link id="_TDateTime"/><var>.dat_Flags</var> mm-dd-yy</short>
 <descr>
 </descr>
 <seealso>
@@ -1734,7 +1734,7 @@ forget space for the header you pass in.
 
 <!-- constant Visibility: default -->
 <element name="FORMAT_CDN">
-<short>Flag Value for <link id="TDateTime"/><var>.dat_Flags</var> dd-mm-yy</short>
+<short>Flag Value for <link id="_TDateTime"/><var>.dat_Flags</var> dd-mm-yy</short>
 <descr>
 </descr>
 <seealso>
@@ -1743,7 +1743,7 @@ forget space for the header you pass in.
 
 <!-- constant Visibility: default -->
 <element name="FORMAT_MAX">
-<short>Flag Value for <link id="TDateTime"/><var>.dat_Flags</var> dd-mm-yy</short>
+<short>Flag Value for <link id="_TDateTime"/><var>.dat_Flags</var> dd-mm-yy</short>
 <descr>
 </descr>
 <seealso>
@@ -1752,7 +1752,7 @@ forget space for the header you pass in.
 
 <!-- constant Visibility: default -->
 <element name="FORMAT_DEF">
-<short>Flag Value for <link id="TDateTime"/><var>.dat_Flags</var> se default format, as defined
+<short>Flag Value for <link id="_TDateTime"/><var>.dat_Flags</var> se default format, as defined
  by locale; if locale not available, use <link id="FORMAT_DOS"/> instead</short>
 <descr>
 </descr>
@@ -7985,8 +7985,8 @@ Note: There is no CLI structure if started from WB, but also in shell it can be 
 </errors>
 <seealso>
 <link id="DateStamp"/>
-<link id="DateToStr"/>
-<link id="StrToDate"/>
+<link id="DOSDateToStr"/>
+<link id="DOSStrToDate"/>
 </seealso>
 </element>
 
@@ -8181,8 +8181,8 @@ Note: There is no CLI structure if started from WB, but also in shell it can be 
 <errors>
 </errors>
 <seealso>
-<link id="DateToStr"/>
-<link id="StrToDate"/>
+<link id="DOSDateToStr"/>
+<link id="DOSStrToDate"/>
 <link id="SetFileDate"/>
 <link id="CompareDates"/>
 </seealso>
@@ -8194,12 +8194,12 @@ Note: There is no CLI structure if started from WB, but also in shell it can be 
 </element>
 
 <!-- function Visibility: default -->
-<element name="DateToStr">
+<element name="DOSDateToStr">
 <short>Converts a DateStamp to a string</short>
 <descr><p>
-<var>DateToStr()</var> converts an AROS DateStamp to a human
+<var>DOSDateToStr()</var> converts an AROS DateStamp to a human
 readable ASCII string as requested by your settings in the
-<link id="TDateTime"/> structure.</p>
+<link id="_TDateTime"/> structure.</p>
 </descr>
 <errors>
 </errors>
@@ -8208,12 +8208,12 @@ readable ASCII string as requested by your settings in the
 </element>
 
 <!-- function result Visibility: default -->
-<element name="DateToStr.Result">
+<element name="DOSDateToStr.Result">
 <short></short>
 </element>
 
 <!-- argument Visibility: default -->
-<element name="DateToStr.datetime">
+<element name="DOSDateToStr.datetime">
 <short>See at the type for informations about how to set the values</short>
 </element>
 
@@ -12490,7 +12490,7 @@ This routine sets up the secondary result (<link id="TProcess">pr_Result2</link>
 </element>
 
 <!-- function Visibility: default -->
-<element name="StrToDate">
+<element name="DOSStrToDate">
 <short>Converts a string to a DateStamp</short>
 <descr>
   Converts a human readable ASCII string into an AmigaDOS
@@ -12503,15 +12503,15 @@ This routine sets up the secondary result (<link id="TProcess">pr_Result2</link>
 </element>
 
 <!-- function result Visibility: default -->
-<element name="StrToDate.Result">
+<element name="DOSStrToDate.Result">
 <short>A zero return indicates that a conversion could
     not be performed. A non-zero return indicates that the
-    <link id="TDateTime"/>.dat_Stamp variable contains the converted
+    <link id="_TDateTime"/>.dat_Stamp variable contains the converted
     values.</short>
 </element>
 
 <!-- argument Visibility: default -->
-<element name="StrToDate.datetime">
+<element name="DOSStrToDate.datetime">
 <short>a pointer to an initialized DateTime structure.</short>
 </element>
 
