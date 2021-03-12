@@ -6,10 +6,10 @@ CHMPARAMS=--format=chm --charset=UTF-8 --auto-toc --auto-index --make-searchable
 # makeskel --update --package=morphunits --descr=morphxml/exec.xml --input="morphunits/src/exec.pas" --output=update.xml
 
 arosunits.tgz: arosunits
-		fpdoc --package=aros --ostarget=aros --cputarget=i386 --content --descr-dir=arosxml --input-dir=arosunits/src --output=aroshtml/ $(HTMLPARAMS)
+		fpdoc --package=aros --ostarget=AROS_ABIv0 --cputarget=i386 --content --descr-dir=arosxml --input-dir=arosunits/src --output=aroshtml/ $(HTMLPARAMS)
 		tar -czf arosunits.tgz aroshtml/*
 arosunits.chm: arosunits
-		fpdoc --package=aros --ostarget=aros --cputarget=i386 --content --descr-dir=arosxml --input-dir=arosunits/src --output=arosunits.chm $(CHMPARAMS)
+		fpdoc --package=aros --ostarget=AROS_ABIv0 --cputarget=i386 --content --descr-dir=arosxml --input-dir=arosunits/src --output=arosunits.chm $(CHMPARAMS)
 
 amunits.tgz: amunits
 		fpdoc --package=amunits --ostarget=amiga --cputarget=m68k --content --descr-dir=./amxml/ --input-dir=amunits/src/coreunits/ --input-dir=amunits/src/otherlibs/ --output=amhtml/ $(HTMLPARAMS)
