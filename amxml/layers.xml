@@ -1,0 +1,1499 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fpdoc-descriptions>
+<package name="amunits">
+
+<!--
+  ====================================================================
+    layers
+  ====================================================================
+-->
+
+<module name="layers">
+<short>Layer handling</short>
+<descr>
+
+</descr>
+
+<!-- uses unit Visibility: default -->
+<element name="exec">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="agraphics">
+<short></short>
+</element>
+
+<!-- uses unit Visibility: default -->
+<element name="utility">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LAYERSIMPLE">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LAYERSMART">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LAYERSUPER">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LAYERUPDATING">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LAYERBACKDROP">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LAYERREFRESH">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LAYER_CLIPRECTS_LOST">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LMN_REGION">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- pointer type Visibility: default -->
+<element name="pLayer_Info">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- record type Visibility: default -->
+<element name="tLayer_Info">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.top_layer">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.check_lp">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.obs">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.FreeClipRects">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.PrivateReserve1">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.PrivateReserve2">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.Lock">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.gs_Head">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.PrivateReserve3">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.PrivateReserve4">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.Flags">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.fatten_count">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.LockLayersCount">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.PrivateReserve5">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.BlankHook">
+<short></short>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="tLayer_Info.LayerInfo_extra">
+<short></short>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="NEWLAYERINFO_CALLED">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LAYERS_NOBACKFILL">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LAYERS_BACKFILL">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- constant Visibility: default -->
+<element name="LAYERSNAME">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- variable Visibility: default -->
+<element name="LayersBase">
+<short></short>
+<descr>
+</descr>
+<seealso>
+</seealso>
+</element>
+
+<!-- function Visibility: default -->
+<element name="BeginUpdate">
+<short>Prepare to repair damaged layer.</short>
+<descr>
+<p>Convert damage list to ClipRect list and swap in for
+	programmer to redraw through. This routine simulates
+	the ROM library environment. The idea is to only render in the
+	"damaged" areas, saving time over redrawing all of the layer.
+	The layer is locked against changes made by the layer library.</p>
+</descr>
+<errors>
+  If <var>BeginUpdate</var> returns False, programmer must abort the attempt to
+	refresh this layer and instead call <link id="EndUpdate"/>(Layer, False) to restore
+	original ClipRect and damage list.
+</errors>
+<seealso>
+<link id="EndUpdate"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="BeginUpdate.Result">
+<short>True if damage list converted to ClipRect list successfully. False if list conversion aborted. (probably out of memory)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="BeginUpdate.l">
+<short>pointer to a layer</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="BehindLayer">
+<short>Put layer behind other layers.</short>
+<descr>
+<p>Move this layer to the most behind position swapping bits
+	in and out of the display with other layers.
+	If other layers are REFRESH then collect their damage lists and
+	set the <link id="LAYERREFRESH"/> bit in the Flags fields of those layers that
+	may be revealed.  If this layer is a backdrop layer then
+	put this layer behind all other backdrop layers.
+	If this layer is <b>not</b> a backdrop layer then put in front of the
+	top backdrop layer and behind all other layers.</p>
+<p><b>Attention</b></p>
+<p>
+	This operation may generate refresh events in other layers
+	associated with this layer's <link id="TLayer_Info"/> structure.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="BehindLayer.Result">
+<short>True - if operation successful. False - if operation unsuccessful (probably out of memory)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="BehindLayer.dummy">
+<short>unused</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="BehindLayer.layer">
+<short>Pointer to a layer</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="CreateBehindHookLayer">
+<short>Create a new layer behind all existing layers, using supplied callback BackFill hook.</short>
+<descr>
+<p>Create a new Layer of position and size (x0,y0)->(x1,y1)
+	Make this layer of type found in flags.
+	Install Layer->BackFill callback Hook.
+	If SuperBitMap, use bm2 as pointer to real SuperBitMap,
+	and copy contents of Superbitmap into display layer.
+	If this layer is a backdrop layer then place it behind all
+	other layers including other backdrop layers. If this is
+	not a backdrop layer then place it behind all nonbackdrop
+	layers.</p>
+<p><b>Attention</b></p>
+<p> When using <var>bm2</var> SuperBitmap, you should also set <link id="LAYERSMART"/> flag.
+</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="CreateBehindHookLayer.Result">
+<short>pointer to Layer structure if successful nil if not successful</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindHookLayer.li">
+<short>pointer to LayerInfo structure</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindHookLayer.bm">
+<short>pointer to common BitMap used by all Layers</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindHookLayer.x0">
+<short>left corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindHookLayer.y0">
+<short>upper corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindHookLayer.x1">
+<short>right corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindHookLayer.y1">
+<short>lower corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindHookLayer.flags">
+<short>various types of layers supported as bit sets. Flags: LAYER*</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindHookLayer.hook">
+<short>BackFill callback Hook</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindHookLayer.bm2">
+<short>pointer to optional Super BitMap</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="CreateBehindLayer">
+<short>Create a new layer behind all existing layers.</short>
+<descr>
+<p>Create a new Layer of position and size (x0,y0)->(x1,y1)
+	Make this layer of type found in <var>flags</var>.
+	If SuperBitMap, use <var>bm2</var> as pointer to real SuperBitMap,
+	and copy contents of Superbitmap into display layer.
+	If this layer is a backdrop layer then place it behind all
+	other layers including other backdrop layers. If this is
+	not a backdrop layer then place it behind all nonbackdrop
+	layers.</p>
+<p><b>Attention</b></p>
+<p> When using <var>bm2</var> SuperBitmap, you should also set <link id="LAYERSMART"/> flag.
+</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="CreateBehindLayer.Result">
+<short>pointer to Layer structure if successful nil if not successful</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindLayer.li">
+<short>pointer to LayerInfo structure</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindLayer.bm">
+<short>pointer to common BitMap used by all Layers</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindLayer.x0">
+<short>left corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindLayer.y0">
+<short>upper corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindLayer.x1">
+<short>right corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindLayer.y1">
+<short>lower corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindLayer.flags">
+<short>various types of layers supported as bit sets. Flags: LAYER*</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateBehindLayer.bm2">
+<short>pointer to optional Super BitMap</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="CreateUpfrontHookLayer">
+<short>Create a new layer on top of existing layers, using supplied callback BackFill hook.</short>
+<descr><p>
+Create a new Layer of position and size (x0,y0)->(x1,y1)
+	and place it on top of all other layers.
+	Make this layer of type found in <var>flags</var>
+	Install <link id="PLayer">Layer</link>^.BackFill callback hook.
+	if SuperBitMap, use <var>bm2</var> as pointer to real SuperBitMap.
+	and copy contents of Superbitmap into display layer.</p>
+<p><b>Attention</b></p>
+<p> When using <var>bm2</var> SuperBitmap, you should also set <link id="LAYERSMART"/> flag.
+</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="CreateUpfrontHookLayer.Result">
+<short>pointer to Layer structure if successful nil if not successful</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontHookLayer.li">
+<short>pointer to LayerInfo structure</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontHookLayer.bm">
+<short>pointer to common BitMap used by all Layers</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontHookLayer.x0">
+<short>left corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontHookLayer.y0">
+<short>upper corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontHookLayer.x1">
+<short>right corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontHookLayer.y1">
+<short>lower corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontHookLayer.flags">
+<short>various types of layers supported as bit sets. Flags: LAYER*</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontHookLayer.hook">
+<short>BackFill callback Hook</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontHookLayer.bm2">
+<short>pointer to optional Super BitMap</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="CreateUpfrontLayer">
+<short>Create a new layer on top of existing layers.</short>
+<descr>
+<p>Create a new Layer of position and size (x0,y0)->(x1,y1)
+	and place it on top of all other layers.
+	Make this layer of type found in <var>flags</var>
+	if SuperBitMap, use <var>bm2</var> as pointer to real SuperBitMap.
+	and copy contents of Superbitmap into display layer.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="CreateUpfrontLayer.Result">
+<short>pointer to Layer structure if successful nil if not successful</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontLayer.li">
+<short>pointer to LayerInfo structure</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontLayer.bm">
+<short>pointer to common BitMap used by all Layers</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontLayer.x0">
+<short>left corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontLayer.y0">
+<short>upper corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontLayer.x1">
+<short>right corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontLayer.y1">
+<short>lower corner of layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontLayer.flags">
+<short>various types of layers supported as bit sets. Flags: LAYER*</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="CreateUpfrontLayer.bm2">
+<short>pointer to optional Super BitMap</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="DeleteLayer">
+<short>delete layer from layer list.</short>
+<descr>
+<p>Remove this layer from the list of layers.  Release memory
+	associated with it.  Restore other layers that may have been
+	obscured by it.  Trigger refresh in those that may need it.
+	If this is a superbitmap layer make sure SuperBitMap is current.
+	The SuperBitMap is not removed from the system but is available
+	for program use even though the rest of the layer information has
+	been deallocated.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="DeleteLayer.Result">
+<short>True if this layer successfully deleted from the system. False if layer not deleted. (probably out of memory )</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="DeleteLayer.dummy">
+<short>unused</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="DeleteLayer.layer">
+<short>pointer to a layer</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="DisposeLayerInfo">
+<short>Return all memory for LayerInfo to memory pool</short>
+<descr>
+<p>return LayerInfo and any other memory attached to this LayerInfo
+	to memory allocator.</p>
+<p><b>Attention</b></p>
+<p>
+	if you wish to delete the layers associated with this <link id="TLayer_Info"/>
+	structure, remember to call <link id="DeleteLayer"/>() for each of the layers
+	before calling <link id="DisposeLayerInfo"/>().</p>
+<p><b>Snippet</b></p>
+<code>
+// delete the layers associated this Layer_Info structure --
+DeleteLayer(li, Simple_Layer);
+DeleteLayer(li, Smart_Layer);
+
+// see documentation on DeleteLayer about deleting SuperBitMap layers --
+My_Super_Bitmap_Ptr := Super_Layer^.SuperBitMap;
+DeleteLayer(li, Super_Layer);
+
+// now dispose of the Layer_Info structure itself --
+DisposeLayerInfo(li);
+</code>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="DeleteLayer"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="DisposeLayerInfo.li">
+<short>pointer to LayerInfo structure</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="DoHookClipRects">
+<short>Do the given hook for each of the ClipRects</short>
+<descr>
+<p>This function will call the given hook for each cliprect in the
+	layer that can be rendered into.  This is how the backfill hook
+	in Layers is implemented.  This means that hidden simple-refresh
+	cliprects will be ignored.  It will call the SuperBitMap cliprects,
+	smart refresh off-screen cliprects, and all on screen cliprects.
+	If the rect parameter is not nil, the cliprects are bounded to
+	the rectangle given.</p>
+<p>
+Hook will be called with:</p>
+<code>
+object = PRastPort(Result^.RastPort);
+message = [ layer: PLayer, bounds: TRectangle, offsetx: LongInt, offsety: LongInt;]
+</code>
+<p>
+This hook should fill the Rectangle in the RastPort
+with the BackFill pattern appropriate for offset x/y.</p>
+<p>
+If hook is LAYERS_BACKFILL, the default backfill is used for the layer.</p>
+<p>
+If hook is LAYERS_NOBACKFILL, the layer will not be backfilled (NO-OP).</p>
+<p><b>Attention</b></p>
+<p>The RastPort you are passed back is the same one passed to the
+	function.  You should <b>not</b> use "layered" rendering functions
+	on this RastPort.  Generally, you will wish to do BitMap operations
+	such as <link id="agraphics.BltBitmap">BltBitMap</link>().  The callback is a raw, low-level rendering
+	call-back.  If you need to call a rendering operation with a
+	RastPort, make sure you use a copy of the RastPort and nil the
+	Layer pointer.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="DoHookClipRects.hook">
+<short>pointer to layer callback Hook which will be called</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="DoHookClipRects.rport">
+<short>A pointer to the RastPort that is to be operated on.
+	       This function will lock the layer if the RastPort is
+	       layered...
+	       If the rport is non-layered your hook will be called with
+	       the rectangle as passed, the RastPort, and a nil layer...</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="DoHookClipRects.rect">
+<short>The bounding rectangle that should be used on the layer.
+	       This rectangle "clips" the cliprects to the bound given.
+	       If this is NULL, no bounding will take place.
+	       <b>must</b> not be nil if the RastPort is non-layered!</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="EndUpdate">
+<short>remove damage list and restore state of layer to normal.</short>
+<descr>
+<p>After the programmer has redrawn his picture he calls this
+	routine to restore the ClipRects to point to his standard
+	layer tiling. The layer is then unlocked for access by the
+	layer library.</p>
+<p><b>Attention</b></p>
+<p>
+	Use <var>flag</var> := False if you are only making a partial update.
+	You may use the other region functions (graphics functions such as
+	<link id="agraphics.OrRectRegion">OrRectRegion</link>, <link id="agraphics.AndRectRegion">AndRectRegion</link>, and <link id="agraphics.XorRectRegion">XorRectRegion</link>) to clip adjust
+	the DamageList to reflect a partial update.</p>
+<p><b>Snippet</b></p>
+<code>
+// begin update for first part of two-part refresh 
+BeginUpdate(my_layer);
+// do some refresh, but not all 
+my_partial_refresh_routine(my_layer);
+// end update, false (not completely done refreshing yet) 
+EndUpdate(my_layer, False);
+// begin update for last part of refresh 
+BeginUpdate(my_layer);
+// do rest of refresh 
+my_complete_refresh_routine(my_layer);
+// end update, true (completely done refreshing now) 
+EndUpdate(my_layer, True);
+</code>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="BeginUpdate"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="EndUpdate.layer">
+<short>pointer to a layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="EndUpdate.flag">
+<short>Use True if update was completed. The damage list is cleared. Use False if update not complete. The damage list is retained.</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="FattenLayerInfo">
+<short>convert 1.0 LayerInfo to 1.1 LayerInfo <b>Obsolete</b></short>
+<descr>
+<p><b>Obsolete</b></p>
+<p>V1.1 software and any later releases need to have more info in the
+	Layer_Info structure. To do this in a 1.0 supportable manner requires
+	allocation and deallocation of the memory whenever most
+	layer library functions are called.  To prevent unnecessary
+	allocation/deallocation FattenLayerInfo will preallocate the
+	necessary data structures and fake out the layer library into
+	thinking it has a LayerInfo gotten from NewLayerInfo.
+	NewLayerInfo is the approved method for getting this structure.
+	When a program needs to give up the LayerInfo structure it
+	must call ThinLayerInfo before freeing the memory. ThinLayerInfo
+	is not necessary if New/DisposeLayerInfo are used however.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="NewLayerInfo"/>
+<link id="ThinLayerInfo"/>
+<link id="DisposeLayerInfo"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="FattenLayerInfo.Result">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="FattenLayerInfo.li">
+<short>pointer to LayerInfo structure</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="InitLayers">
+<short>Initialize Layer_Info structure <b>Obsolete</b></short>
+<descr>
+<p><b>Obsolete</b></p>
+<p>
+Initialize Layer_Info structure in preparation to use
+other layer operations on this list of layers.
+Make the Layers unlocked (open), available to layer operations.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="NewLayerInfo"/>
+<link id="DisposeLayerInfo"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="InitLayers.li">
+<short>pointer to LayerInfo structure</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="InstallClipRegion">
+<short>Install clip region in layer</short>
+<descr>
+<p>Installs a transparent Clip region in the layer. All
+	subsequent graphics calls will be clipped to this region.
+	You <b>must</b> remember to call InstallClipRegion(l, nil) before
+	calling <link id="DeleteLayer"/>(l) or the Intuition function <link id="intuition.CloseWindow">CloseWindow</link>()
+ 	if you have installed a non-nil ClipRegion in <var>layer</var>.</p>
+<p><b>Attention</b></p>
+<p>If the system runs out of memory while computing the
+resulting ClipRects the LAYERS_CLIPRECTS_LOST bit will
+be set in layer^.Flags.</p>
+</descr>
+<errors>
+If the system runs out of memory during normal layer operations,
+	the ClipRect list may get swept away and not restored.
+	As soon as there is enough memory and the layer library
+	gets called again the ClipRect list will be rebuilt.
+</errors>
+<seealso>
+<link id="BeginUpdate"/>
+<link id="EndUpdate"/>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="InstallClipRegion.Result">
+<short>The pointer to the previous ClipRegion that was installed. Returns nil if no previous ClipRegion installed.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="InstallClipRegion.layer">
+<short>pointer to a layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="InstallClipRegion.region">
+<short>pointer to a region</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="InstallLayerHook">
+<short>safely install a new <link id="TLayer"/>.BackFill hook</short>
+<descr>
+<p>Installs a new <link id="TLayer"/>.BackFill Hook, waiting until it is safe to do
+	so. Locks the layer while substituting the new Hook and removing the
+	old one. If a new Hook is not provided, will install the default layer
+	BackFill Hook.</p>
+<p>
+Hook will be called with:</p>
+<code>
+object = PRastPort(Result^.RastPort);
+message = [ layer: PLayer, bounds: TRectangle, offsetx: LongInt, offsety: LongInt;]
+</code>
+<p>
+This hook should fill the Rectangle in the RastPort
+with the BackFill pattern appropriate for offset x/y.</p>
+<p>
+If hook is LAYERS_BACKFILL, the default backfill is used for the layer.</p>
+<p>
+If hook is LAYERS_NOBACKFILL, the layer will not be backfilled (NO-OP).</p>
+<p><b>Attention</b></p>
+<p>The RastPort you are passed back is the same one passed to the
+	function.  You should <b>not</b> use "layered" rendering functions
+	on this RastPort.  Generally, you will wish to do BitMap operations
+	such as <link id="agraphics.BltBitmap">BltBitMap</link>().  The callback is a raw, low-level rendering
+	call-back.  If you need to call a rendering operation with a
+	RastPort, make sure you use a copy of the RastPort and nil the
+	Layer pointer.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="InstallLayerHook.Result">
+<short>pointer to the <link id="TLayer"/>.BackFill Hook that was previously
+	    active.  Returns nil if it was the default hook.
+		  In V39, it could return 1 if there was no hook.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="InstallLayerHook.layer">
+<short>pointer to the layer in which to install the Backfill Hook.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="InstallLayerHook.hook">
+<short>pointer to layer callback Hook which will be called</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="InstallLayerInfoHook">
+<short>Install a backfill hook for non-layer</short>
+<descr><p>
+This function will install a backfill hook for the Layer_Info
+	structure passed.  This backfill hook will be used to clear the
+	background area where no layer exists.  The hook function is
+	passed the RastPort and the bounds just like the layer backfill
+	hook.  Note that this hook could be called for any layer.</p>
+<p>
+Hook will be called with:</p>
+<code>
+object = PRastPort(Result^.RastPort);
+message = [ layer: PLayer, bounds: TRectangle, offsetx: LongInt, offsety: LongInt;]
+</code>
+<p>
+This hook should fill the Rectangle in the RastPort
+with the BackFill pattern appropriate for offset x/y.</p>
+<p>
+If hook is LAYERS_BACKFILL, the default backfill is used for the layer.</p>
+<p>
+If hook is LAYERS_NOBACKFILL, the layer will not be backfilled (NO-OP).</p>
+<p><b>Attention</b></p>
+<p>When the hook is first installed, it is <b>not</b> called.  It is up
+	to the application to know if it is safe to fill in the area.
+	Since the hook will be called when a layer is deleted, the easiest
+	way to have layers call this hook is to create and delete a backdrop
+	layer that is the size of the area.</p>
+<p>
+	Also, note that currently the first long word of the hook message
+	contains an undefined value.  This value may look like a layer pointer.
+	It is <b>not</b> a layer pointer.</p>
+<p>The RastPort you are passed back is the same one passed to the
+	function.  You should <b>not</b> use "layered" rendering functions
+	on this RastPort.  Generally, you will wish to do BitMap operations
+	such as <link id="agraphics.BltBitmap">BltBitMap</link>().  The callback is a raw, low-level rendering
+	call-back.  If you need to call a rendering operation with a
+	RastPort, make sure you use a copy of the RastPort and nil the
+	Layer pointer.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="InstallLayerInfoHook.Result">
+<short>Returns the backfill hook that was in the Layer_Info.
+	          Returns LAYERS_BACKFILL if the default was installed.
+	          Returns LAYERS_NOBACKFILL if there was a NO-OP hook.
+	          Returns -1 if there was some failure.</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="InstallLayerInfoHook.li">
+<short>pointer to LayerInfo structure</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="InstallLayerInfoHook.hook">
+<short>pointer to layer callback Hook which will be called</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="LockLayer">
+<short>Lock layer to make changes to ClipRects.</short>
+<descr>
+<p>Make this layer unavailable for other tasks to use.
+	If another task is already using this layer then wait for
+	it to complete and then reserve the layer for your own use.
+	(this function does the same thing as graphics.library/<link id="agraphics.LockLayerRom">LockLayerRom</link>)</p>
+<p><b>Atention</b></p>
+<p>if you wish to lock <b>more than one</b> layer at a time, you
+	 must call <link id="LockLayerInfo"/>() before locking those layers and
+	 then call <link id="UnlockLayerInfo"/>() when you have finished. This
+	 is to prevent system "deadlocks".</p>
+<p>
+	while you hold the lock on a layer, Intuition will block
+	on operations such as windowsizing, dragging, menus, and depth
+	arranging windows in this layer's screen.  It is recommended that
+	<b>you</b> do not make Intuition function calls while the layer is locked.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="LockLayer.dummy">
+<short>unused</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="LockLayer.layer">
+<short>pointer to a layer</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="LockLayerInfo">
+<short>Lock the LayerInfo structure.</short>
+<descr>
+<p>Before doing an operation that requires the LayerInfo
+	structure, make sure that no other task is also using the
+	LayerInfo structure.  <link id="LockLayerInfo"/>() returns when the
+	LayerInfo belongs to this task.  There should be
+	an <link id="UnlockLayerInfo"/> for every <link id="LockLayerInfo"/>.</p>
+<p><b>Attention</b></p>
+<p>
+	All layer routines presently <link id="LockLayerInfo"/>() when they
+	start up and <link id="UnlockLayerInfo"/>() as they exit.  Programmers
+	will need to use these Lock/Unlock routines if they wish
+	to do something with the LayerStructure that is not
+	supported by the layer library.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="UnlockLayerInfo"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="LockLayerInfo.li">
+<short>pointer to Layer_Info structure</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="LockLayers">
+<short>lock all layers from graphics output.</short>
+<descr>First calls <link id="LockLayerInfo"/>() Make all layers in this layer list locked.
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="LockLayer"/>
+<link id="LockLayerInfo"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="LockLayers.li">
+<short>pointer to Layer_Info structure</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MoveLayer">
+<short>Move layer to new position in BitMap.</short>
+<descr>
+<p>
+Move this layer to new position in shared BitMap.
+If any refresh layers become revealed, collect damage and
+set REFRESH bit in layer Flags.</p>
+</descr>
+<errors>
+May not handle (dx,dy) which attempts to move the layer outside the
+layer's <link id="agraphics.PRastPort">RastPort</link>^.BitMap bounds .
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MoveLayer.Result">
+<short>True if operation successful. False if failed (out of memory)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MoveLayer.dummy">
+<short>unused</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MoveLayer.layer">
+<short>pointer to a nonbackdrop layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MoveLayer.dx">
+<short>delta to add to current x position</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MoveLayer.dy">
+<short>delta to add to current y position</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MoveLayerInFrontOf">
+<short>Put layer in front of another layer.</short>
+<descr>
+<p>Move this layer in front of target layer, swapping bits
+	in and out of the display with other layers.
+	If this is a refresh layer then collect damage list and
+	set the LAYERREFRESH bit in <link id="TLayer"/>.Flags if redraw required.</p>
+<p><b>Attention</b></p>
+<p>
+	this operation may generate refresh events in other layers
+	associated with this layer's <link id="TLayer_Info"/> structure.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MoveLayerInFrontOf.Result">
+<short>True if operation successful. False if operation unsuccessful (probably out of memory)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MoveLayerInFrontOf.layer_to_move">
+<short>pointer to layer which should be moved</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MoveLayerInFrontOf.other_layer">
+<short>pointer to target layer in front of which to move layer</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="MoveSizeLayer">
+<short>Position/Size layer</short>
+<descr>Change upperleft and lower right position of Layer.
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="MoveSizeLayer.Result">
+<short>True if operation successful.
+	         False if failed (due to out of memory).
+	         False if failed (due to illegal layer^.bounds)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MoveSizeLayer.layer">
+<short>pointer to a nonbackdrop layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MoveSizeLayer.dx">
+<short>change left corner by dx</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MoveSizeLayer.dy">
+<short>change upper corner by dy</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MoveSizeLayer.dw">
+<short>change size by dw</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="MoveSizeLayer.dh">
+<short>change size by dh</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="NewLayerInfo">
+<short>Allocate and Initialize full Layer_Info structure.</short>
+<descr>
+<p>Allocate memory required for full <link id="PLayer_Info"/> structure.
+	Initialize <link id="PLayer_Info"/> structure in preparation to use
+	other layer operations on this list of layers.
+	Make the <link id="PLayer_Info"/> unlocked (open).</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="NewLayerInfo.Result">
+<short>pointer to <link id="PLayer_Info"/> structure if successful
+	        nil if not enough memory</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="ScrollLayer">
+<short>Scroll around in a superbitmap, translate coordinates in non-superbitmap layer.</short>
+<descr>
+<p>
+For a SuperBitMap Layer:</p>
+<p>Update the SuperBitMap from the layer display, then copy bits
+	between Layer and SuperBitMap to reposition layer over different
+	portion of SuperBitMap.</p>
+<p>For nonSuperBitMap layers, all (x,y) pairs are adjusted by
+	the scroll(x,y) value in the layer.  To cause (0,0) to actually
+	be drawn at (3,10) use ScrollLayer(-3,-10). This can be useful
+	along with <link id="InstallClipRegion"/> to simulate Intuition GZZWindows
+	without the overhead of an extra layer.</p>
+</descr>
+<errors>ay not handle (dx,dy) which attempts to move the layer outside the
+	layer's SuperBitMap bounds.
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ScrollLayer.dummy">
+<short>unused</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ScrollLayer.layer">
+<short>pointer to a layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ScrollLayer.dx">
+<short>delta to add to current x scroll value</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ScrollLayer.dy">
+<short>delta to add to current y scroll value</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="SizeLayer">
+<short>Change the size of this nonbackdrop layer.</short>
+<descr>
+<p>Change the size of this layer by (dx,dy). The lower right hand
+	corner is extended to make room for the larger layer.
+	If there is SuperBitMap for this layer then copy pixels into
+	or out of the layer depending on whether the layer increases or
+	decreases in size.  Collect damage list for those layers that may
+	need to be refreshed if damage occurred.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="SizeLayer.Result">
+<short>True if operation successful. False if failed (out of memory)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SizeLayer.dummy">
+<short>unused</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SizeLayer.layer">
+<short>pointer to a nonbackdrop layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SizeLayer.dx">
+<short>delta to add to current x size</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SizeLayer.dy">
+<short>delta to add to current y size</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="SortLayerCR">
+<short></short>
+<descr>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SortLayerCR.layer">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SortLayerCR.dx">
+<short></short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SortLayerCR.dy">
+<short></short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="SwapBitsRastPortClipRect">
+<short>Swap bits between common bitmap and obscured ClipRect</short>
+<descr>
+<p>Support routine useful for those that need to do some
+	operations not done by the layer library.  Allows programmer
+	to swap the contents of a small BitMap with a subsection of
+	the display. This is accomplished without using extra memory.
+	The bits in the display RastPort are exchanged with the
+	bits in the ClipRect's BitMap.</p>
+<p>
+	Note: the ClipRect structures which the layer library allocates are
+	actually a little bigger than those described in the graphics/clip.h
+	include file.  So be warned that it is not a good idea to have
+	instances of cliprects in your code.</p>
+<p><b>Attention</b></p>
+<p>Because the blit operation started by this function is done asynchronously,
+	it is imperative that a <link id="agraphics.WaitBlit">WaitBlit</link>() be performed before releasing or using
+	the processor to modify any of the associated structures.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SwapBitsRastPortClipRect.rp">
+<short>pointer to rastport</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="SwapBitsRastPortClipRect.cr">
+<short>pointer to cliprect to swap bits with</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="ThinLayerInfo">
+<short>convert 1.1 LayerInfo to 1.0 LayerInfo. <b>Obsolete</b></short>
+<descr>
+<p><b>Obsolete</b></p>
+<p>return the extra memory needed that was allocated with
+	FattenLayerInfo. This is must be done prior to freeing
+	the Layer_Info structure itself. V1.1 software should be
+	using <link id="DisposeLayerInfo"/>.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="DisposeLayerInfo"/>
+<link id="FattenLayerInfo"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="ThinLayerInfo.li">
+<short>pointer to LayerInfo structure</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="UnlockLayer">
+<short>Unlock layer and allow graphics routines to use it.</short>
+<descr>When finished changing the ClipRects or whatever you were
+	doing with this layer you must call <link id="UnlockLayer"/>() to allow
+	other tasks to proceed with graphic output to the layer.
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnlockLayer.layer">
+<short>pointer to a layer</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="UnlockLayerInfo">
+<short>Unlock the LayerInfo structure.</short>
+<descr>After the operation is complete that required a LockLayerInfo,
+	unlock the LayerInfo structure so that  other tasks may
+	affect the layers.
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnlockLayerInfo.li">
+<short>pointer to the Layer_Info structure</short>
+</element>
+
+<!-- procedure Visibility: default -->
+<element name="UnlockLayers">
+<short>Unlock all layers from graphics output. Restart graphics output to layers that have been waiting</short>
+<descr>Make all layers in this layer list unlocked.
+	Then call <link id="UnlockLayerInfo"/>
+</descr>
+<errors>
+</errors>
+<seealso>
+<link id="LockLayers"/>
+<link id="UnlockLayer"/>
+</seealso>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UnlockLayers.li">
+<short>pointer to the Layer_Info structure</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="UpfrontLayer">
+<short>Put layer in front of all other layers.</short>
+<descr>
+<p>Move this layer to the most upfront position swapping bits
+	in and out of the display with other layers.
+	If this is a refresh layer then collect damage list and
+	set the LAYERREFRESH bit in layer->Flags if redraw required.
+	By clearing the BACKDROP bit in the layers Flags you may
+	bring a Backdrop layer up to the front of all other layers.</p>
+<p><b>Attention</b></p>
+<p>This operation may generate refresh events in other layers
+	associated with this layer's Layer_Info structure.</p>
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="UpfrontLayer.Result">
+<short>True if operation successful. False if operation unsuccessful (probably out of memory)</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UpfrontLayer.dummy">
+<short>unused</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="UpfrontLayer.layer">
+<short>pointer to a nonbackdrop layer</short>
+</element>
+
+<!-- function Visibility: default -->
+<element name="WhichLayer">
+<short>Which Layer is this point in?</short>
+<descr>Starting at the topmost layer check to see if this point (x,y)
+	    occurs in this layer.  If it does return the pointer to this
+	    layer. Return nil if there is no layer at this point.
+</descr>
+<errors>
+</errors>
+<seealso>
+</seealso>
+</element>
+
+<!-- function result Visibility: default -->
+<element name="WhichLayer.Result">
+<short>pointer to the topmost layer that this point is in
+	        nil if this point is not in a layer</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="WhichLayer.li">
+<short>pointer to LayerInfo structure</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="WhichLayer.x">
+<short>x coordinate in the BitMap</short>
+</element>
+
+<!-- argument Visibility: default -->
+<element name="WhichLayer.y">
+<short>y coordinate in the BitMap</short>
+</element>
+
+</module> <!-- layers -->
+
+</package>
+</fpdoc-descriptions>
