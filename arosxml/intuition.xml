@@ -16381,22 +16381,8 @@ in this case.
   see, you can select either to free just the link nodes and keep all the
   allocated memory for yourself, or to free both the nodes and your memory
   buffers.</p>
-<p><b>Example:</b></p>
-<code>
-var
-  RememberKey: PRemember;
-begin
-  RememberKey := nil;
-  buffer := AllocRemember(@RememberKey, BUFSIZE, MEMF_CHIP);
-  if Assigned(buffer) then
-  begin
-    // Use the buffer
-    //...
-  end;
-  FreeRemember(@RememberKey, True);
-end;
-</code>
 </descr>
+<example file="../examples/RememberTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -18198,7 +18184,7 @@ This function is compatible with AmigaOS v4.
   If you have a dynamically allocated data for your class (hanging
   off of <link id="TIClass">cl_UserData</link>), try to free the class before you free the
   user data, so you don't get stuck with a half-freed class.</p>
-<p><b>Example:</b></p>
+<p><b>Snippet</b></p>
 <code>
 // Free a public class with dynamic memory in cl_UserData
 function freeMyClass(cl: PClass): Boolean;
@@ -18329,18 +18315,8 @@ This function is compatible with MorphOS v2.
   <b>Note well:</b> Once you call this function passing it False, the
   linkages between all the memory chunks are lost, and you
   cannot subsequently use <i>FreeRemember()</i> to free them.</p>
-<p><b>Example:</b></p>
-<code>
-var
-  RememberKey: PRemember;
-begin
-  RememberKey := nil;
-  AllocRemember(@RememberKey, BUFSIZE, MEMF_CHIP);
-  // ...
-  FreeRemember(@RememberKey, TRUE);
-end;
-</code>
 </descr>
+<example file="../examples/RememberTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -20502,7 +20478,7 @@ If this function fails the return value is 0.</p>
   <b>Note:</b> It's never safe to tinker with the gadget list yourself.  Don't
   supply some gadget list that Intuition hasn't already processed in
   the usual way.</p>
-<p><b>Example:</b></p>
+<p><b>Snippet</b></p>
 <code>
 //Refresh all gadgets of a window
 RefreshGadgets(Win^.FirstGadget, Win, nil);
@@ -20552,7 +20528,7 @@ RefreshGadgets(Win^.FirstGadget, Win, nil);
 <p>
   Be sure to see the <link id="RefreshGadgets">RefreshGadgets()</link> function description, as this
   function is simply an extension of that.</p>
-<p><b>Example:</b></p>
+<p><b>Snippet</b></p>
 <code>
 // Refresh one gadget
 RefreshGList(@Gadget, Win, nil, 1);

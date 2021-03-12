@@ -7419,7 +7419,7 @@ per cache buffer and the limit depends on the filesystem.</p>
 </ul><p>
 Some old filesystems return the actual buffer size. See the example
 for a workaround for that case.</p>
-<p><b>Example:</b></p>
+<p><b>Snippet</b></p>
 <code>
 Res1 := AddBuffers('df0:', 10);
 Res2 := IoErr();
@@ -9176,39 +9176,6 @@ which is filled with (partial) <link id="TExAllData"/> structures</short>
   <li>Keep calling <var>ExNext()</var> until it returns False. Check <link id="IoErr">IoErr()</link>
      to ensure that the reason for failure was <link id="ERROR_NO_MORE_ENTRIES"/>.</li>
   </ol>
-<p><b>Example</b></p>
-<code>
-program ExamineTest;
-uses
-  AmigaDos;
-procedure CheckDir(ALock: BPTR);
-var
-  FIB: PFileInfoBlock;
-begin
-  FIB := AllocDosObject(DOS_FIB, nil);
-  if Assigned(FIB) then
-  begin
-    if Examine(ALock, FIB) &lt;&gt; 0 then
-    begin
-      repeat
-        writeln(FIB^.fib_FileName);
-      until ExNext(ALock, FIB) = 0;
-    end;
-    if IOErr() = ERROR_NO_MORE_ENTRIES then
-      writeln('nothing more found')
-    else
-      writeln('Something went wrong ', IOErr);
-    FreeDosObject(DOS_FIB, FIB);
-  end;
-end;
-var
-  RAMLock: BPTR;
-begin
-  RAMLock := Lock('RAM:', SHARED_LOCK);
-  CheckDir(RAMLock);
-  unlock(RAMLock);
-end.
-</code>
 <p><b>Attention</b></p>
 <p>
   If you wish to recursively scan the file tree and you find
@@ -9227,6 +9194,7 @@ end.
   <link id="TFileInfoBlock"/>.  You may make a local copy of the <link id="TFileInfoBlock"/>, as
   long as it is never passed back to the operating system.</p>
 </descr>
+<example file="../examples/ExamineTest.pp"/>
 <errors>
 </errors>
 <seealso>

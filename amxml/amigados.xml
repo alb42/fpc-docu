@@ -7173,7 +7173,7 @@ per cache buffer and the limit depends on the filesystem.</p>
 </ul><p>
 Some old filesystems return the actual buffer size. See the example
 for a workaround for that case.</p>
-<p><b>Example</b></p>
+<p><b>Snippet</b></p>
 <code>
 Res1 := AddBuffers('df0:', 10);
 Res2 := IoErr();

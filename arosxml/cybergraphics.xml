@@ -1089,7 +1089,7 @@ structure of this nodes.</p>
     </ul>
   </dd>
 </dl>
-<p><b>Example:</b></p>
+<p><b>Snippet</b></p>
 <code>
 { set DPMS level }
 CVideoCtrlTags(@Scr^.ViewPort, [SETVC_DPMSLevel, DPMS_OFF, TAG_DONE]);	

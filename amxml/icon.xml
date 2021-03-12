@@ -1532,7 +1532,7 @@ If the source icon contains
   value is not a new copy of the string but is only
   a pointer to the part of the string after <var>TypeName</var>.</p>
 <p>The ToolTypeArray can be get from <link id="workbench.TDiskObject">TDiskObject.do_Tooltypes</link> via <link id="GetDiskObject">GetDiskObject()</link></p>
-<p><b>Example:</b></p>
+<p><b>Snippet</b></p>
 <code>
 //Assume the tool type array has two strings in it:
 //    "FILETYPE=text"

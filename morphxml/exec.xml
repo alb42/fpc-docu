@@ -6653,7 +6653,7 @@ The programmer must execute exactly one call to <var>Enable()</var> for every ca
   <b>must</b> be protected with A <link id="Forbid">Forbid()</link>/<link id="Permit">Permit()</link> pair!
   </p>
 </descr>
-<example file="examples/SafePort.pp"/>
+<example file="../examples/SafePort.pp"/>
 <errors>
 </errors>
 <seealso>
