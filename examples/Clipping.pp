@@ -3,7 +3,10 @@ program clipping;
 { The following example shows the use of the layers library call
   InstallClipRegion(), as well as simple use of the graphics library
   regions functions. Be aware that it uses Release 2 functions for
-  opening and closing Intuition windows.}
+  opening and closing Intuition windows.
+
+  Clipping.pp converted from original RKRM clipping.c
+  tested with FPC 3.2.0}
 uses
   Exec, AmigaDOS, AGraphics, Layers, Intuition, Utility;
 
