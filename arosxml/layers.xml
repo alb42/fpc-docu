@@ -879,7 +879,7 @@ If the system runs out of memory during normal layer operations,
 	As soon as there is enough memory and the layer library
 	gets called again the ClipRect list will be rebuilt.
 </errors>
-<examples file="../examples/Clipping.pp"/>
+<example file="../examples/Clipping.pp"/>
 <seealso>
 <link id="BeginUpdate"/>
 <link id="EndUpdate"/>
