@@ -11,7 +11,43 @@
 <module name="layers">
 <short>Layer handling</short>
 <descr>
-
+<p>provides routines that are
+used to manage overlapping rectangular drawing areas that share a common
+display.  Intuition uses the layers library to manage its system of
+windows.</p>
+<p>The concept of a layer is closely tied to Intuition windows.  A layer is a
+rectangular drawing area.  A layer can overlap other layers and has a
+display priority that determines whether it will appear in front or behind
+other layers.  Every Intuition window has an associated Layer structure.
+Layers allow Intuition and application programs to :</p>
+<ul>
+    <li>Share a display's BitMap among various tasks in an orderly way
+      by creating layers, separate drawing rectangles, within the
+      BitMap.</li>
+    <li>Move, size or depth-arrange a layer while automatically keeping
+      track of which portions of other layers are hidden or revealed
+      by the operation.</li>
+    <li>Manage the remapping of coordinates, so the application need not
+      track the layer's offset into the BitMap.</li>
+    <li>Maintain each layer as a separate entity, which may optionally
+      have its own BitMap.</li>
+    <li>Automatically update same newly visible portions.</li>
+</ul>
+<p>
+The layers library takes care of housekeeping: the low level, repetitive
+tasks which are required to keep track of where to place bits.  The layers
+library also provides a locking mechanism which coordinates display
+updating when multiple tasks are drawing graphics to layers.  The
+windowing environment provided by the Intuition library is largely based
+on layers.</p>
+<p><b>Warning</b></p>
+<p>
+Layers may not be created or used directly with Intuition screens.
+Intuition windows are the only supported method of adding layers to
+Intuition screens.  Only the layer locking and unlocking functions
+are safe to use with Intuition.  An application must create and
+manage its own View if it will be creating layers directly on the
+display.</p>
 </descr>
 
 <!-- uses unit Visibility: default -->
@@ -329,6 +365,7 @@
 <p> When using <var>bm2</var> SuperBitmap, you should also set <link id="LAYERSMART"/> flag.
 </p>
 </descr>
+<example file="../examples/LayersTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -466,6 +503,7 @@ Create a new Layer of position and size (x0,y0)->(x1,y1)
 <p> When using <var>bm2</var> SuperBitmap, you should also set <link id="LAYERSMART"/> flag.
 </p>
 </descr>
+<example file="../examples/LayersTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -532,6 +570,7 @@ Create a new Layer of position and size (x0,y0)->(x1,y1)
 	if SuperBitMap, use <var>bm2</var> as pointer to real SuperBitMap.
 	and copy contents of Superbitmap into display layer.</p>
 </descr>
+<example file="../examples/LayersTest.pp"/>
 <errors>
 </errors>
 <seealso>
@@ -1073,6 +1112,7 @@ set REFRESH bit in layer Flags.</p>
 May not handle (dx,dy) which attempts to move the layer outside the
 layer's <link id="agraphics.PRastPort">RastPort</link>^.BitMap bounds .
 </errors>
+<example file="../examples/LayersTest.pp"/>
 <seealso>
 </seealso>
 </element>
@@ -1115,6 +1155,7 @@ layer's <link id="agraphics.PRastPort">RastPort</link>^.BitMap bounds .
 	this operation may generate refresh events in other layers
 	associated with this layer's <link id="TLayer_Info"/> structure.</p>
 </descr>
+<example file="../examples/LayersTest.pp"/>
 <errors>
 </errors>
 <seealso>
